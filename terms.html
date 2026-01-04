@@ -6,10 +6,11 @@
     <title>Terms of Service - Aiply</title>
     <style>
         :root {
-            --primary: #00E676;
+            --primary: #00E676; /* Aiply Brand Color */
+            --warning: #FF5252;
             --bg: #121212;
             --surface: #1E1E1E;
-            --text: #ffffff;
+            --text: #e0e0e0;
             --text-secondary: #B0B0B0;
         }
         body {
@@ -21,52 +22,98 @@
             padding: 40px 20px;
         }
         .container { max-width: 800px; margin: 0 auto; }
-        h1 { border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 30px; }
-        h2 { color: var(--primary); margin-top: 40px; font-size: 1.4rem; }
-        p { color: var(--text-secondary); margin-bottom: 15px; }
-        ul { color: var(--text-secondary); list-style-type: square; }
+        h1 { 
+            border-bottom: 2px solid var(--primary); 
+            padding-bottom: 15px; 
+            margin-bottom: 10px; 
+            color: #fff;
+        }
+        .subtitle { color: var(--primary); font-weight: bold; margin-bottom: 40px; }
+        
+        h2 { margin-top: 50px; color: #fff; border-left: 4px solid var(--primary); padding-left: 15px; }
+        h3 { color: var(--text-secondary); margin-top: 25px; font-size: 1.1rem; }
+        
+        p { margin-bottom: 15px; }
+        ul { list-style-type: disc; padding-left: 20px; color: var(--text-secondary); }
         li { margin-bottom: 10px; }
-        .highlight { color: #FF5252; font-weight: bold; }
-        .footer { margin-top: 60px; border-top: 1px solid #333; padding-top: 20px; text-align: center; color: #777; font-size: 0.9em; }
-        a { color: var(--primary); text-decoration: none; }
+        
+        .box {
+            background-color: rgba(255, 82, 82, 0.1);
+            border: 1px solid var(--warning);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .box strong { color: var(--warning); }
+
+        .footer { margin-top: 80px; border-top: 1px solid #333; padding-top: 30px; text-align: center; color: #777; font-size: 0.9em; }
+        a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Terms of Service</h1>
+        <p class="subtitle">AI-Generated Music Brokerage & Streaming Service</p>
+        
         <p><strong>Effective Date:</strong> January 4, 2026</p>
-        <p>Welcome to Aiply. By using our platform, you agree to the following terms regarding content uploads, AI generation, and liability.</p>
+        <p>Welcome to <strong>Aiply</strong>. We are a User-Generated Content (UGC) brokerage platform specializing in AI-generated music. Before you register as an artist or upload content, you must understand our strict policies regarding commercial rights for AI music.</p>
 
-        <h2>1. Warranty of Rights (업로드 권리 보증)</h2>
-        <p>By uploading content to Aiply, you represent and warrant that you own or have the necessary licenses, rights, consents, and permissions to publish and sell the content. You bear full legal responsibility for any unauthorized uploads.</p>
-
-        <h2>2. AI Content Disclaimer (AI 생성물 고지)</h2>
-        <p>You acknowledge that content generated via AI tools on this platform <span class="highlight">may not be protected by traditional copyright laws</span> as human authorship. Users should be aware of the legal status of AI-generated works in their respective jurisdictions.</p>
-
-        <h2>3. Platform Neutrality (플랫폼 비책임 조항)</h2>
-        <p>Aiply is a neutral service provider. We do not participate in the creation of user-uploaded content and assume no liability for the content itself. We act solely as a conduit for the distribution and monetization of user content.</p>
-
-        <h2>4. Report & Takedown Process (신고 및 삭제)</h2>
-        <p>We take intellectual property rights seriously. Our process is as follows:</p>
+        <h2>1. Nature of Service (서비스의 본질)</h2>
+        <p>Aiply is a specialized marketplace and streaming platform for <strong>"Copyright-Unprotected but Commercially Licensed AI Music."</strong></p>
         <ul>
-            <li><strong>Reporting:</strong> Users can report infringing content using the 'Report' button in the app.</li>
-            <li><strong>Action Timeline:</strong> We commit to reviewing valid reports and taking appropriate action (content removal or account suspension) within <strong>24 to 72 hours</strong>.</li>
+            <li>We acknowledge that purely AI-generated works may not be eligible for traditional copyright protection in many jurisdictions.</li>
+            <li>However, we strictly trade the <strong>"Right to Distribute and Monetize"</strong> based on the licenses granted by AI generation tools.</li>
         </ul>
 
-        <h2>5. Prohibited Content (금지 콘텐츠)</h2>
-        <p>The following content is strictly prohibited and will be removed without notice:</p>
+        <h2>2. Uploader Warranties: Commercial Rights (업로더의 상업적 권한 보증)</h2>
+        <div class="box">
+            <strong>⚠️ CRITICAL REQUIREMENT</strong><br>
+            You generally CANNOT monetize music generated on "Free Plans" of AI platforms. You must hold a valid paid license.
+        </div>
+        <p>By uploading content (e.g., from Suno AI, Udio, etc.) to Aiply, you represent and warrant that:</p>
         <ul>
-            <li>Content that imitates specific existing artists (voice cloning without consent).</li>
-            <li>Content that infringes on third-party trademarks or brand names.</li>
-            <li>Hate speech, sexually explicit material, or illegal content.</li>
+            <li>You were a <strong>Paid Subscriber (Pro/Premier/Commercial Plan)</strong> of the AI service at the time the content was generated.</li>
+            <li>You hold the explicit contractual right to use the generated audio for <strong>commercial purposes</strong> (monetization, sale, streaming).</li>
+            <li>You are not uploading content generated under a "Free/Basic Tier" license that restricts commercial use or attributes ownership to the AI platform.</li>
+        </ul>
+        <p><em>Example: If you upload a track generated via Suno AI's free plan, you are violating these Terms because Suno retains ownership of free-tier generations.</em></p>
+
+        <h2>3. No Copyright Guarantee (저작권 비보호 고지)</h2>
+        <p>Users acknowledge that content traded on Aiply is largely AI-generated:</p>
+        <ul>
+            <li><strong>Legal Status:</strong> The content may be legally classified as "Public Domain" or "Copyright-Unprotected" depending on local laws.</li>
+            <li><strong>Asset Value:</strong> The value traded on Aiply is the <strong>"Access Right"</strong> and <strong>"Revenue Share Claim,"</strong> not necessarily a federal copyright registration.</li>
+            <li>We do not guarantee that your uploaded content will be protected from copying by third parties outside of our platform.</li>
         </ul>
 
-        <h2>6. Commercial Liability (상업적 이용 책임)</h2>
-        <p>The platform is responsible only for transactions occurring within the Aiply ecosystem. Any commercial use, licensing, or legal disputes arising from the use of content <strong>outside the Aiply platform</strong> are the sole responsibility of the user.</p>
+        <h2>4. Prohibited Content (금지된 콘텐츠)</h2>
+        <p>The following uploads are strictly prohibited and will result in immediate account suspension:</p>
+        <ul>
+            <li><strong>Voice Cloning / Deepfakes:</strong> AI covers utilizing the voice of a real human artist without their explicit written consent.</li>
+            <li><strong>Trademark Infringement:</strong> Content containing registered brand names, logos, or protected character names in metadata or lyrics.</li>
+            <li><strong>Unlicensed AI Content:</strong> Content generated from AI tools where the user does not possess commercial usage rights.</li>
+        </ul>
+
+        <h2>5. Platform Liability & Indemnification (책임의 한계)</h2>
+        <p>Aiply acts solely as a technical intermediary (ISP) providing the marketplace infrastructure.</p>
+        <ul>
+            <li><strong>Verification:</strong> We do not manually verify the licensing status of every upload. The onus of proof lies entirely with the Uploader.</li>
+            <li><strong>Indemnification:</strong> If a third party (e.g., Suno AI, a record label, or another artist) takes legal action against Aiply due to your upload, you agree to indemnify and hold Aiply harmless for all damages and legal fees.</li>
+        </ul>
+
+        <h2>6. Revenue Withdrawal & Disputes (수익 및 분쟁)</h2>
+        <p>If it is discovered that an Uploader generated revenue using content lacking commercial rights (e.g., Free Tier AI music):</p>
+        <ul>
+            <li>All generated Points/Revenue will be forfeited.</li>
+            <li>The content will be deleted immediately.</li>
+            <li>The account may be permanently banned.</li>
+        </ul>
 
         <div class="footer">
             <p>&copy; 2026 Aiply. <a href="index.html">Back to Home</a></p>
+            <p>Contact: <a href="mailto:oblivbloom@gmail.com">oblivbloom@gmail.com</a></p>
         </div>
     </div>
 
