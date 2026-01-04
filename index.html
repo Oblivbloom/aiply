@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiply - AI Music & Market Ecosystem</title>
+    <style>
+        :root {
+            --primary: #00E676; /* 앱의 상승장 초록색 */
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --text: #ffffff;
+            --text-secondary: #B0B0B0;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.95);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); letter-spacing: 1px; }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle at center, #2a2a2a 0%, #121212 70%);
+        }
+        h1 { font-size: 3.5rem; margin-bottom: 20px; background: linear-gradient(45deg, #fff, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.subtitle { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #333;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 10px; }
+        .footer-links a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">AIPLY</div>
+    </header>
+
+    <section class="hero">
+        <h1>Music Meets Economy & AI</h1>
+        <p class="subtitle">
+            Experience the next generation of music streaming. 
+            Trade songs like stocks, chat with AI Muse, and connect with artists directly.
+        </p>
+        <a href="#" class="btn">Coming Soon on Google Play</a>
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <h3>📈 Music Marketplace</h3>
+            <p>Don't just listen—invest. Buy and sell songs using Points. Watch the value of your favorite tracks rise on the real-time dashboard.</p>
+        </div>
+        <div class="card">
+            <h3>🤖 AI Muse Chat</h3>
+            <p>Meet your new music companion. Powered by Gemini AI, Muse understands your taste and chats with you in real-time.</p>
+        </div>
+        <div class="card">
+            <h3>🎧 Premium Streaming</h3>
+            <p>High-quality audio streaming with a smart library system. Cache your favorites and listen offline seamlessly.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-ko.html">Privacy Policy (Korean)</a> | 
+            <a href="en.html">Privacy Policy (English)</a>
+        </div>
+        <p style="margin-top: 20px;">&copy; 2026 Antigravity. All rights reserved.</p>
+        <p>Contact: oblivbloom@gmail.com</p>
+    </footer>
+
+</body>
+</html>
