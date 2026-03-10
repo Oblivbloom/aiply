@@ -3,67 +3,585 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy for Aiply</title>
+    <title>Aiply - Privacy Policy V3.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; color: #333; }
-        h1 { border-bottom: 2px solid #333; padding-bottom: 10px; }
-        h2 { margin-top: 30px; color: #0056b3; }
-        ul { margin-bottom: 20px; }
-        li { margin-bottom: 5px; }
-        .footer { margin-top: 50px; font-size: 0.9em; color: #777; border-top: 1px solid #ddd; padding-top: 20px; }
-        .lang-link { float: right; font-weight: bold; text-decoration: none; color: #0056b3; }
+        /* 기본 테마 변수 설정 */
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #151515;
+            --text-color: #e6e6e6;
+            --text-muted: #888888;
+            --gold-accent: #B08A3C;
+            --card-border: #2a2a2a;
+            --danger-accent: #e53935; /* 법적 강력 경고용 색상 */
+        }
+
+        /* 기본 리셋 및 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 레이아웃 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 헤더 스타일 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--gold-accent);
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* 언어 네비게이션 (Sticky) */
+        .lang-nav {
+            position: sticky;
+            top: 15px;
+            background-color: rgba(11, 11, 11, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            margin-bottom: 40px;
+            z-index: 100;
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .lang-nav a {
+            background-color: transparent;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-nav a:hover, .lang-nav a:active {
+            background-color: var(--gold-accent);
+            color: var(--bg-color);
+        }
+
+        /* 언어별 섹션 */
+        .lang-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+
+        .lang-title {
+            color: var(--text-color);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold-accent);
+            display: block;
+        }
+
+        /* 섹션 카드형 레이아웃 */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #444;
+        }
+
+        .card h2 {
+            color: var(--gold-accent);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            color: #ffffff;
+            font-size: 15px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .card h3.alert {
+            color: var(--danger-accent);
+        }
+
+        .card p {
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+        
+        .card ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        .card p:last-child, .card ul:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 텍스트 강조 */
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        /* 연락처 박스 */
+        .contact-box {
+            background-color: #1a1a1a;
+            border: 1px dashed var(--gold-accent);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .contact-box ul {
+            margin-bottom: 0;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--gold-accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 24px; }
+            .card { padding: 20px; }
+            .card h2 { font-size: 17px; }
+            .lang-nav { gap: 8px; padding: 10px 15px;}
+            .lang-nav a { padding: 6px 12px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
-    
-    <h1>Privacy Policy</h1>
-    <p><strong>Effective Date:</strong> February 2, 2026</p>
 
-    <p><strong>Antigravity</strong> (hereinafter referred to as the "Company") values your privacy and complies with the Google Play Developer Policy and applicable laws. This Privacy Policy explains how <strong>Aiply</strong> collects, uses, and protects your information.</p>
+    <div class="container">
+        
+        <div class="header">
+            <h1>Aiply Privacy Policy V3.0</h1>
+            <p>GLOBAL AI MUSIC ECOSYSTEM & UGC PLATFORM</p>
+            <p>Last Updated: March 10, 2026 | Data Controller: SYNAPTIVE</p>
+        </div>
 
-    <h2>1. Information We Collect</h2>
-    <ul>
-        <li><strong>Required Information:</strong> Email address, Login ID (UID), Nickname (Artist Name).</li>
-        <li><strong>Optional Information:</strong> Profile image, Biography (Bio).</li>
-        <li><strong>Generated Data:</strong> Uploaded audio files, album covers, chat messages (including AI interactions), transaction history (Points, Purchases), playback history, app usage logs, cookies, and device information.</li>
-    </ul>
+        <div class="lang-nav">
+            <a href="#english">English</a>
+            <a href="#japanese">日本語</a>
+            <a href="#korean">한국어</a>
+        </div>
 
-    <h2>2. Purpose of Collection and Use</h2>
-    <ul>
-        <li><strong>Service Provision:</strong> User identification, music streaming/downloading, marketplace transactions, and premium membership management.</li>
-        <li><strong>AI Services:</strong> Providing AI chatbot (AI Muse) features using the Google Gemini API. (Input text is used solely for generating AI responses.)</li>
-        <li><strong>Service Improvement:</strong> Analyzing usage statistics using Google Firebase Analytics.</li>
-    </ul>
+        <div id="english" class="lang-section">
+            <h2 class="lang-title">Privacy Policy (EN)</h2>
 
-    <h2>3. Third-Party Services and SDKs</h2>
-    <p>The app uses the following third-party tools (SDKs) to provide services, which may transmit necessary data:</p>
-    <ul>
-        <li><strong>Google Firebase:</strong> Authentication, Database (Firestore), Storage, Analytics.</li>
-        <li><strong>Google Gemini AI:</strong> Text processing for AI chat features.</li>
-        <li><strong>YouTube Player API:</strong> Video content playback.</li>
-    </ul>
+            <div class="card">
+                <h2>Article 1 (Introduction)</h2>
+                <p>Aiply respects your privacy and data sovereignty as our highest priority. This Privacy Policy transparently explains how SYNAPTIVE ("Company", "we", or "Aiply") collects, uses, shares, transfers internationally, and protects your information when you visit, access, or use the Aiply mobile application and related services (collectively, the "Service").</p>
+                <p>This Policy is a global standard regulation designed to strictly comply with the Personal Information Protection Act (PIPA) of the Republic of Korea, the <span class="highlight">General Data Protection Regulation (GDPR)</span> of the European Union, the <span class="highlight">California Consumer Privacy Act and California Privacy Rights Act (CCPA/CPRA)</span> of the United States, and Google Play's latest Data Safety policies.</p>
+            </div>
 
-    <h2>4. App Permissions</h2>
-    <ul>
-        <li><strong>Internet (INTERNET):</strong> Server communication and data transmission.</li>
-        <li><strong>Notifications (POST_NOTIFICATIONS):</strong> Receiving service alerts.</li>
-        <li><strong>Foreground Service (FOREGROUND_SERVICE):</strong> Maintaining background music playback.</li>
-    </ul>
+            <div class="card">
+                <h2>Article 2 (Information We Collect)</h2>
+                <p>We collect only the minimum data necessary through lawful and fair means to smoothly provide the Service and enhance the AI-based user experience.</p>
+                <h3>2.1. Information You Provide Directly or via Integration</h3>
+                <ul>
+                    <li><span class="highlight">Account and Profile Information:</span> Name/Artist name, email address, profile image. (We absolutely do not directly collect or store sensitive information such as your plaintext password, date of birth, or resident registration number; authentication is securely processed using hash encryption.)</li>
+                    <li><span class="highlight">User-Generated Content (UGC) and AI Interaction Data:</span> Sound recordings, lyrics, album art, community posts, and text prompts entered when using AI features.</li>
+                    <li><span class="highlight">Payment and Transaction Information:</span> Premium subscription tiers and platform asset (Point/Note) transaction history. (We do not directly collect, process, or store your full credit card number or bank account information on our servers. All payments are securely tokenized and processed through authorized third-party payment processors such as the Google Play In-App Billing API.)</li>
+                    <li><span class="highlight">Customer Support Data:</span> Emails and communication content provided when making inquiries or filing reports.</li>
+                </ul>
+                <h3>2.2. Information Collected Automatically</h3>
+                <ul>
+                    <li><span class="highlight">Device and Technical Information:</span> Unique Device ID, Android OS version, device model, and FCM token for receiving push notifications.</li>
+                    <li><span class="highlight">Usage and Log Data:</span> App access date and time, streaming (playback) history, click logs, and crash diagnostic data.</li>
+                    <li><span class="highlight">Location Information:</span> Approximate country/region information based on IP address to verify copyright license jurisdictions. <span class="highlight">(We do not collect or track precise GPS-based location information under any circumstances without your explicit consent.)</span></li>
+                </ul>
+            </div>
 
-    <h2>5. Data Retention and Deletion</h2>
-    <p>Upon account deletion, your personal information and profile data stored on the server will be immediately deleted or anonymized. However, transaction records may be retained for a certain period as required by applicable laws.</p>
+            <div class="card">
+                <h2>Article 3 (How We Use Information & Legal Basis)</h2>
+                <p>We use your data based on the following lawful bases for processing:</p>
+                <ul>
+                    <li><span class="highlight">Performance of a Contract (Service Provision):</span> Account creation and authentication, providing customized interfaces, asset (Note/Point) distribution, and operating the revenue settlement system.</li>
+                    <li><span class="highlight">🤖 AI Interaction and Foundation Model Protection (Transparency & EU AI Act Compliance):</span> Your prompts and other inputs may be transmitted to a partner's AI API (e.g., Google Gemini) for track appeal analysis and providing AI features. <span class="highlight">Data sent to AI APIs is used solely for the purpose of 'Transient Processing' to perform service functions, and is not used without authorization as training data for the API provider's models.</span> Furthermore, we do not use your personal data or creations (UGC) to train our own AI models unless you explicitly opt-in.</li>
+                    <li><span class="highlight">Legitimate Interests (Security & Service Enhancement):</span> Blocking abnormal bot access and view-botting (using Firebase App Check), error analysis, and optimizing recommendation algorithms.</li>
+                    <li><span class="highlight">No Automated Decision-Making:</span> We do not engage in 'fully automated decision-making and profiling' that produces legal effects concerning you or similarly significantly affects your rights in operating the platform.</li>
+                    <li><span class="highlight">Consent (Communication):</span> Sending notices of major updates and FCM notifications (consent can be withdrawn at any time in settings).</li>
+                </ul>
+            </div>
 
-    <h2>6. Account Deletion and Contact (CRITICAL UPDATE)</h2>
-    <p>You can request data deletion using one of the following methods:</p>
-    <ul>
-        <li><strong>In-App Deletion:</strong> Navigate to <strong>'Settings > Delete Account'</strong> feature within the app for immediate processing.</li>
-        <li><strong>Web-Based Request (If app access is unavailable):</strong> If you cannot access the app, you may request account deletion by sending an email to <strong>oblivbloom@gmail.com</strong> with the subject line "Account Deletion Request". We will review and process your request within 7 days.</li>
-    </ul>
-     
-    <div class="footer">
-        <p><strong>Data Protection Officer:</strong> James Kim</p>
-        <p><strong>Contact Email:</strong> oblivbloom@gmail.com</p>
+            <div class="card">
+                <h2>Article 4 (Data Sharing, Processors & International Transfers)</h2>
+                <h3 class="alert">4.1. Do Not Sell or Share My Personal Information 🚨</h3>
+                <p>In strict compliance with the US CCPA/CPRA regulations, <span class="highlight">we absolutely do not 'Sell' your personal information to third parties or unauthorizedly 'Share' it for commercial or targeting purposes.</span></p>
+                <h3>4.2. Data Processors and Controller Status</h3>
+                <p>To provide our global service, we entrust data processing only to partners equipped with the highest level of security. During this process, data may be transferred encrypted outside your country of residence (e.g., to the US).</p>
+                <ul>
+                    <li><span class="highlight">Google LLC (Google Cloud Platform, Firebase):</span> Cloud database (Firestore) hosting, Authentication (Auth), push notifications (FCM), app crash analysis (Crashlytics). <span class="highlight">[Clarification of Status] Google LLC acts as a 'Data Processor' performing limited data processing under our strict instructions and control as the 'Data Controller'.</span></li>
+                    <li><span class="highlight">Google Play:</span> In-app payment processing and subscription status synchronization.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Article 5 (Cookies & Tracking Technologies)</h2>
+                <p>We use the analytics technologies of mobile SDKs (e.g., Firebase Analytics) to improve service quality and analyze errors. You can control or restrict targeting and non-essential data tracking at any time through your smartphone device's own privacy settings (e.g., 'Delete advertising ID' on Android).</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 6 (Your Rights & Data Deletion)</h2>
+                <p>We fully guarantee your data sovereignty and your 'Right to be Forgotten'.</p>
+                <ul>
+                    <li><span class="highlight">In-App Deletion:</span> You can immediately and permanently destroy your account and all linked personal data with a few clicks through the <span class="highlight">[Settings > Account Management > Delete Account and Data]</span> menu within the app.</li>
+                    <li><span class="highlight">Remote Deletion Request via Web/Email:</span> If you cannot access the app, you can request account deletion via our dedicated customer support email (eyenic@naver.com), and we will lawfully process it without delay upon verifying your identity.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Article 7 (Retention & Destruction)</h2>
+                <p>When you request to cancel the service (delete account) or the purpose of collection has been achieved, we will permanently delete or irrecoverably anonymize all personal information that can identify you from our system without delay.</p>
+                <p>However, to comply with obligations under relevant laws, the following information is safely separated and stored for the specified periods before destruction:</p>
+                <ul>
+                    <li>Records regarding payment and supply of goods (assets/points): <span class="highlight">Retained for 5 years</span></li>
+                    <li>Records regarding consumer complaints or dispute resolution: <span class="highlight">Retained for 3 years</span></li>
+                    <li>Service visit and access log records: <span class="highlight">Retained for 3 months</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Article 8 (Children's Privacy)</h2>
+                <p>This Service is not directed at children under the statutory age of their jurisdiction (e.g., under 14 in the Republic of Korea, under 13 under US COPPA, or under 16 under EU GDPR), and we do not knowingly collect personal information from children. If we become aware that we have collected information from a child without the consent of a legal guardian, that account and data will be immediately and permanently destroyed from our system without delay.</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 9 (Security & Breach Notification)</h2>
+                <h3>9.1. Security Infrastructure</h3>
+                <p>All data transmissions between devices and servers are encrypted with industry-standard security protocols (TLS/SSL), and strict role-based access rules (Firestore Security Rules) are applied to the cloud database to fundamentally block unauthorized access.</p>
+                <h3 class="alert">9.2. Data Breach Notification 🚨</h3>
+                <p><span class="highlight">In the event of a personal data breach incident such as a hack, we will transparently notify users and the competent supervisory authority without undue delay (within 72 hours maximum) from the moment we become aware of the incident, in accordance with relevant laws (e.g., GDPR), and take all measures to minimize damage.</span></p>
+            </div>
+
+            <div class="card">
+                <h2>Article 10 (Changes to this Policy)</h2>
+                <p>We may amend this Policy from time to time in accordance with changes in laws or policy. If a change occurs that significantly affects user rights, we will notify you in advance via an in-app notice window, push notification, or email at least 30 days prior to the effective date. Other simple changes will be notified at least 7 days in advance.</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 11 (Contact Us & DPO)</h2>
+                <p>If you have any questions, complaints, or requests to exercise your rights regarding this Policy or our privacy practices, please contact us at any time at the physical address or email below.</p>
+                <div class="contact-box">
+                    <ul>
+                        <li><span class="highlight">Service Name:</span> Aiply</li>
+                        <li><span class="highlight">Data Controller (Operator):</span> SYNAPTIVE</li>
+                        <li><span class="highlight">Physical Address:</span> 2F, 154-6 Gaepo-ro, Wando-gun, Jeollanam-do, Republic of Korea</li>
+                        <li><span class="highlight">Chief Privacy Officer (CPO / DPO):</span> James Kim (Aiply Operations Team Leader)</li>
+                        <li><span class="highlight">Contact Email:</span> <a href="mailto:eyenic@naver.com" style="color:var(--gold-accent);">eyenic@naver.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="japanese" class="lang-section">
+            <h2 class="lang-title">プライバシーポリシー (JP)</h2>
+
+            <div class="card">
+                <h2>第1条（概要 / Introduction）</h2>
+                <p>Aiplyは、お客様（以下「ユーザー」）のプライバシーとデータ主権を最優先の価値として尊重します。本プライバシーポリシー（以下「本方針」）は、ユーザーがAiplyモバイルアプリケーションおよび関連サービス（以下総称して「サービス」）を訪問、接続、または利用する際に、SYNAPTIVE（以下「会社」、「当社」または「Aiply」）がユーザーの情報をどのように収集、使用、共有、国外移転、および保護するかを透明に説明するものです。</p>
+                <p>本方針は、大韓民国「個人情報保護法（PIPA）」、欧州連合<span class="highlight">「一般データ保護規則（GDPR）」</span>、米国<span class="highlight">「カリフォルニア州消費者プライバシー法および権利法（CCPA/CPRA）」</span>、およびGoogle Playの最新のデータセーフティ（Data Safety）ポリシーを厳格に遵守するように設計されたグローバルスタンダードの規定です。</p>
+            </div>
+
+            <div class="card">
+                <h2>第2条（収集する情報のカテゴリーと収集方法 / Information We Collect）</h2>
+                <p>当社は、サービスの円滑な提供とAIベースのユーザー体験の高度化のために、適法かつ公正な方法で最小限のデータのみを収集します。</p>
+                <h3>2.1. ユーザーが直接提供、または連携を通じて収集される情報</h3>
+                <ul>
+                    <li><span class="highlight">アカウントおよびプロフィール情報:</span> 登録時に提供される名前/アーティスト名、メールアドレス、プロフィール画像。（当社は、ユーザーのパスワードの平文、生年月日、住民登録番号などの機密情報を絶対に直接収集または保存せず、認証は安全にハッシュ暗号化されて処理されます。）</li>
+                    <li><span class="highlight">ユーザー生成コンテンツ（UGC）およびAI相互作用データ:</span> 音源、歌詞、アルバムアート、コミュニティ投稿、およびAI機能利用時に入力されるテキストプロンプト（Prompt）など。</li>
+                    <li><span class="highlight">決済および取引情報:</span> プレミアムサブスクリプションの等級およびプラットフォーム資産（Point/Note）の取引履歴。（当社は、クレジットカード番号全体や銀行口座情報を当社サーバーに直接収集、処理、保管しません。すべての決済は、Google Playのアプリ内課金APIなどの公認された第三者決済プロセッサーを通じて安全にトークン化されて処理されます。）</li>
+                    <li><span class="highlight">カスタマーサポートデータ:</span> 問い合わせ、申告受付時に提供されるメールおよびコミュニケーション内容。</li>
+                </ul>
+                <h3>2.2. サービス利用過程で自動的に収集される情報</h3>
+                <ul>
+                    <li><span class="highlight">デバイスおよび技術情報:</span> 固有のデバイス識別子（Device ID）、Android OSバージョン、デバイスモデル、プッシュ通知受信のためのFCMトークン。</li>
+                    <li><span class="highlight">使用およびログデータ:</span> アプリのアクセス日時、ストリーミング（再生）記録、クリックログ、クラッシュ（エラー）診断データ。</li>
+                    <li><span class="highlight">位置情報:</span> 著作権ライセンス管轄区域確認のためのIPアドレスに基づく大まかな国/地域情報。<span class="highlight">（当社は、ユーザーの明示的な同意なしにGPSベースの精密位置情報をいかなる場合も収集または追跡しません。）</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>第3条（個人情報の利用目的および適法な処理の根拠 / How We Use Information & Legal Basis）</h2>
+                <p>当社は、以下の適法な処理の根拠に基づいてユーザーのデータを使用します。</p>
+                <ul>
+                    <li><span class="highlight">契約の履行（サービス提供）:</span> アカウント作成および認証、カスタマイズされたインターフェースの提供、資産（Note/Point）の分配および収益精算システムの運用。</li>
+                    <li><span class="highlight">🤖 AI相互作用および基盤モデルの保護（透明性およびEU AI Act遵守）:</span> ユーザーのプロンプト等は、曲の魅力度分析およびAI機能提供のためにパートナー企業のAI API（例：Google Gemini）に送信される場合があります。<span class="highlight">AI APIに送信されるデータは、サービス機能を実行するための「一時的処理（Transient Processing）」目的にのみ使用され、API提供者のモデル学習データとして無断で使用されることはありません。</span>また、当社自身も、ユーザーが明示的に同意（Opt-in）しない限り、ユーザーのデータや創作物（UGC）を独自のAIモデルの学習目的で使用することはありません。</li>
+                    <li><span class="highlight">正当な利益（セキュリティおよびサービスの高度化）:</span> 異常なボット（Bot）のアクセスおよびビューボットの遮断（Firebase App Checkの活用）、エラー分析、嗜好分析を通じた推薦アルゴリズムの最適化。</li>
+                    <li><span class="highlight">自動化された意思決定の不在（No Automated Decision-Making）:</span> 当社は、ユーザーに重大な法的影響を及ぼす「完全に自動化された意思決定（Automated Decision-Making）およびプロファイリング」を行いません。</li>
+                    <li><span class="highlight">同意（コミュニケーション）:</span> 重要なアップデートの通知およびFCM通知の送信（いつでも設定から撤回可能）。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>第4条（個人情報の第三者提供、委託および国外移転 / Data Sharing & International Transfers）</h2>
+                <h3 class="alert">4.1. 情報の販売および共有の禁止（Do Not Sell or Share My Personal Information） 🚨</h3>
+                <p>米国CCPA/CPRAの厳格な規定を遵守し、<span class="highlight">当社はユーザーの個人情報を第三者に絶対に「販売（Sell）」したり、商業的/ターゲティング目的で無断で「共有（Share）」することはありません。</span></p>
+                <h3>4.2. データ処理の委託および管理者の地位（Data Processors）</h3>
+                <p>当社はグローバルなサービス提供のために、以下のような最高レベルのセキュリティを備えたパートナーにのみデータ処理を委託し、この過程でデータがユーザーの居住国以外（例：米国）に暗号化されて移転される場合があります。</p>
+                <ul>
+                    <li><span class="highlight">Google LLC (Google Cloud Platform, Firebase):</span> クラウドデータベースホスティング、認証、プッシュ通知、アプリクラッシュ分析。<span class="highlight">【地位の明確化】Google LLCは「データ処理者（Data Processor）」として、「データ管理者（Data Controller）」である当社の厳格な指示と統制の下で限定的なデータ処理を実行します。</span></li>
+                    <li><span class="highlight">Google Play:</span> アプリ内決済処理およびサブスクリプション状態の同期。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>第5条（その他の追跡技術 / Cookies & Tracking Technologies）</h2>
+                <p>当社は、サービス品質の向上およびエラー分析のために、モバイルSDK（Firebase Analyticsなど）の分析技術を使用します。ユーザーは自身のスマートフォンデバイスのプライバシー設定（例：Androidの「広告IDの削除」）を通じて、ターゲティングおよび必須ではないデータ追跡をいつでも制御または制限することができます。</p>
+            </div>
+
+            <div class="card">
+                <h2>第6条（グローバルユーザーの権利行使およびデータ削除 / Your Rights & Data Deletion）</h2>
+                <p>当社は、ユーザーのデータ主権および「忘れられる権利」を全面的に保証します。</p>
+                <ul>
+                    <li><span class="highlight">アプリ内の自律的削除（In-App Deletion）:</span> ユーザーはアプリ内の <span class="highlight">[設定 > アカウント管理 > 退会およびデータ削除]</span> メニューから数回のクリックで、アカウントおよび連携されたすべての個人データを即時に永久破棄することができます。</li>
+                    <li><span class="highlight">リモート削除要求:</span> アプリにアクセスできない場合、専用のカスタマーサポートメール（eyenic@naver.com）を通じてアカウントの削除を要求することができ、当社は本人確認後、遅滞なく適法に処理します。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>第7条（個人情報の保存および破棄手続き / Retention & Destruction）</h2>
+                <p>ユーザーがサービスの退会（アカウント削除）を要求した場合、または収集目的が達成された場合、当社はユーザーを識別できるすべての個人情報をシステムから遅滞なく永久に削除、または復元不可能な完全な匿名化処理を行います。</p>
+                <p>ただし、関連法令の義務遵守のために、以下の情報は明示された期間中安全に分離保管された後に破棄されます。</p>
+                <ul>
+                    <li>代金決済および財貨（資産/ポイント）の供給に関する記録: <span class="highlight">5年保存</span></li>
+                    <li>消費者の苦情または紛争処理に関する記録: <span class="highlight">3年保存</span></li>
+                    <li>サービス訪問およびアクセスログの記録: <span class="highlight">3ヶ月保存</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>第8条（児童の個人情報保護 / Children's Privacy）</h2>
+                <p>本サービスは、大韓民国で14歳未満、米国COPPAで13歳未満、欧州GDPRで16歳未満など、管轄権の法定年齢未満の児童を対象としておらず、児童の個人情報を故意に収集しません。万一、法定代理人の同意なしに収集された児童の情報であることを当社が認知した場合、該当するアカウントおよびデータはシステムから遅滞なく即時に永久破棄されます。</p>
+            </div>
+
+            <div class="card">
+                <h2>第9条（データセキュリティ対策および流出通知 / Security & Breach Notification）</h2>
+                <h3>9.1. セキュリティインフラ</h3>
+                <p>デバイスとサーバー間のすべてのデータ転送は、業界標準のセキュリティプロトコル（TLS/SSL）で暗号化され、クラウドデータベースには厳格な権限ベースのアクセスルール（Firestore Security Rules）を適用して無断アクセスを根本的に遮断します。</p>
+                <h3 class="alert">9.2. 個人情報流出通知（Data Breach Notification） 🚨</h3>
+                <p><span class="highlight">当社は、ハッキングなどの個人情報流出事故が発生した場合、関連法令（GDPR等）に従い、事故の発生を認知した時点から遅滞なく（最大72時間以内）ユーザーおよび管轄の監督機関に当該事実を透明に通知し、被害を最小限に抑えるためのあらゆる措置を講じます。</span></p>
+            </div>
+
+            <div class="card">
+                <h2>第10条（方針の改定 / Changes to this Policy）</h2>
+                <p>当社は、法律の変更またはポリシーの変更に従い、本方針を随時改定する場合があります。ユーザーの権利に重大な影響を及ぼす変更が発生した場合、施行日の少なくとも30日前にアプリ内の告知ウィンドウ、プッシュ通知、またはメールを通じて事前にお知らせします。その他の単純な変更事項は少なくとも7日前にお知らせします。</p>
+            </div>
+
+            <div class="card">
+                <h2>第11条（問い合わせおよび個人情報保護責任者 / Contact Us & DPO）</h2>
+                <p>本方針に関するご質問、苦情、または権利行使の要求がある場合は、以下の物理的住所またはメールでいつでもお問い合わせください。</p>
+                <div class="contact-box">
+                    <ul>
+                        <li><span class="highlight">サービス名:</span> Aiply</li>
+                        <li><span class="highlight">データ管理者（運営会社）:</span> SYNAPTIVE</li>
+                        <li><span class="highlight">物理的住所:</span> 大韓民国 全羅南道 莞島郡 開浦路 154-6 2階 (2F, 154-6 Gaepo-ro, Wando-gun, Jeollanam-do, Republic of Korea)</li>
+                        <li><span class="highlight">個人情報保護責任者（CPO / DPO）:</span> James Kim (Aiply 運営チーム長)</li>
+                        <li><span class="highlight">問い合わせメール:</span> <a href="mailto:eyenic@naver.com" style="color:var(--gold-accent);">eyenic@naver.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="korean" class="lang-section">
+            <h2 class="lang-title">개인정보처리방침 (KR)</h2>
+
+            <div class="card">
+                <h2>제1조 (개요 / Introduction)</h2>
+                <p>에이플리(Aiply)는 귀하(이하 "사용자")의 프라이버시와 데이터 주권을 최우선 가치로 존중합니다. 본 개인정보처리방침(이하 "본 방침")은 귀하가 에이플리 모바일 애플리케이션 및 관련 서비스(이하 총칭하여 "서비스")를 방문, 접속 또는 이용할 때 당사가 귀하의 정보를 어떻게 수집, 사용, 공유, 국외 이전 및 보호하는지 투명하게 설명합니다.</p>
+                <p>본 방침은 대한민국 「개인정보 보호법(PIPA)」, 유럽연합 <span class="highlight">「일반 데이터 보호 규칙(GDPR)」</span>, 미국 <span class="highlight">「캘리포니아 소비자 프라이버시법 및 권리법(CCPA/CPRA)」</span> 및 Google Play의 최신 데이터 안전(Data Safety) 정책을 엄격히 준수하도록 설계된 글로벌 스탠다드 규정입니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제2조 (수집하는 정보의 범주 및 수집 방법 / Information We Collect)</h2>
+                <p>당사는 서비스의 원활한 제공과 AI 기반 사용자 경험의 고도화를 위해 적법하고 공정한 방법으로 최소한의 데이터만을 수집합니다.</p>
+
+                <h3>2.1. 사용자가 직접 제공하거나 연동을 통해 수집되는 정보</h3>
+                <ul>
+                    <li><span class="highlight">계정 및 프로필 정보:</span> 가입 시 제공하는 이름/아티스트명, 이메일 주소, 프로필 이미지. (당사는 귀하의 비밀번호 평문이나 생년월일, 주민등록번호 등 민감정보를 절대 직접 수집하거나 저장하지 않으며, 인증은 안전하게 해시 암호화되어 처리됩니다.)</li>
+                    <li><span class="highlight">사용자 생성 콘텐츠(UGC) 및 AI 상호작용 데이터:</span> 음원, 가사, 앨범 아트, 커뮤니티 게시글 및 AI 기능 이용 시 입력하는 텍스트 프롬프트(Prompt) 등.</li>
+                    <li><span class="highlight">결제 및 거래 정보:</span> 프리미엄 구독 등급 및 플랫폼 자산(Point/Note) 거래 내역. (당사는 귀하의 신용카드 번호 전체나 은행 계좌 정보를 당사 서버에 직접 수집, 처리, 보관하지 않습니다. 모든 결제는 Google Play 인앱 결제 API 등 공인된 제3자 결제 프로세서를 통해 안전하게 토큰화(Tokenized)되어 처리됩니다.)</li>
+                    <li><span class="highlight">고객 지원 데이터:</span> 문의, 신고 접수 시 제공하는 이메일 및 커뮤니케이션 내용.</li>
+                </ul>
+
+                <h3>2.2. 서비스 이용 과정에서 자동으로 수집되는 정보</h3>
+                <ul>
+                    <li><span class="highlight">기기 및 기술 정보:</span> 고유 기기 식별자(Device ID), 안드로이드 운영체제(OS) 버전, 기기 모델, 푸시 알림 수신을 위한 FCM 토큰.</li>
+                    <li><span class="highlight">사용 및 로그 데이터:</span> 앱 접속 일시, 스트리밍(재생) 기록, 클릭 로그, 크래시(오류) 진단 데이터.</li>
+                    <li><span class="highlight">위치 정보:</span> 저작권 라이선스 관할 구역 확인을 위한 IP 주소 기반의 대략적인 국가/지역 정보. <span class="highlight">(당사는 귀하의 명시적 동의 없이 GPS 기반의 정밀 위치 정보를 어떠한 경우에도 수집하거나 추적하지 않습니다.)</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>제3조 (개인정보의 이용 목적 및 적법한 처리 근거 / How We Use Information & Legal Basis)</h2>
+                <p>당사는 다음과 같은 적법한 처리 근거(Legal Basis)에 기반하여 귀하의 데이터를 사용합니다.</p>
+                <ul>
+                    <li><span class="highlight">계약의 이행 (서비스 제공):</span> 계정 생성 및 인증, 맞춤형 인터페이스 제공, 자산(Note/Point) 분배 및 수익 정산 시스템 운영.</li>
+                    <li><span class="highlight">🤖 AI 상호작용 및 파운데이션 모델 보호 (투명성 및 EU AI Act 준수):</span> 귀하의 프롬프트 등은 곡 매력도 분석 및 AI 기능 제공을 위해 파트너사의 AI API(예: Google Gemini)로 전송될 수 있습니다. <span class="highlight">AI API로 전송되는 데이터는 서비스 기능 수행을 위한 '일시적 처리(Transient Processing)' 목적으로만 사용되며, API 제공자의 모델 학습 데이터로 무단 사용되지 않습니다.</span> 또한, 당사 역시 귀하가 명시적으로 동의(Opt-in)하지 않는 한, 귀하의 개인 데이터나 창작물(UGC)을 자체 AI 모델을 학습시키는 용도로 사용하지 않습니다.</li>
+                    <li><span class="highlight">정당한 이익 (보안 및 서비스 고도화):</span> 비정상적인 봇(Bot) 접근 및 뷰봇팅 차단(Firebase App Check 활용), 에러 분석, 취향 분석을 통한 추천 알고리즘 최적화.</li>
+                    <li><span class="highlight">자동화된 의사결정의 부재 (No Automated Decision-Making):</span> 당사는 플랫폼 운영에 있어 사용자에게 중대한 법적 영향을 미치거나 이와 유사하게 권리를 현저히 제한하는 '완전히 자동화된 의사결정(Automated Decision-Making) 및 프로파일링'을 수행하지 않습니다.</li>
+                    <li><span class="highlight">동의 (커뮤니케이션):</span> 주요 업데이트 고지 및 FCM 알림 전송 (언제든 설정에서 철회 가능).</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>제4조 (개인정보의 제3자 제공, 위탁 및 국외 이전 / Data Sharing & International Transfers)</h2>
+                <h3 class="alert">4.1. 정보 판매 및 공유 금지 (Do Not Sell or Share My Personal Information) 🚨</h3>
+                <p>미국 CCPA/CPRA의 엄격한 규정을 준수하여, <span class="highlight">당사는 귀하의 개인정보를 제3자에게 절대 '판매(Sell)'하거나 상업적/타겟팅 목적으로 무단 '공유(Share)'하지 않습니다.</span></p>
+
+                <h3>4.2. 데이터 처리 위탁 및 컨트롤러 지위 (Data Processors)</h3>
+                <p>당사는 글로벌 서비스 제공을 위해 아래와 같이 최고 수준의 보안을 갖춘 파트너에게만 데이터 처리를 위탁하며, 이 과정에서 데이터가 귀하의 거주 국가 외부(예: 미국)로 암호화되어 이전될 수 있습니다.</p>
+                <ul>
+                    <li><span class="highlight">Google LLC (Google Cloud Platform, Firebase):</span> 클라우드 데이터베이스(Firestore) 호스팅, 인증(Auth), 푸시 알림(FCM), 앱 충돌 분석(Crashlytics). <strong>[지위 명확화] Google LLC는 '데이터 처리자(Data Processor)'의 지위로서 '데이터 컨트롤러(Data Controller)'인 당사의 엄격한 지시와 통제하에 제한적인 데이터 처리를 수행합니다.</strong></li>
+                    <li><span class="highlight">Google Play:</span> 인앱 결제 처리 및 구독 상태 동기화.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>제5조 (기타 추적 기술 / Cookies & Tracking Technologies)</h2>
+                <p>당사는 서비스 품질 향상과 오류 분석을 위해 모바일 SDK(Firebase Analytics 등)의 분석 기술을 사용합니다. 사용자는 본인 스마트폰 기기의 자체 프라이버시 설정(예: Android의 '광고 ID 삭제')을 통해 타겟팅 및 비필수적 데이터 추적을 언제든지 제어하거나 제한할 수 있습니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제6조 (글로벌 사용자 권리 행사 및 데이터 삭제 / Your Rights & Data Deletion)</h2>
+                <p>당사는 귀하의 데이터 주권 및 '잊힐 권리(Right to be Forgotten)'를 전적으로 보장합니다.</p>
+                <ul>
+                    <li><span class="highlight">앱 내 자율 삭제 (In-App Deletion):</span> 귀하는 앱 내 <strong>[설정 > 계정 관리 > 회원 탈퇴 및 데이터 삭제]</strong> 메뉴를 통해 클릭 몇 번으로 계정 및 연동된 모든 개인 데이터를 즉시 영구 파기할 수 있습니다.</li>
+                    <li><span class="highlight">웹/이메일을 통한 원격 삭제 요구:</span> 앱에 접근할 수 없는 경우, 전용 고객지원 이메일(eyenic@naver.com)을 통해 계정 삭제를 요구할 수 있으며 당사는 본인 확인 후 지체 없이 적법하게 처리합니다.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>제7조 (개인정보의 보존 및 파기 절차 / Retention & Destruction)</h2>
+                <p>사용자가 서비스 탈퇴(계정 삭제)를 요청하거나 수집 목적이 달성된 경우, 당사는 귀하를 식별할 수 있는 모든 개인정보를 시스템에서 지체 없이 영구 삭제하거나 복구 불가능한 완전한 익명화(Anonymization) 처리를 진행합니다.</p>
+                <p>단, 관련 법령의 의무 준수를 위해 다음의 정보는 명시된 기간 동안 안전하게 분리 보관 후 파기됩니다.</p>
+                <ul>
+                    <li>대금 결제 및 재화(자산/포인트) 공급에 관한 기록: <span class="highlight">5년 보존</span></li>
+                    <li>소비자의 불만 또는 분쟁 처리에 관한 기록: <span class="highlight">3년 보존</span></li>
+                    <li>서비스 방문 및 접속 로그 기록: <span class="highlight">3개월 보존</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>제8조 (아동의 개인정보 보호 / Children's Privacy)</h2>
+                <p>본 서비스는 대한민국 만 14세, 미국 COPPA 만 13세, 유럽 GDPR 만 16세 미만 등 관할권의 법정 연령 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 고의로 수집하지 않습니다. 만약 법정대리인의 동의 없이 수집된 아동의 정보임을 당사가 인지하게 될 경우, 해당 계정과 데이터는 시스템에서 지체 없이 즉각 영구 파기됩니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제9조 (데이터 보안 조치 및 유출 통지 / Security & Breach Notification)</h2>
+                <h3>9.1. 보안 인프라</h3>
+                <p>기기와 서버 간의 모든 데이터 전송은 업계 표준 보안 프로토콜(TLS/SSL)로 암호화되며, 클라우드 데이터베이스에 엄격한 권한 기반 액세스 규칙(Firestore Security Rules)을 적용하여 무단 접근을 원천적으로 차단합니다.</p>
+                <h3 class="alert">9.2. 개인정보 유출 통지 (Data Breach Notification) 🚨</h3>
+                <p><span class="highlight">당사는 해킹 등 개인정보 유출 사고가 발생할 경우, 관련 법령(GDPR 등)에 따라 사고 발생을 인지한 시점으로부터 지체 없이(최대 72시간 이내) 사용자 및 관할 감독기관에 해당 사실을 투명하게 통지하고 피해 최소화를 위한 모든 조치를 취합니다.</span></p>
+            </div>
+
+            <div class="card">
+                <h2>제10조 (방침의 개정 / Changes to this Policy)</h2>
+                <p>당사는 법률 변경이나 정책 변경에 따라 본 방침을 수시로 개정할 수 있습니다. 사용자 권리에 중대한 영향을 미치는 변경이 발생할 경우, 시행일 최소 30일 전에 앱 내 공지사항 창, 푸시 알림, 또는 이메일을 통해 사전 고지합니다. 그 외의 단순 변경 사항은 최소 7일 전에 고지합니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제11조 (문의 및 개인정보 보호 책임자 / Contact Us & DPO)</h2>
+                <p>본 방침이나 당사의 개인정보 처리 관행에 관하여 질문, 불만, 또는 권리 행사 요청이 있으신 경우 아래의 물리적 주소 또는 이메일로 언제든지 문의해 주시기 바랍니다.</p>
+                <div class="contact-box">
+                    <ul>
+                        <li><span class="highlight">서비스명:</span> 에이플리 (Aiply)</li>
+                        <li><span class="highlight">데이터 컨트롤러(운영사):</span> SYNAPTIVE</li>
+                        <li><span class="highlight">회사 물리적 주소:</span> 대한민국 전라남도 완도군 개포로 154-6, 2층 (2F, 154-6 Gaepo-ro, Wando-gun, Jeollanam-do, Republic of Korea)</li>
+                        <li><span class="highlight">개인정보 보호 책임자 (CPO / DPO):</span> James Kim (에이플리 운영팀장)</li>
+                        <li><span class="highlight">문의 이메일:</span> <a href="mailto:eyenic@naver.com" style="color:var(--gold-accent);">eyenic@naver.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Aiply. <a href="#">Back to Home</a></p>
+            <p style="margin-top: 10px;">Contact: <a href="mailto:eyenic@naver.com">eyenic@naver.com</a></p>
+        </div>
+
     </div>
 
+    <script>
+        // 상단 네비게이션 클릭 시 부드러운 스크롤 애니메이션 및 스티키 헤더 가림 방지
+        document.querySelectorAll('.lang-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const offset = 80; // 스티키 네비게이션의 높이만큼 오프셋 여백
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
