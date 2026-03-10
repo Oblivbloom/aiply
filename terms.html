@@ -3,128 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Aiply</title>
+    <title>Aiply - Terms of Service V2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* 기본 테마 변수 설정 */
         :root {
-            --primary: #00E676; /* Aiply Brand Color */
-            --warning: #FF5252;
-            --bg: #121212;
-            --surface: #1E1E1E;
-            --text: #e0e0e0;
-            --text-secondary: #B0B0B0;
+            --bg-color: #0b0b0b;
+            --card-bg: #151515;
+            --text-color: #e6e6e6;
+            --text-muted: #888888;
+            --gold-accent: #B08A3C;
+            --card-border: #2a2a2a;
         }
-        body {
+
+        /* 기본 리셋 및 폰트 설정 */
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 레이아웃 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 40px 20px;
         }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { 
-            border-bottom: 2px solid var(--primary); 
-            padding-bottom: 15px; 
-            margin-bottom: 10px; 
-            color: #fff;
-        }
-        .subtitle { color: var(--primary); font-weight: bold; margin-bottom: 40px; }
-        
-        h2 { margin-top: 50px; color: #fff; border-left: 4px solid var(--primary); padding-left: 15px; }
-        h3 { color: var(--text-secondary); margin-top: 25px; font-size: 1.1rem; }
-        
-        p { margin-bottom: 15px; }
-        ul { list-style-type: disc; padding-left: 20px; color: var(--text-secondary); }
-        li { margin-bottom: 10px; }
-        
-        .box {
-            background-color: rgba(255, 82, 82, 0.1);
-            border: 1px solid var(--warning);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        .box strong { color: var(--warning); }
 
-        .footer { margin-top: 80px; border-top: 1px solid #333; padding-top: 30px; text-align: center; color: #777; font-size: 0.9em; }
-        a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
-        a:hover { text-decoration: underline; }
+        /* 헤더 스타일 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--gold-accent);
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* 언어 네비게이션 (Sticky) */
+        .lang-nav {
+            position: sticky;
+            top: 15px;
+            background-color: rgba(11, 11, 11, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            margin-bottom: 40px;
+            z-index: 100;
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .lang-nav a {
+            background-color: transparent;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-nav a:hover, .lang-nav a:active {
+            background-color: var(--gold-accent);
+            color: var(--bg-color);
+        }
+
+        /* 언어별 섹션 */
+        .lang-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+
+        .lang-title {
+            color: var(--text-color);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold-accent);
+            display: block;
+        }
+
+        /* 섹션 카드형 레이아웃 */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #444;
+        }
+
+        .card h2 {
+            color: var(--gold-accent);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            color: #ffffff;
+            font-size: 15px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 텍스트 강조 */
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--gold-accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 24px; }
+            .card { padding: 20px; }
+            .card h2 { font-size: 17px; }
+            .lang-nav { gap: 8px; padding: 10px 15px;}
+            .lang-nav a { padding: 6px 12px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Terms of Service</h1>
-        <p class="subtitle">AI-Generated Music Brokerage & Streaming Service</p>
         
-        <p><strong>Effective Date:</strong> February 2, 2026</p>
-        <p>Welcome to <strong>Aiply</strong>. We are a User-Generated Content (UGC) brokerage platform specializing in AI-generated music. Before you register as an artist or upload content, you must understand our strict policies regarding commercial rights for AI music.</p>
-
-        <h2>1. Nature of Service (서비스의 본질)</h2>
-        <p>Aiply is a specialized marketplace and streaming platform for <strong>"Copyright-Unprotected but Commercially Licensed AI Music."</strong></p>
-        <ul>
-            <li>We acknowledge that purely AI-generated works may not be eligible for traditional copyright protection in many jurisdictions.</li>
-            <li>However, we strictly trade the <strong>"Right to Distribute and Monetize"</strong> based on the licenses granted by AI generation tools.</li>
-        </ul>
-
-        <h2>2. Uploader Warranties: Commercial Rights (업로더의 상업적 권한 보증)</h2>
-        <div class="box">
-            <strong>⚠️ CRITICAL REQUIREMENT</strong><br>
-            You generally CANNOT monetize music generated on "Free Plans" of AI platforms. You must hold a valid paid license.
+        <div class="header">
+            <h1>Aiply Terms of Service V2.0</h1>
+            <p>GLOBAL AI MUSIC ECOSYSTEM & UGC PLATFORM</p>
+            <p>Last Updated: March 10, 2026 | Operator: SYNAPTIVE</p>
         </div>
-        <p>By uploading content (e.g., from Suno AI, Udio, etc.) to Aiply, you represent and warrant that:</p>
-        <ul>
-            <li>You were a <strong>Paid Subscriber (Pro/Premier/Commercial Plan)</strong> of the AI service at the time the content was generated.</li>
-            <li>You hold the explicit contractual right to use the generated audio for <strong>commercial purposes</strong> (monetization, sale, streaming).</li>
-            <li>You are not uploading content generated under a "Free/Basic Tier" license that restricts commercial use or attributes ownership to the AI platform.</li>
-        </ul>
-        <p><em>Example: If you upload a track generated via Suno AI's free plan, you are violating these Terms because Suno retains ownership of free-tier generations.</em></p>
 
-        <h2>3. No Copyright Guarantee (저작권 비보호 고지)</h2>
-        <p>Users acknowledge that content traded on Aiply is largely AI-generated:</p>
-        <ul>
-            <li><strong>Legal Status:</strong> The content may be legally classified as "Public Domain" or "Copyright-Unprotected" depending on local laws.</li>
-            <li><strong>Asset Value:</strong> The value traded on Aiply is the <strong>"Access Right"</strong> and <strong>"Revenue Share Claim,"</strong> not necessarily a federal copyright registration.</li>
-            <li>We do not guarantee that your uploaded content will be protected from copying by third parties outside of our platform.</li>
-        </ul>
+        <div class="lang-nav">
+            <a href="#english">English</a>
+            <a href="#japanese">日本語</a>
+            <a href="#korean">한국어</a>
+        </div>
 
-        <h2>4. Prohibited Content & Enforcement (금지된 콘텐츠 및 제재)</h2>
-        <p>The following uploads are strictly prohibited:</p>
-        <ul>
-            <li><strong>Voice Cloning / Deepfakes:</strong> AI covers utilizing the voice of a real human artist without their explicit written consent.</li>
-            <li><strong>Trademark Infringement:</strong> Content containing registered brand names, logos, or protected character names in metadata or lyrics.</li>
-            <li><strong>Unlicensed AI Content:</strong> Content generated from AI tools where the user does not possess commercial usage rights.</li>
-            <li><strong>Objectionable Content:</strong> Hate speech, harassment, sexually explicit material, or content promoting violence.</li>
-        </ul>
+        <div id="english" class="lang-section">
+            <h2 class="lang-title">Terms of Service (EN)</h2>
 
-        <h3>Content Moderation Policy (Crucial for App Store Policy)</h3>
-        <p>Aiply maintains a <strong>Zero-Tolerance Policy</strong> regarding objectionable content. To ensure a safe environment:</p>
-        <ul>
-            <li><strong>Reporting Mechanism:</strong> Users can report inappropriate content or abusive users directly via the in-app reporting feature.</li>
-            <li><strong>24-Hour Review:</strong> We are committed to reviewing all reported content and acting within <strong>24 hours</strong>.</li>
-            <li><strong>Consequences:</strong> Content found to be in violation will be <strong>removed immediately</strong>. Users who repeatedly violate this policy will be <strong>permanently banned</strong> from the service.</li>
-        </ul>
+            <div class="card">
+                <h2>Article 1 (Safe Harbor & OSP Status)</h2>
+                <p>Aiply is an Online Service Provider (OSP) providing the 'technical infrastructure (cloud hosting and network)' that enables users to post, share, and stream user-generated music, sound recordings, audio, text, and AI-collaborative works (hereinafter "User Content" or "UGC").</p>
+                <p><span class="highlight">The Company does not pre-screen user content and assumes no liability for user-generated materials.</span> The Company is fully protected by the 'Safe Harbor' provisions specified in the US Digital Millennium Copyright Act (DMCA 17 U.S.C. § 512), the EU Digital Services Act (DSA), and the Copyright Act of the Republic of Korea.</p>
+            </div>
 
-        <h2>5. Platform Liability & Indemnification (책임의 한계)</h2>
-        <p>Aiply acts solely as a technical intermediary (ISP) providing the marketplace infrastructure.</p>
-        <ul>
-            <li><strong>Verification:</strong> We do not manually verify the licensing status of every upload. The onus of proof lies entirely with the Uploader.</li>
-            <li><strong>Indemnification:</strong> If a third party (e.g., Suno AI, a record label, or another artist) takes legal action against Aiply due to your upload, you agree to indemnify and hold Aiply harmless for all damages and legal fees.</li>
-        </ul>
+            <div class="card">
+                <h2>Article 2 (Eligibility)</h2>
+                <p><span class="highlight">The Service is intended for users aged 13 or older.</span> However, <span class="highlight">in certain jurisdictions the minimum age may be higher</span> depending on the laws of the specific jurisdiction in which the user resides (e.g., EU GDPR). In such cases, the user must meet the statutory age of that jurisdiction. If you are under the statutory age for data protection, you must create an account with the explicit consent of a parent or legal guardian.</p>
+            </div>
 
-        <h2>6. Revenue Withdrawal & Disputes (수익 및 분쟁)</h2>
-        <p>If it is discovered that an Uploader generated revenue using content lacking commercial rights (e.g., Free Tier AI music):</p>
-        <ul>
-            <li>All generated Points/Revenue will be forfeited.</li>
-            <li>The content will be deleted immediately.</li>
-            <li>The account may be permanently banned.</li>
-        </ul>
+            <div class="card">
+                <h2>Article 3 (License Grant)</h2>
+                <h3>3.1. Ownership and Non-Exclusive License Grant</h3>
+                <p>The copyright and intellectual property rights of the original content uploaded to the Service remain entirely with the user (or the original copyright holder). By uploading content to the platform, the user grants the Company a worldwide, non-exclusive, royalty-free license to host, store, reproduce, distribute, modify, stream, publicly perform, and promote the content.</p>
+                <h3>3.2. Continuation of License for Operational Purposes</h3>
+                <p>This license generally terminates when the user deletes the content. <span class="highlight">However, the license may continue for the limited purpose of operating and maintaining the Service</span> (e.g., CDN caching, system backups, log retention).</p>
+                <h3>3.3. AI Training Restriction</h3>
+                <p><span class="highlight">Except where such use is explicitly authorized by the user,</span> the Company does not use the user's content without permission to train its own or a third party's foundational AI models or Large Language Models (LLMs).</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 4 (User Responsibility)</h2>
+                <p>The user bears 100% legal responsibility for any infringement of copyright or personality rights arising from all content they upload to the Service. Users legally warrant that they will not engage in the following acts:</p>
+                <h3>4.1. Voice & Likeness Protection</h3>
+                <p>Uploading content that clones, imitates, or synthesizes (Voice Cloning) another person's voice using AI technology without their explicit written consent.</p>
+                <h3>4.2. Illegal Sampling & Copyright Infringement</h3>
+                <p>Unauthorized use or AI separation and uploading of stems, beats, lyrics, or samples from copyrighted sound recordings without lawful clearance.</p>
+                <h3>4.3. Platform Abuse Clause</h3>
+                <p>Engaging in automated scraping or data mining without the Company's permission, or manipulating play counts and asset trading volumes through view-botting.</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 5 (Notice & Takedown)</h2>
+                <h3>5.1. Reporting and Prompt Action</h3>
+                <p>Rightsholders claiming infringement of copyright or publicity rights may report it to the Company's <span class="highlight">Designated Copyright Agent: eyenic@naver.com</span>. Upon receiving a valid report, the Company will take prompt action to delete or block access to the content.</p>
+                <h3>5.2. Repeat Infringer Policy</h3>
+                <p>Users who repeatedly infringe the rights of others may have their accounts permanently suspended without prior notice, and all assets within the platform may be forfeited.</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 6 (Virtual Assets)</h2>
+                <h3>6.1. Definition of Non-Financial Goods and Denial of Securities</h3>
+                <p>'Points' and 'Notes' within Aiply are digital utility indicators intended to vitalize the platform. <span class="highlight">Points and Notes do not constitute securities, investment contracts, or financial instruments</span> under any circumstances, and cannot be exported off-platform or directly exchanged for fiat currency or cryptocurrency.</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 7 (Moderation)</h2>
+                <p><span class="highlight">The Company reserves the right, at its sole discretion,</span> to delete inappropriate content, restrict exposure, or limit account access at any time without prior notice to maintain service stability and comply with laws.</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 8 (Limitation of Liability & Indemnification)</h2>
+                <h3>8.1. Liability Cap</h3>
+                <p>The Company shall not be liable for indirect or incidental damages arising in connection with the user's use of the Service. In no event shall the Company's total liability exceed the greater of the total amount actually paid by you to the Company in the 12 months preceding the claim, or USD 100.</p>
+                <h3>8.2. Indemnification</h3>
+                <p>The user is obligated to fully defend and indemnify SYNAPTIVE against any claims and lawsuits arising from a breach of these Terms or the uploaded content.</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 9 (Dispute Resolution)</h2>
+                <h3>9.1. Governing Law and Jurisdiction</h3>
+                <p>These Terms shall be governed by the laws of the Republic of Korea. The exclusive court of first instance for disputes between the Company and the user shall be the Gwangju District Court of the Republic of Korea.</p>
+                <h3>9.2. Class Action Waiver</h3>
+                <p><span class="highlight">Users agree that disputes will be resolved individually and not as part of any class or representative action.</span></p>
+            </div>
+        </div>
+
+        <div id="japanese" class="lang-section">
+            <h2 class="lang-title">利用規約 (JP)</h2>
+
+            <div class="card">
+                <h2>第1条（サービスの地位および免責特権 / Safe Harbor & OSP Status）</h2>
+                <p>Aiplyは、ユーザーが生成した音楽、音源、オーディオ、テキスト、およびAIコラボレーション著作物（以下「ユーザーコンテンツ」または「UGC」）を投稿、共有、ストリーミングできる「技術的インフラ（クラウドホスティングおよびネットワーク）」を提供するオンラインサービスプロバイダー（OSP）です。</p>
+                <p><span class="highlight">会社はユーザーコンテンツを事前に検閲せず、ユーザーが生成した資料に対していかなる法的責任も負いません (The Company does not pre-screen user content and assumes no liability for user-generated materials)。</span>会社は、米国デジタルミレニアム著作権法（DMCA 17 U.S.C. § 512）、EUデジタルサービス法（DSA）、および大韓民国著作権法等に明記された「セーフハーバー（Safe Harbor）」規定の保護を全面的に受けます。</p>
+            </div>
+
+            <div class="card">
+                <h2>第2条（利用資格およびアカウント / Eligibility）</h2>
+                <p><span class="highlight">本サービスは、13歳以上のユーザーのみが利用することを意図しています (The Service is intended for users aged 13 or older)。</span>ただし、<span class="highlight">ユーザーが居住する特定の管轄区域（例：欧州GDPR等）の法律により要求される最低年齢がこれより高い場合があり (In certain jurisdictions the minimum age may be higher)、</span>その場合は該当する管轄区域の法定年齢を満たす必要があります。データ保護のための法定年齢に満たない場合、親または法定代理人の明示的な同意の下でアカウントを作成する必要があります。</p>
+            </div>
+
+            <div class="card">
+                <h2>第3条（コンテンツの所有権およびライセンス付与 / License Grant）</h2>
+                <h3>3.1. 所有権の維持および非独占的権利の付与</h3>
+                <p>ユーザーがサービスにアップロードしたオリジナルコンテンツの著作権および知的財産権は、ユーザー（または原著作権者）に完全に維持されます。ユーザーはプラットフォームにコンテンツをアップロードすることにより、会社に対し、全世界で該当コンテンツをホスティング、保存、複製、配布、修正、ストリーミング、公開実演およびプロモーションするための非独占的かつ無償の権利を付与します。</p>
+                <h3>3.2. 運営目的のためのライセンス存続</h3>
+                <p>本ライセンスは原則としてユーザーがコンテンツを削除した時点で終了しますが、<span class="highlight">サービスの運営および維持（CDNキャッシュ、システムバックアップ、ログの保管など）という限定的な目的のためには合理的な期間存続する場合があります (However, the license may continue for the limited purpose of operating and maintaining the Service)。</span></p>
+                <h3>3.3. AI学習目的の使用制限（AI Training Restriction）</h3>
+                <p><span class="highlight">ユーザーが明示的に承認した場合を除き (except where such use is explicitly authorized by the user)、</span>会社はユーザーのコンテンツを自社または第三者の基盤AIモデルや大規模言語モデル（LLM）の学習に無断で使用することはありません。</p>
+            </div>
+
+            <div class="card">
+                <h2>第4条（ユーザーの全責任およびAI倫理規定 / User Responsibility）</h2>
+                <p>ユーザーがサービスにアップロードするすべてのコンテンツの著作権、人格権侵害に関する法的責任は100%ユーザー自身にあります。ユーザーは以下の行為を行わないことを法的に保証します。</p>
+                <h3>4.1. ボイスクローニングおよび音声盗用の禁止（Voice & Likeness Protection）</h3>
+                <p>他人の明示的な書面による同意なしに、その音声をAI技術で無断複製、模倣、合成（Voice Cloning）してアップロードする行為。</p>
+                <h3>4.2. 違法サンプリングおよび著作権侵害</h3>
+                <p>適法なクリアランス（Clearance）なしに著作権のある音源のステム、ビート、歌詞、サンプルを無断で使用、またはAIで分離してアップロードする行為。</p>
+                <h3>4.3. プラットフォームの乱用禁止（Platform Abuse Clause）</h3>
+                <p>会社の許可なしに自動化されたスクレイピング（Scraping）、データマイニングを行うこと、またはビューボット（View-botting）を通じて再生数や資産取引量を操作する行為。</p>
+            </div>
+
+            <div class="card">
+                <h2>第5条（著作権保護およびDMCA通報手続き / Notice & Takedown）</h2>
+                <h3>5.1. 申告および迅速な措置</h3>
+                <p>著作権またはパブリシティ権の侵害を主張する権利者は、会社の<span class="highlight">指定著作権代理人 (Designated Copyright Agent: eyenic@naver.com)</span> に申告することができます。会社は適法な申告を受理した際、迅速に削除またはアクセスブロックの措置を講じます。</p>
+                <h3>5.2. 反復違反者ポリシー（Repeat Infringer Policy）</h3>
+                <p>他人の権利を反復して侵害するユーザーは、事前の通知なしにアカウントが永久停止され、プラットフォーム内の全資産が没収される場合があります。</p>
+            </div>
+
+            <div class="card">
+                <h2>第6条（仮想財貨および創作支援金ポリシー / Virtual Assets）</h2>
+                <h3>6.1. 非金融的財貨の定義および証券性の否認</h3>
+                <p>Aiply内の「ポイント（Point）」および「ノート（Note）」は、プラットフォーム活性化のためのデジタルユーティリティ指標です。<span class="highlight">本財貨はいかなる場合も証券、投資契約、または金融商品を構成せず (Points and Notes do not constitute securities, investment contracts, or financial instruments)、</span>法定通貨や暗号資産として外部へ持ち出したり、直接交換することはできません。</p>
+            </div>
+
+            <div class="card">
+                <h2>第7条（プラットフォームの制御および統制権 / Moderation）</h2>
+                <p><span class="highlight">会社は、会社の完全な裁量により (The Company reserves the right, at its sole discretion)、</span>サービスの安定性維持および法令遵守のために、いつでも不適切なコンテンツの削除、露出の制限、またはアカウントへのアクセス制限を行う固有の権限を留保します。</p>
+            </div>
+
+            <div class="card">
+                <h2>第8条（責任の制限および免責 / Limitation of Liability & Indemnification）</h2>
+                <h3>8.1. 責任上限の設定（Liability Cap）</h3>
+                <p>会社は、ユーザーのサービス利用に関連して発生した間接的、偶発的損害について責任を負いません。いかなる場合でも、会社の総賠償責任は、当該クレーム発生前の12ヶ月間にユーザーが実際に会社に支払った総額、または100米ドル（USD 100）のいずれか大きい金額を超えないものとします。</p>
+                <h3>8.2. 損害賠償（Indemnification）</h3>
+                <p>ユーザーは、本規約の違反またはアップロードしたコンテンツに起因して発生するすべてのクレームおよび訴訟からSYNAPTIVEを完全に防御し、免責させる義務を負います。</p>
+            </div>
+
+            <div class="card">
+                <h2>第9条（紛争解決および集団訴訟の放棄 / Dispute Resolution）</h2>
+                <h3>9.1. 準拠法および管轄</h3>
+                <p>本規約は韓国法を準拠法とし、会社とユーザー間の第一審の専属管轄裁判所は大韓民国光州地方法院とします。</p>
+                <h3>9.2. 集団訴訟の放棄（Class Action Waiver）</h3>
+                <p><span class="highlight">ユーザーは、すべての紛争が個別的にのみ解決されなければならず、いかなる形態の集団訴訟または代表訴訟の一部としても進行されないことに明示的に同意します (Users agree that disputes will be resolved individually and not as part of any class or representative action)。</span></p>
+            </div>
+        </div>
+
+        <div id="korean" class="lang-section">
+            <h2 class="lang-title">서비스 이용약관 (KR)</h2>
+
+            <div class="card">
+                <h2>제1조 (서비스의 지위 및 면책 특권 / Safe Harbor & OSP Status)</h2>
+                <p>Aiply는 사용자가 생성한 음악, 음원, 오디오, 텍스트 및 AI 협업 저작물(이하 "사용자 콘텐츠" 또는 "UGC")을 게시, 공유, 스트리밍할 수 있는 '기술적 인프라(클라우드 호스팅 및 네트워크)'를 제공하는 온라인 서비스 제공자(Online Service Provider)입니다.</p>
+                <p><span class="highlight">회사는 사용자 콘텐츠를 사전에 검열(pre-screen)하지 않으며, 사용자가 생성한 자료에 대해 어떠한 법적 책임도 지지 않습니다 (The Company does not pre-screen user content and assumes no liability for user-generated materials).</span> 회사는 미국 디지털 밀레니엄 저작권법(DMCA 17 U.S.C. § 512), 유럽연합 디지털 서비스법(EU DSA) 및 대한민국 저작권법 등에 명시된 '안전항구(Safe Harbor)' 규정의 보호를 전면적으로 받습니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제2조 (이용 자격 및 계정 / Eligibility)</h2>
+                <p><span class="highlight">본 서비스는 만 13세 이상의 사용자만 이용하도록 의도되었습니다 (The Service is intended for users aged 13 or older).</span> 단, <span class="highlight">사용자가 거주하는 특정 관할권(예: 유럽 GDPR 등)의 법률에 따라 요구되는 최소 연령이 이보다 더 높을 수 있으며 (In certain jurisdictions the minimum age may be higher),</span> 이 경우 해당 관할권의 법정 연령을 충족해야 합니다. 정보 보호를 위한 법정 연령에 미달하는 경우 부모 또는 법정 대리인의 명시적 동의 하에 계정을 생성해야 합니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제3조 (콘텐츠 소유권 및 라이선스 부여 / License Grant)</h2>
+                <h3>3.1. 소유권 유지 및 비독점적 권리 부여</h3>
+                <p>사용자가 서비스에 업로드한 원본 콘텐츠의 저작권 및 지식재산권은 사용자(또는 원 저작권자)에게 온전히 유지됩니다. 사용자는 플랫폼에 콘텐츠를 업로드함으로써, 회사에 전 세계적으로 해당 콘텐츠를 호스팅, 저장, 복제, 배포, 수정, 스트리밍, 공개 실연 및 홍보할 수 있는 비독점적이고 무상인 권리를 부여합니다.</p>
+                <h3>3.2. 운영 목적의 라이선스 존속</h3>
+                <p>본 라이선스는 사용자가 콘텐츠를 삭제할 때 원칙적으로 종료되나, <span class="highlight">서비스 운영 및 유지보수(CDN 캐싱, 시스템 백업, 로그 보관 등)의 제한적인 목적을 위해서는 합리적인 기간 동안 존속될 수 있습니다 (However, the license may continue for the limited purpose of operating and maintaining the Service).</span></p>
+                <h3>3.3. AI 학습 목적 사용 제한 (AI Training Restriction)</h3>
+                <p><span class="highlight">사용자가 명시적으로 승인한 경우를 제외하고 (except where such use is explicitly authorized by the user),</span> 회사는 사용자의 콘텐츠를 자사 또는 제3자의 파운데이션 AI 모델이나 대규모 언어 모델(LLM)을 학습시키는 데 무단으로 사용하지 않습니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제4조 (사용자의 전적인 책임 및 AI 윤리 규정 / User Responsibility)</h2>
+                <p>사용자가 서비스에 업로드하는 모든 콘텐츠의 저작권, 인격권 침해에 대한 법적 책임은 100% 사용자 본인에게 있습니다. 사용자는 다음 행위를 하지 않을 것을 법적으로 보증합니다.</p>
+                <h3>4.1. 보이스 클로닝 및 음성 도용 금지 (Voice & Likeness Protection)</h3>
+                <p>타인의 명시적 서면 동의 없이 목소리를 AI 기술로 무단 복제, 모방, 합성(Voice Cloning)하여 업로드하는 행위.</p>
+                <h3>4.2. 불법 샘플링 및 저작권 침해</h3>
+                <p>적법한 클리어런스(Clearance) 없이 저작권이 있는 음원의 스템, 비트, 가사, 샘플을 무단으로 사용하거나 AI로 분리하여 업로드하는 행위.</p>
+                <h3>4.3. 플랫폼 남용 금지 (Platform Abuse Clause)</h3>
+                <p>회사의 허가 없이 자동화된 스크래핑(Scraping), 데이터 마이닝을 하거나 뷰봇팅(View-botting)을 통해 재생 수, 자산 거래량을 조작하는 행위.</p>
+            </div>
+
+            <div class="card">
+                <h2>제5조 (저작권 보호 및 DMCA 신고 절차 / Notice & Takedown)</h2>
+                <h3>5.1. 신고 및 신속한 조치</h3>
+                <p>저작권 또는 퍼블리시티권 침해를 주장하는 권리자는 회사의 <span class="highlight">지정 저작권 대리인(Designated Copyright Agent: eyenic@naver.com)</span>에게 신고할 수 있습니다. 회사는 적법한 신고 접수 시 신속하게 삭제 또는 접근 차단 조치를 취합니다.</p>
+                <h3>5.2. 반복 위반자 정책 (Repeat Infringer Policy)</h3>
+                <p>타인의 권리를 반복적으로 침해하는 사용자는 사전 통지 없이 계정이 영구 정지되며, 플랫폼 내 모든 자산이 몰수될 수 있습니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제6조 (가상 재화 및 창작 지원금 정책 / Virtual Assets)</h2>
+                <h3>6.1. 비금융적 재화의 정의 및 증권성 부인</h3>
+                <p>Aiply 내의 '포인트(Point)' 및 '노트(Note)'는 플랫폼 활성화를 위한 디지털 유틸리티 지표입니다. <span class="highlight">본 재화는 어떠한 경우에도 증권, 투자 계약, 또는 금융 상품을 구성하지 않으며 (Points and Notes do not constitute securities, investment contracts, or financial instruments),</span> 법정 화폐나 암호화폐로 외부 반출 또는 직접 교환될 수 없습니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제7조 (플랫폼 제어 및 통제권 / Moderation)</h2>
+                <p><span class="highlight">회사는 오직 회사의 전적인 재량에 따라 (The Company reserves the right, at its sole discretion)</span> 서비스의 안정성 유지 및 법령 준수를 위해 언제든지 부적절한 콘텐츠를 삭제하거나, 노출을 제한하거나, 계정의 접근을 제한할 고유한 권한을 보유합니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제8조 (책임의 한계 및 면책 / Limitation of Liability & Indemnification)</h2>
+                <h3>8.1. 책임 상한 설정 (Liability Cap)</h3>
+                <p>회사는 사용자의 서비스 이용과 관련하여 발생한 간접적, 우발적 손해에 대해 책임지지 않습니다. 어떠한 경우에도 회사의 총 배상 책임은 해당 클레임 발생 전 12개월 동안 귀하가 회사에 실제로 지불한 총액, 또는 미화 100달러(USD 100) 중 더 큰 금액을 초과하지 않습니다.</p>
+                <h3>8.2. 손해배상 (Indemnification)</h3>
+                <p>사용자는 본 약관의 위반 또는 업로드한 콘텐츠로 인해 발생하는 모든 클레임과 소송으로부터 SYNAPTIVE를 전적으로 방어하고 면책시킬 의무를 집니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제9조 (분쟁 해결 및 집단소송 포기 / Dispute Resolution)</h2>
+                <h3>9.1. 준거법 및 관할</h3>
+                <p>본 약관은 대한민국 법률을 준거법으로 하며, 회사와 사용자 간의 제1심 전속 관할 법원은 대한민국 광주지방법원으로 합니다.</p>
+                <h3>9.2. 집단 소송 포기 (Class Action Waiver)</h3>
+                <p><span class="highlight">사용자는 모든 분쟁이 오직 개별적으로만 해결되어야 하며, 어떠한 형태의 집단 소송이나 대표 소송의 일부로 진행되지 않음에 명시적으로 동의합니다 (Users agree that disputes will be resolved individually and not as part of any class or representative action).</span></p>
+            </div>
+        </div>
 
         <div class="footer">
-            <p>&copy; 2026 Aiply. <a href="index.html">Back to Home</a></p>
-            <p>Contact: <a href="mailto:oblivbloom@gmail.com">oblivbloom@gmail.com</a></p>
+            <p>&copy; 2026 Aiply. <a href="#">Back to Home</a></p>
+            <p style="margin-top: 10px;">Contact: <a href="mailto:eyenic@naver.com">eyenic@naver.com</a></p>
         </div>
+
     </div>
 
+    <script>
+        document.querySelectorAll('.lang-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const offset = 80; 
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
