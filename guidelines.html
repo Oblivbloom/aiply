@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiply - Community Guidelines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 테마 변수 설정 */
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #151515;
+            --text-color: #e6e6e6;
+            --text-muted: #888888;
+            --gold-accent: #B08A3C;
+            --card-border: #2a2a2a;
+            --danger-accent: #e53935;
+        }
+
+        /* 기본 리셋 및 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 레이아웃 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 헤더 스타일 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--gold-accent);
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p.subtitle {
+            font-style: italic;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .header p.meta {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* 언어 네비게이션 (Sticky) */
+        .lang-nav {
+            position: sticky;
+            top: 15px;
+            background-color: rgba(11, 11, 11, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            margin-bottom: 40px;
+            z-index: 100;
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .lang-nav a {
+            background-color: transparent;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-nav a:hover, .lang-nav a:active {
+            background-color: var(--gold-accent);
+            color: var(--bg-color);
+        }
+
+        /* 언어별 섹션 */
+        .lang-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+
+        .lang-title {
+            color: var(--text-color);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold-accent);
+            display: block;
+        }
+
+        /* 인트로 섹션 */
+        .intro-box {
+            background-color: rgba(176, 138, 60, 0.05);
+            border: 1px solid rgba(176, 138, 60, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .intro-box p {
+            margin-bottom: 10px;
+        }
+
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 섹션 카드형 레이아웃 */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card.alert-card {
+            border-left: 4px solid var(--danger-accent);
+        }
+
+        .card:hover {
+            border-color: #444;
+        }
+
+        .card h2 {
+            color: var(--gold-accent);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .card.alert-card h2 {
+            color: var(--danger-accent);
+        }
+
+        .card p {
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .card ul, .card ol {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .card p:last-child, .card ul:last-child, .card ol:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 텍스트 강조 */
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .alert-text {
+            color: var(--danger-accent);
+            font-weight: 600;
+        }
+
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--gold-accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 24px; }
+            .header p.subtitle { font-size: 14px; }
+            .card { padding: 20px; }
+            .card h2 { font-size: 17px; }
+            .lang-nav { gap: 8px; padding: 10px 15px;}
+            .lang-nav a { padding: 6px 12px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <h1>Aiply Community Guidelines</h1>
+            <p class="subtitle">"Where music becomes value, and fandom support empowers creators."</p>
+            <p class="meta">Last Updated: March 10, 2026 | Operator: SYNAPTIVE</p>
+        </div>
+
+        <div class="lang-nav">
+            <a href="#english">English</a>
+            <a href="#japanese">日本語</a>
+            <a href="#korean">한국어</a>
+        </div>
+
+        <div id="english" class="lang-section">
+            <h2 class="lang-title">Community Guidelines (EN)</h2>
+
+            <div class="intro-box">
+                <p><span class="highlight">Welcome! Our Commitment to Protecting the Aiply Fandom Ecosystem</span></p>
+                <p>Aiply is a global AI music platform where the inspiration of creators meets the passionate support of Super Fans to realize the true 'value of music'.</p>
+                <p>The <span class="highlight">'Note'</span> accumulated by users while enjoying music on Aiply represents the pure value endowed to the music. Through this value, users can <span class="highlight">sponsor</span> their beloved artists, and these activities are accumulated in the system as the fans' <span class="highlight">'Contribution Points' (Point)</span>. Based on these authentic fandom contribution metrics, the Company provides <span class="highlight">'Creator and Activity Support Funds'</span> to artists and users to foster a better creative environment.</p>
+                <p>We have established these guidelines to protect an ecosystem where everyone can fairly and safely enjoy and support music. <span class="alert-text">If you undermine the trust of the fandom ecosystem by violating these rules, your account will be permanently suspended without prior notice, and all accumulated activity metrics (Notes/Points) and Support Funds within the platform will be immediately nullified (forfeited).</span></p>
+            </div>
+
+            <div class="card">
+                <h2>🚫 1. Disruption of Fandom Ecosystem & Abuse of Support System (Anti-Abuse & Integrity)</h2>
+                <p>All Support Fund systems on Aiply premise 'genuine interaction and contribution' between fans and artists. Any abusive behavior attempting to falsely accumulate contribution points or unjustly receive Support Funds through mechanical manipulation is considered the most serious violation that destroys the foundation of the platform.</p>
+                <ul>
+                    <li><span class="highlight">Abnormal Streaming & View-botting:</span> Artificially manipulating the play count or trend metrics of specific tracks using macros, bots, scripts, or multiple devices (clone phones) to unjustly acquire activity points.</li>
+                    <li><span class="highlight">Fraudulent Contributions & Metric Manipulation:</span> Mobilizing multiple alt-accounts (Sybil Attack) to intentionally repeat fake sponsorships for oneself or a specific track, thereby abnormally distorting 'Note' metrics and manipulating fandom contribution points to extort Creator Support Funds.</li>
+                    <li><span class="highlight">Support Fund Farming:</span> Mechanically mass-uploading meaningless text prompts or silent audio files without any genuine intention of music creation, solely to defraud the system's activity points.</li>
+                    <li><span class="highlight">Prohibition of Inducing External Cash-out:</span> Inducing illegal transfers in external communities to exchange Notes or Points—which are pure activity metrics within the platform—for cash or goods on other platforms.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🛑 2. AI Ethics & Intellectual Property Protection (Zero Tolerance)</h2>
+                <p>Aiply wants AI to be an excellent tool for creation, and we absolutely do not tolerate its misuse as a weapon to steal the identity or rights of others.</p>
+                <ul>
+                    <li><span class="highlight">Unauthorized Voice Cloning & Deepfakes:</span> Uploading tracks by copying, imitating, or synthesizing another person's voice using AI technology <span class="highlight">without the explicit, verifiable written consent of the person concerned</span>—regardless of whether they are a famous artist, public figure, or private individual—is subject to immediate permanent account suspension.</li>
+                    <li><span class="highlight">Illegal Sampling & Copyright Infringement:</span> Unauthorized use of commercial tracks, beats, stems, or lyrics of others, or separating and reprocessing them with AI tools to post as your own creation without securing lawful clearance.</li>
+                    <li><span class="highlight">Impersonation & Deception:</span> Creating a profile impersonating a specific artist or label, or disguising someone else's track as your own unreleased track to induce fan sponsorship and deceive listeners.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🤬 3. Respectful Fandom Culture (No Hate Speech or Harassment)</h2>
+                <p>Aiply aims to be a safe and respectful community united by music, transcending nationality, race, gender, and preferences.</p>
+                <ul>
+                    <li><span class="highlight">Hate Speech:</span> We prohibit text (titles, lyrics, prompts, comments, chats) and audio content that degrades, discriminates against, insults, or incites violence against specific individuals or groups based on race, nationality, religion, gender, sexual orientation, age, or disability.</li>
+                    <li><span class="highlight">Cyberbullying:</span> Continuously engaging in malicious slander, threats, public shaming, or malicious rating attacks targeting a specific user or artist.</li>
+                    <li><span class="highlight">Doxxing:</span> Unauthorized distribution of sensitive private information such as another person's real name, address, phone number, or email without consent via album art or chat.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🔞 4. Explicit & Illegal Content</h2>
+                <ul>
+                    <li><span class="highlight">Child Protection Violations (CSAM):</span> A <span class="highlight">zero-tolerance policy</span> applies to any form of content that sexually objectifies or abuses children. Upon discovery, the account will be permanently suspended and reported to law enforcement agencies such as NCMEC.</li>
+                    <li><span class="highlight">Explicit Adult & Violent Content:</span> We prohibit the upload of content depicting explicit sexual acts, or content that glorifies and promotes physical violence, self-harm, or suicide.</li>
+                </ul>
+            </div>
+
+            <div class="card alert-card">
+                <h2>⚖️ 5. Enforcement & Revocation of Metrics (Penalties)</h2>
+                <p>The Aiply Safety Team and AI Security Surveillance System monitor the platform environment 24/7. If circumstances violating these guidelines are detected, the Company may, <span class="highlight">at its sole discretion and without prior notice</span>, take the following actions depending on the severity of the issue:</p>
+                <ol>
+                    <li><span class="highlight">Immediate Content Takedown & Hiding:</span> Tracks, album art, or posts that potentially violate the guidelines will be immediately blinded, shadow-banned, or permanently deleted.</li>
+                    <li><span class="highlight">Feature Suspension & Withholding of Support Funds:</span> While violations are being investigated, track upload privileges, sponsorship features, and chat privileges may be temporarily suspended, and the settlement of 'Creator and Activity Support Funds' for the respective artist and user will be completely frozen.</li>
+                    <li><span class="highlight">Permanent Account Ban:</span> Upon detection of severe violations that pose a fatal threat to the ecosystem—such as deepfakes (unauthorized voice cloning), system manipulation (fake sponsorships and abuse), or hate speech—<span class="highlight">the user's account (and associated Device IDs, IPs) will be immediately and permanently banned (expelled).</span></li>
+                    <li><span class="alert-text">🚨 Nullification of Contribution Metrics & Recovery of Support Funds (Core Clause):</span> <span class="highlight">If an account is permanently suspended due to abuse or rule violations, all activity metrics ('Points' and the musical value 'Notes') unjustly accumulated by the user within the platform, as well as any pending 'Creator and Activity Support Funds', will be immediately nullified (reduced to 0) in accordance with system regulations. The metrics within the platform do not hold external monetary property value, and since this is a disciplinary measure for misconduct, nullified metrics cannot be recovered, compensated with cash, refunded, or transferred to another account under any circumstances.</span></li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="japanese" class="lang-section">
+            <h2 class="lang-title">コミュニティガイドライン (JP)</h2>
+
+            <div class="intro-box">
+                <p><span class="highlight">ようこそ！Aiplyファンダムエコシステムを守るための私たちの約束</span></p>
+                <p>Aiplyは、クリエイターのインスピレーションとスーパーファンの情熱的な応援が出会い、真の「音楽の価値」が完成するグローバルAI音楽プラットフォームです。</p>
+                <p>Aiplyにおいてユーザーが音楽を鑑賞しながら蓄積していく<span class="highlight">「ノート（Note）」</span>は、音楽に付与される純粋な価値を意味します。ユーザーはこの価値を通じて愛するアーティストを<span class="highlight">後援（スポンサーシップ）</span>することができ、これらの活動はファンの<span class="highlight">「貢献スコア（Point）」</span>としてシステムに蓄積されます。会社は、この真正性のあるファンダム貢献指標を基準に、アーティストおよびユーザーに対して<span class="highlight">「創作および活動補償支援金」</span>を提供し、より良い創作環境を支援します。</p>
+                <p>私たちは、誰もが公正かつ安全に音楽を楽しみ、後援できるエコシステムを保護するために本ガイドラインを制定しました。<span class="alert-text">本規則に違反し、ファンダムエコシステムの信頼を損なう場合、事前の通知なしにアカウントが永久停止され、プラットフォーム内に蓄積されたすべての活動指標（ノート/ポイント）および支援金は即時に無効化（消滅）処理されます。</span></p>
+            </div>
+
+            <div class="card">
+                <h2>🚫 1. ファンダムエコシステムの攪乱および後援システムの悪用（アビューズ防止）</h2>
+                <p>Aiplyのすべての支援金システムは、ファンとアーティスト間の「真正性のある交感と貢献」を前提としています。機械的な操作を通じて虚偽の貢献スコアを蓄積したり、創作支援金を不当に受領しようとするすべてのアビューズ行為は、プラットフォームの根幹を破壊する最も重大な規定違反です。</p>
+                <ul>
+                    <li><span class="highlight">異常なストリーミングおよびビューボット（View-botting）:</span> マクロ、ボット（Bot）、スクリプト、複数デバイス（クローン端末）等を利用して、人為的に特定の音源の再生数やトレンド指標を操作し、不当に活動スコアを獲得しようとする行為。</li>
+                    <li><span class="highlight">貢献度指標の操作および虚偽の後援（シビル攻撃）:</span> 多数のサブアカウントを動員して、意図的に本人または特定の曲への虚偽の後援を繰り返すことで、「ノート（Note）」指標を異常に歪曲し、ファンダム貢献スコアを操作して創作支援金を詐取しようとする行為。</li>
+                    <li><span class="highlight">活動支援金のファーミング（Farming）:</span> 真の音楽創作の目的なく、システムの活動スコア（Point）のみを詐取するために、無意味なテキストプロンプトや無音（Silence）のオーディオファイルを機械的に大量にアップロードする行為。</li>
+                    <li><span class="highlight">外部での現金化誘導の禁止:</span> プラットフォーム内の純粋な活動指標であるノートやポイントを、現金や他プラットフォームの財貨と交換するために、外部コミュニティで違法な譲渡を誘導する行為。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🛑 2. AI倫理および知的財産権の保護（ゼロ・トレランスの原則）</h2>
+                <p>AiplyはAIが創作の素晴らしいツールになることを望んでおり、他人のアイデンティティや権利を盗む武器として悪用されることを絶対に容認しません。</p>
+                <ul>
+                    <li><span class="highlight">無断ボイスクローニングおよびディープフェイク:</span> 有名アーティスト、公衆の人物、一般人を問わず、<span class="highlight">当事者の明示的かつ立証可能な書面による同意なしに</span>、他人の声をAI技術で無断複製、模倣、合成して音源をアップロードする行為は、発覚次第直ちにアカウント永久停止の対象となります。</li>
+                    <li><span class="highlight">違法サンプリングおよび著作権侵害:</span> 適法なライセンス（Clearance）を確保することなく、他人の商業用音源、ビート、ステム（Stem）、歌詞を無断で使用、またはAIツールで無断分離・再加工し、自身の創作物であるかのように掲示する行為。</li>
+                    <li><span class="highlight">なりすましおよび欺瞞（Impersonation）:</span> 特定のアーティストやレーベルになりすましてプロフィールを作成したり、他人の曲を自身の未発売曲であるかのように装い、ファンの後援を誘導してリスナーを欺く行為。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🤬 3. 相互尊重するファンダム文化（ヘイトスピーチおよび嫌がらせの禁止）</h2>
+                <p>Aiplyは、国籍、人種、性別、嗜好を越えて音楽で一つになる、安全で尊重されるコミュニティを目指します。</p>
+                <ul>
+                    <li><span class="highlight">ヘイトスピーチ（Hate Speech）:</span> 人種、国籍、宗教、性別、性的指向、年齢、障害などを理由に、特定の個人や集団を貶め、差別し、侮辱したり、暴力を扇動するテキスト（タイトル、歌詞、プロンプト、コメント、チャット）およびオーディオコンテンツを禁止します。</li>
+                    <li><span class="highlight">サイバーバリング（Cyberbullying）:</span> 特定のユーザーやアーティストを標的にして、継続的に悪意のある誹謗中傷、脅迫、晒し行為、または悪意のある低評価テロを行う行為。</li>
+                    <li><span class="highlight">個人情報の特定と公開（Doxxing）:</span> 他人の実名、住所、電話番号、メールアドレスなど、機密性の高い私的な個人情報を、同意なしにアルバムアートやチャットを通じて無断で流布する行為。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🔞 4. 有害および機密性の高いコンテンツ</h2>
+                <ul>
+                    <li><span class="highlight">児童保護違反（CSAM）:</span> 児童を性的対象化したり虐待するあらゆる形態のコンテンツには<span class="highlight">ゼロ・トレランス（無寛容）の原則</span>が適用され、発見次第アカウントの永久停止と共にNCMEC（米国国立行方不明・被搾取児童センター）等の捜査機関に告発措置がとられます。</li>
+                    <li><span class="highlight">露骨なアダルトおよび暴力コンテンツ:</span> 露骨な性的行為を描写したり、身体的暴力、自傷行為、自殺を美化し助長するコンテンツのアップロードを禁止します。</li>
+                </ul>
+            </div>
+
+            <div class="card alert-card">
+                <h2>⚖️ 5. 違反時の制裁および指標の無効化（ペナルティ）</h2>
+                <p>Aiply安全チームおよびAIセキュリティ監視システムは、プラットフォーム環境を24時間監視しています。上記ガイドラインに違反する状況が発覚した場合、会社は事案の深刻さに応じて、<span class="highlight">事前の通知なしに完全な裁量で</span>以下の措置を講じることができます。</p>
+                <ol>
+                    <li><span class="highlight">コンテンツの即時削除および非表示:</span> 違反の素地がある音源、アルバムアート、掲示物は直ちにブラインド、露出制限（シャドウバン）または永久削除されます。</li>
+                    <li><span class="highlight">機能制限および支援金の保留:</span> 違反内容が調査されている間、音源アップロード権限、後援（スポンサーシップ）機能、チャット権限が一時停止される場合があり、該当アーティストおよびユーザーの「創作および活動補償支援金」の精算が全面的に凍結されます。</li>
+                    <li><span class="highlight">アカウント永久停止:</span> ディープフェイク（無断ボイスクローニング）、システム操作（虚偽の後援およびアビューズ）、ヘイトスピーチなど、エコシステムに致命的な脅威を与える重大な違反が発覚した場合、<span class="highlight">該当ユーザーのアカウント（および関連するデバイスID、IP）は直ちに永久停止（追放）されます。</span></li>
+                    <li><span class="alert-text">🚨 貢献指標の無効化および支援金の回収（コア条項）:</span> <span class="highlight">アビューズや規定違反によりアカウントが永久停止された場合、該当ユーザーがプラットフォーム内で不当に蓄積したすべての活動指標（「ポイント Point」および音楽的価値「ノート Note」）と、精算待機中の「創作および活動補償支援金」は、システム規定に従い即時に0円として消滅（無効化）処理されます。プラットフォーム内の指標は外部の金銭的財産価値を持たず、不正行為による懲戒措置であるため、無効化された指標はいかなる場合も復旧、現金補償、返金、または他アカウントへの譲渡はできません。</span></li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="korean" class="lang-section">
+            <h2 class="lang-title">커뮤니티 가이드라인 (KR)</h2>
+
+            <div class="intro-box">
+                <p><span class="highlight">환영합니다! Aiply 팬덤 생태계를 지키기 위한 우리의 약속</span></p>
+                <p>Aiply는 크리에이터의 영감과 슈퍼 팬(Super Fan)의 열정적인 응원이 만나 진정한 '음악의 가치'가 완성되는 글로벌 AI 음악 플랫폼입니다.</p>
+                <p>Aiply에서 유저가 음악을 감상하며 쌓아가는 <span class="highlight">'노트(Note)'</span>는 음악에 부여되는 순수한 가치를 의미합니다. 유저는 이 가치를 통해 자신이 사랑하는 아티스트를 <span class="highlight">후원(Sponsorship)</span>할 수 있으며, 이러한 활동은 팬들의 <span class="highlight">'기여 점수(Point)'</span>로 시스템에 누적됩니다. 회사는 이 진정성 있는 팬덤 기여 지표를 기준으로 아티스트와 유저에게 <span class="highlight">'창작 및 활동 보상 지원금'</span>을 제공하여 더 나은 창작 환경을 지원합니다.</p>
+                <p>우리는 모두가 공정하고 안전하게 음악을 즐기고 후원할 수 있는 생태계를 보호하기 위해 본 가이드라인을 제정했습니다. <span class="alert-text">본 규칙을 위반하여 팬덤 생태계의 신뢰를 훼손하는 경우, 사전 통지 없이 계정이 영구 정지되며 플랫폼 내에 누적된 모든 활동 지표(노트/포인트)와 지원금은 즉시 무효화(소멸) 처리됩니다.</span></p>
+            </div>
+
+            <div class="card">
+                <h2>🚫 1. 팬덤 생태계 교란 및 후원 시스템 악용 (Anti-Abuse & Integrity)</h2>
+                <p>Aiply의 모든 지원금 시스템은 팬과 아티스트 간의 '진정성 있는 교감과 기여'를 전제로 합니다. 기계적인 조작을 통해 허위로 기여 점수를 쌓거나 창작 지원금을 부당하게 수령하려는 모든 어뷰징 행위는 플랫폼의 근간을 파괴하는 가장 중대한 규정 위반입니다.</p>
+                <ul>
+                    <li><span class="highlight">비정상적 스트리밍 및 뷰봇팅 (View-botting & Fake Streams):</span> 매크로, 봇(Bot), 스크립트, 다수 기기(클론 폰) 등을 이용하여 인위적으로 특정 음원의 재생 수나 트렌드 지표를 조작하여 부당하게 활동 점수를 획득하려는 행위.</li>
+                    <li><span class="highlight">기여도 지표 조작 및 허위 후원 (Fraudulent Contributions):</span> 다수의 부계정(Sybil Attack)을 동원하여 의도적으로 본인 또는 특정 곡에 허위 후원을 반복함으로써 '노트(Note)' 지표를 비정상적으로 왜곡하고, 팬덤 기여 점수를 조작하여 창작 지원금을 갈취하려는 행위.</li>
+                    <li><span class="highlight">활동 지원금 파밍 (Support Fund Farming):</span> 진정한 음악 창작의 목적 없이, 오직 시스템의 활동 점수(Point)만을 편취하기 위해 무의미한 텍스트 프롬프트, 무음(Silence) 오디오 파일 등을 기계적으로 대량 업로드하는 행위.</li>
+                    <li><span class="highlight">외부 현금화 유도 금지:</span> 플랫폼 내의 순수한 활동 지표인 노트나 포인트를 현금이나 타 플랫폼 재화와 교환하기 위해 외부 커뮤니티에서 불법적인 양도를 유도하는 행위.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🛑 2. AI 윤리 및 지식재산권 보호 (무관용 원칙 / Zero Tolerance)</h2>
+                <p>Aiply는 AI가 창작의 훌륭한 도구가 되기를 원하며, 타인의 정체성이나 권리를 훔치는 무기로 악용되는 것을 절대 용납하지 않습니다.</p>
+                <ul>
+                    <li><span class="highlight">무단 보이스 클로닝 및 딥페이크 (Voice Cloning & Deepfakes):</span> 유명 아티스트, 대중 인물, 일반인을 불문하고 <span class="highlight">당사자의 명시적이고 입증 가능한 서면 동의 없이 타인의 목소리를 AI 기술로 무단 복제, 모방, 합성하여 음원을 업로드하는 행위</span>는 적발 즉시 계정 영구 정지 대상입니다.</li>
+                    <li><span class="highlight">불법 샘플링 및 저작권 침해:</span> 적법한 라이선스(Clearance) 확보 없이 타인의 상업용 음원, 비트, 스템(Stem), 가사를 무단으로 사용하거나, AI 도구로 무단 분리 및 재가공하여 자신의 창작물인 것처럼 게시하는 행위를 금지합니다.</li>
+                    <li><span class="highlight">사칭 및 기만 (Impersonation):</span> 특정 아티스트, 레이블을 사칭하여 프로필을 생성하거나, 타인의 곡을 자신의 미발매 곡인 것처럼 꾸며 팬들의 후원을 유도하고 청취자를 기만하는 행위를 금지합니다.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🤬 3. 상호 존중하는 팬덤 문화 (혐오 표현 및 괴롭힘 금지)</h2>
+                <p>Aiply는 국적, 인종, 성별, 취향을 뛰어넘어 음악으로 하나 되는 안전하고 존중받는 커뮤니티를 지향합니다.</p>
+                <ul>
+                    <li><span class="highlight">혐오 발언 (Hate Speech):</span> 인종, 국적, 종교, 성별, 성적 지향, 연령, 장애 등을 이유로 특정 개인이나 집단을 비하, 차별, 모욕하거나 폭력을 선동하는 텍스트(제목, 가사, 프롬프트, 댓글, 채팅) 및 오디오 콘텐츠를 금지합니다.</li>
+                    <li><span class="highlight">사이버 불링 (Cyberbullying):</span> 특정 유저나 아티스트를 표적으로 삼아 지속적으로 악의적인 비방, 협박, 조리돌림, 또는 악의적인 평점 테러를 가하는 행위.</li>
+                    <li><span class="highlight">신상 털기 (Doxxing):</span> 타인의 실명, 주소, 전화번호, 이메일 등 민감한 사적 개인정보를 동의 없이 앨범 아트나 채팅을 통해 무단으로 유포하는 행위.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🔞 4. 유해 및 민감한 콘텐츠 (Explicit & Illegal Content)</h2>
+                <ul>
+                    <li><span class="highlight">아동 보호 위반 (CSAM):</span> 아동을 성적 대상화하거나 학대하는 모든 형태의 콘텐츠는 <span class="highlight">무관용 원칙</span>이 적용되며, 발견 즉시 계정 영구 정지와 함께 NCMEC(미국 국립실종학대아동센터) 등 수사기관에 고발 조치됩니다.</li>
+                    <li><span class="highlight">노골적인 성인물 및 폭력물:</span> 노골적인 성적 행위를 묘사하거나, 신체적 폭력, 자해, 자살을 미화하고 조장하는 콘텐츠의 업로드를 금지합니다.</li>
+                </ul>
+            </div>
+
+            <div class="card alert-card">
+                <h2>⚖️ 5. 위반 시 제재 및 지표 무효화 (Enforcement & Revocation)</h2>
+                <p>Aiply 안전팀 및 AI 보안 관제 시스템은 플랫폼 환경을 24시간 모니터링합니다. 위 가이드라인을 위반한 정황이 적발될 경우, 회사는 사안의 심각성에 따라 <span class="highlight">사전 통지 없이 전적인 재량으로</span> 다음 조치를 취할 수 있습니다.</p>
+                <ol>
+                    <li><span class="highlight">콘텐츠 즉각 삭제 및 숨김 (Takedown):</span> 위반 소지가 있는 음원, 앨범 아트, 게시물은 즉각 블라인드, 노출 제한(Shadow-ban) 또는 영구 삭제됩니다.</li>
+                    <li><span class="highlight">기능 제한 및 지원금 보류 (Feature Suspension):</span> 위반 내역이 조사되는 동안 음원 업로드 권한, 후원(Sponsorship) 기능, 채팅 권한이 일시 정지될 수 있으며, 해당 아티스트 및 유저의 '창작 및 활동 보상 지원금' 정산이 전면 동결됩니다.</li>
+                    <li><span class="highlight">계정 영구 정지 (Permanent Ban):</span> 딥페이크(무단 보이스 클로닝), 시스템 조작(허위 후원 및 어뷰징), 혐오 발언 등 생태계에 치명적인 위협을 가하는 중대한 위반 적발 시, <span class="highlight">해당 사용자의 계정(및 연관 기기 ID, IP)은 즉각 영구 정지(추방)됩니다.</span></li>
+                    <li><span class="alert-text">🚨 기여 지표 무효화 및 지원금 회수 (핵심 조항):</span> <span class="highlight">어뷰징이나 규정 위반으로 계정이 영구 정지될 경우, 해당 사용자가 플랫폼 내에서 부당하게 축적한 모든 활동 지표('포인트 Point' 및 음악적 가치 '노트 Note')와 정산 대기 중인 '창작 및 활동 보상 지원금'은 시스템 규정에 따라 즉시 0원으로 소멸(무효화) 처리됩니다. 플랫폼 내의 지표는 외부의 금전적 재산 가치를 지니지 않으며 부정행위로 인한 징계 조치이므로, 무효화된 지표는 어떠한 경우에도 복구, 현금 보상, 환불, 또는 타 계정으로 양도될 수 없습니다.</span></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Aiply. <a href="#">Back to Home</a></p>
+            <p style="margin-top: 10px;">Contact: <a href="mailto:eyenic@naver.com">eyenic@naver.com</a></p>
+        </div>
+
+    </div>
+
+    <script>
+        // 상단 네비게이션 클릭 시 부드러운 스크롤 애니메이션 및 스티키 헤더 가림 방지
+        document.querySelectorAll('.lang-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const offset = 80; 
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
