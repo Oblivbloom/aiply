@@ -152,7 +152,7 @@
             <h3>2. Categories of Information Collected & Methods</h3>
             <p>We collect the following data in a lawful and transparent manner to provide optimal services and enhance the AI-driven user experience.</p>
             <ul>
-                <li><strong>Information provided directly or via integration:</strong> Account/Profile Info (Name/Artist name, email, profile/cover images via social login. *We do not collect or store passwords or dates of birth.), Device & Activity Data (Music play history, points/diamonds earned, ranking changes, blocked users, minigame scores), User Input & AI Interactions (Text prompts, queries, and AI-generated outputs via Google Gemini, etc.), Payment Info (Subscription tiers and expiration dates. *We do not store full credit card numbers; transactions are securely handled via Google/Apple APIs), Customer Support Interactions.</li>
+                <li><strong>Information provided directly or via integration:</strong> Account/Profile Info (Name/Artist name, email, profile/cover images via social login. *We do not collect or store passwords or dates of birth.), Device & Activity Data (Music play history, points/diamonds earned, ranking changes, blocked users, minigame scores), User Input & AI Interactions (Text prompts, queries, and AI-generated outputs via Google Gemini, etc.), Payment Info (Subscription tiers and expiration dates. *We do not store full credit card numbers; transactions are securely handled via Google Play's in-app billing API), Customer Support Interactions.</li>
                 <li><strong>Information collected automatically:</strong> Device/Hardware Info (Unique IDs, OS version, FCM Token, Session ID), Usage/Log Data (Access times, traffic logs, Crashlytics logs, Analytics), Location Info (Approximate location inferred from IP address. *We do not request precise GPS location).</li>
                 <li><strong>Information from Third Parties:</strong> Social Media SSO (Verified identification information based on the platform's policy).</li>
                 <li><strong>Device Permissions:</strong> [Optional] Photo/Media/Storage (For profile/cover images), [Optional] Notifications/Push (For FCM alerts on rankings, points, notices). *The service can be used without granting optional permissions.</li>
@@ -173,7 +173,7 @@
 
         <div class="card">
             <h3>4. Other Tracking Technologies</h3>
-            <p>We use mobile SDKs (Firebase Analytics, Crashlytics) to analyze and optimize user experience. Users can restrict targeting and non-essential tracking at any time via device privacy settings (e.g., Android 'Delete advertising ID', iOS 'App Tracking Transparency').</p>
+            <p>We use mobile SDKs (Firebase Analytics, Crashlytics) to analyze and optimize user experience. Users can restrict targeting and non-essential tracking at any time via device privacy settings (e.g., Android 'Delete advertising ID').</p>
         </div>
 
         <div class="card">
@@ -181,7 +181,7 @@
             <p>We do not arbitrarily sell or provide personal information to third parties without explicit consent. However, for seamless service, data processing is delegated to external experts, which may involve overseas transfer.</p>
             <ul>
                 <li><strong>Google LLC (GCP, Firebase):</strong> Cloud database (Firestore), Push alerts (FCM), App performance (Crashlytics, Analytics). Transferred to US/Google Cloud regions.</li>
-                <li><strong>Google Play / Apple:</strong> Payment processing and subscription management.</li>
+                <li><strong>Google Play:</strong> Payment processing and subscription management.</li>
             </ul>
             <p>Data is retained until account deletion or contract termination. Public profile data is visible to other users. Data may be transferred during business structural changes or provided upon lawful public/court request.</p>
         </div>
@@ -239,7 +239,7 @@
             <h3>2. 収集する情報の種類と収集方法</h3>
             <p>当社は、最適なサービスの提供およびAIを活用したユーザー体験向上のため、以下のデータを適法かつ透明な方法で収集します。</p>
             <ul>
-                <li><strong>直接提供または連携により収集される情報：</strong> アカウントおよびプロフィール情報（ソーシャルログイン経由の名前、メールアドレス、画像等。※パスワードや生年月日は直接収集・保存しません）、デバイスおよびアプリの活動データ（再生履歴、ポイント、ランキング変動、ミニゲームのスコア等）、ユーザー入力およびAIインタラクションデータ（Google Gemini等のAIモデルとのテキストプロンプト等）、決済情報（サブスクリプション情報。※クレジットカード番号全体は保存せず、公式API経由で安全に処理されます）、カスタマーサポートのやり取り。</li>
+                <li><strong>直接提供または連携により収集される情報：</strong> アカウントおよびプロフィール情報（ソーシャルログイン経由の名前、メールアドレス、画像等。※パスワードや生年月日は直接収集・保存しません）、デバイスおよびアプリの活動データ（再生履歴、ポイント、ランキング変動、ミニゲームのスコア等）、ユーザー入力およびAIインタラクションデータ（Google Gemini等のAIモデルとのテキストプロンプト等）、決済情報（サブスクリプション情報。※クレジットカード番号全体は保存せず、Google Playの公式API経由で安全に処理されます）、カスタマーサポートのやり取り。</li>
                 <li><strong>自動的に収集される情報：</strong> デバイスおよびハードウェア情報（固有ID、OS、FCMトークン等）、使用・ログデータ（接続時間、Crashlyticsログ等）、位置情報（IPアドレスに基づく大まかな位置。※精密なGPS情報は収集しません）。</li>
                 <li><strong>第三者から収集する情報：</strong> ソーシャルメディア連携（SSO）による確認済みの識別情報。</li>
                 <li><strong>デバイスへのアクセス権限（任意）：</strong> 写真/メディア/ストレージ（プロフィール画像用）、通知（プッシュ通知用）。※権限を拒否しても基本サービスは利用可能です。</li>
@@ -260,7 +260,7 @@
 
         <div class="card">
             <h3>4. その他の追跡技術 (SDKおよび分析ツール)</h3>
-            <p>当社は、モバイルSDK（Firebase Analytics、Crashlytics等）を使用しています。ユーザーはデバイスのプライバシー設定（Androidの「広告IDを削除」、iOSの「アプリからのトラッキング要求を許可」のオフ）を通じて、いつでもターゲティングや非必須の追跡を制限できます。</p>
+            <p>当社は、モバイルSDK（Firebase Analytics、Crashlytics等）を使用しています。ユーザーはデバイスのプライバシー設定（Androidの「広告IDを削除」等）を通じて、いつでもターゲティングや非必須の追跡を制限できます。</p>
         </div>
 
         <div class="card">
@@ -268,7 +268,7 @@
             <p>当社は、明示的な同意なしに個人情報を第三者に販売・提供することはありません。ただし、サービス提供のため、以下の通り業務を委託し、データが国外に移転される場合があります。</p>
             <ul>
                 <li><strong>Google LLC (GCP, Firebase)：</strong> クラウドデータベース（Firestore）、プッシュ通知（FCM）、エラー分析（米国等のGoogle Cloudリージョンへ移転）。</li>
-                <li><strong>Google Play / Apple：</strong> 決済処理およびサブスクリプション管理。</li>
+                <li><strong>Google Play：</strong> 決済処理およびサブスクリプション管理。</li>
             </ul>
         </div>
 
@@ -325,7 +325,7 @@
             <h3>2. 수집하는 정보의 범주 및 수집 방법</h3>
             <p>당사는 최적의 서비스 제공과 AI 기반 사용자 경험의 고도화를 위해 적법하고 투명한 방법으로 다음의 데이터를 수집합니다.</p>
             <ul>
-                <li><strong>직접 제공하거나 연동을 통해 수집되는 정보:</strong> 계정 및 프로필 정보 (이름/아티스트명, 이메일, 이미지 등. *비밀번호나 생년월일은 직접 수집/저장하지 않음), 기기 및 앱 활동 데이터, 사용자 입력 및 AI 상호작용 데이터 (프롬프트 등), 결제 및 거래 정보 (*신용카드 번호 전체를 직접 저장하지 않음), 고객 지원 인터랙션.</li>
+                <li><strong>직접 제공하거나 연동을 통해 수집되는 정보:</strong> 계정 및 프로필 정보 (이름/아티스트명, 이메일, 이미지 등. *비밀번호나 생년월일은 직접 수집/저장하지 않음), 기기 및 앱 활동 데이터, 사용자 입력 및 AI 상호작용 데이터 (프롬프트 등), 결제 및 거래 정보 (*신용카드 번호 전체를 직접 저장하지 않으며, Google Play 인앱 결제 API를 통해 안전하게 처리됨), 고객 지원 인터랙션.</li>
                 <li><strong>자동으로 수집되는 정보:</strong> 기기 및 하드웨어 정보 (식별자, OS, FCM Token), 사용 및 로그 데이터, 위치 정보 (IP 기반 대략적 위치. *정밀 GPS 정보는 수집하지 않음).</li>
                 <li><strong>제3자로부터 수집하는 정보:</strong> 소셜 미디어 연동 (SSO) 정보.</li>
                 <li><strong>기기 접근 권한 (선택):</strong> 사진/미디어/저장소, 알림(Push). *거부하더라도 기본 서비스 이용 가능.</li>
@@ -346,7 +346,7 @@
 
         <div class="card">
             <h3>4. 기타 추적 기술</h3>
-            <p>모바일 SDK(Firebase Analytics, Crashlytics 등)의 정교한 분석 기술을 사용하며, 사용자는 기기의 프라이버시 설정을 통해 타겟팅 및 비필수적 추적을 언제든지 제한할 수 있습니다.</p>
+            <p>모바일 SDK(Firebase Analytics, Crashlytics 등)의 정교한 분석 기술을 사용하며, 사용자는 기기의 프라이버시 설정(예: Android '광고 ID 삭제')을 통해 타겟팅 및 비필수적 추적을 언제든지 제한할 수 있습니다.</p>
         </div>
 
         <div class="card">
@@ -354,7 +354,7 @@
             <p>명시적인 동의 없이 개인정보를 제3자에게 판매하지 않으며, 아래와 같이 처리 업무를 위탁하고 국외로 이전될 수 있습니다.</p>
             <ul>
                 <li><strong>Google LLC (Google Cloud Platform, Firebase):</strong> 클라우드 데이터베이스, 푸시 알림, 앱 오류 분석. (미국 등 Google Cloud 리전으로 이전)</li>
-                <li><strong>Google Play / Apple:</strong> 결제 처리 및 구독 등급 관리.</li>
+                <li><strong>Google Play:</strong> 결제 처리 및 구독 등급 관리.</li>
             </ul>
         </div>
 
