@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiply - Copyright & DMCA Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 테마 변수 설정 */
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #151515;
+            --text-color: #e6e6e6;
+            --text-muted: #888888;
+            --gold-accent: #B08A3C;
+            --card-border: #2a2a2a;
+            --danger-accent: #e53935;
+            --quote-bg: #1a1a1a;
+        }
+
+        /* 기본 리셋 및 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 레이아웃 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 헤더 스타일 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--gold-accent);
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p.subtitle {
+            font-style: italic;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .header p.meta {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* 언어 네비게이션 (Sticky) */
+        .lang-nav {
+            position: sticky;
+            top: 15px;
+            background-color: rgba(11, 11, 11, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            margin-bottom: 40px;
+            z-index: 100;
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .lang-nav a {
+            background-color: transparent;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-nav a:hover, .lang-nav a:active {
+            background-color: var(--gold-accent);
+            color: var(--bg-color);
+        }
+
+        /* 언어별 섹션 */
+        .lang-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+
+        .lang-title {
+            color: var(--text-color);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold-accent);
+            display: block;
+        }
+
+        /* 인트로 섹션 */
+        .intro-box {
+            background-color: rgba(176, 138, 60, 0.05);
+            border: 1px solid rgba(176, 138, 60, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .intro-box p {
+            margin-bottom: 10px;
+        }
+
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 섹션 카드형 레이아웃 */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card.alert-card {
+            border-left: 4px solid var(--danger-accent);
+        }
+
+        .card:hover {
+            border-color: #444;
+        }
+
+        .card h2 {
+            color: var(--gold-accent);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .card.alert-card h2 {
+            color: var(--danger-accent);
+        }
+
+        .card h3 {
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed var(--card-border);
+            padding-bottom: 5px;
+        }
+
+        .card p {
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .card ul, .card ol {
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .card p:last-child, .card ul:last-child, .card ol:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 이메일 양식 템플릿 스타일 */
+        .template-box {
+            background-color: var(--quote-bg);
+            border-left: 3px solid var(--gold-accent);
+            padding: 15px 20px;
+            margin: 15px 0 20px 0;
+            border-radius: 0 4px 4px 0;
+            font-family: 'Courier New', Courier, monospace, 'Noto Sans KR', sans-serif;
+            font-size: 13.5px;
+            color: #d0d0d0;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        /* 텍스트 강조 */
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .alert-text {
+            color: var(--danger-accent);
+            font-weight: 600;
+        }
+
+        .email-link {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--gold-accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 24px; }
+            .header p.subtitle { font-size: 14px; }
+            .card { padding: 20px; }
+            .card h2 { font-size: 17px; }
+            .lang-nav { gap: 8px; padding: 10px 15px;}
+            .lang-nav a { padding: 6px 12px; font-size: 13px; }
+            .template-box { padding: 10px 15px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <h1>Aiply Copyright & DMCA Policy</h1>
+            <p class="subtitle">"Protecting Creators' Rights & Ensuring Safe Harbor"</p>
+            <p class="meta">Last Updated: March 10, 2026 | Operator: SYNAPTIVE</p>
+        </div>
+
+        <div class="lang-nav">
+            <a href="#english">English</a>
+            <a href="#japanese">日本語</a>
+            <a href="#korean">한국어</a>
+        </div>
+
+        <div id="english" class="lang-section">
+            <h2 class="lang-title">Copyright & DMCA Policy (EN)</h2>
+
+            <div class="intro-box">
+                <p>Aiply (operated by SYNAPTIVE, hereinafter "we" or "Company") respects the rights of creators as our highest priority and strictly prohibits the infringement of others' intellectual property rights. As an Online Service Provider (OSP), we comply with global intellectual property laws, including the <span class="highlight">U.S. Digital Millennium Copyright Act (DMCA, 17 U.S.C. § 512)</span> and the Copyright Act of the Republic of Korea.</p>
+                <p>This policy defines clear procedures for responding promptly to claims of copyright infringement and protecting the rights of users whose content has been wrongfully removed.</p>
+            </div>
+
+            <div class="card">
+                <h2>1. How to Report Copyright Infringement (DMCA Takedown Notice)</h2>
+                <p>If you believe that your copyrighted work (sound recording, lyrics, album art, etc.) or right of publicity (e.g., voice) has been used without authorization on the Aiply platform, please submit a written notice via email to our <span class="highlight">Designated Copyright Agent</span>.</p>
+                <p>For a lawful and prompt response, your notice email <span class="alert-text">must include the following 6 items</span> required by law (DMCA § 512(c)(3)). If any item is missing, your notice may not be validly processed.</p>
+                <ol>
+                    <li><span class="highlight">Identification of the Original Work:</span> A specific description of your original work claimed to have been infringed (e.g., original title, official release link).</li>
+                    <li><span class="highlight">Location of the Infringing Material (URL Required):</span> The specific sharing link (URL) or exact title and artist name of the material that is claimed to be infringing, so that we can accurately locate it on the Aiply platform.</li>
+                    <li><span class="highlight">Contact Information of the Complaining Party:</span> Your legal name, physical address including postal code, telephone number, and email address.</li>
+                    <li><span class="highlight">Statement of Good Faith Belief:</span> An explicit statement: <i>"I have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law."</i></li>
+                    <li><span class="highlight">Statement Under Penalty of Perjury:</span> An explicit statement: <i>"The information in this notification is accurate, and under penalty of perjury, that I am authorized to act on behalf of the owner of an exclusive right that is allegedly infringed."</i></li>
+                    <li><span class="highlight">Signature:</span> A physical or electronic signature of the copyright owner or a person authorized to act on their behalf (typing your full legal name at the bottom of the email suffices as an electronic signature).</li>
+                </ol>
+
+                <h3>📩 DMCA Takedown Notice Template (Copy & Paste)</h3>
+                <p>Please copy the template below, fill in the bracketed <code>[ ]</code> information, and send it to <a href="mailto:eyenic@naver.com" class="email-link">eyenic@naver.com</a>.</p>
+                
+<div class="template-box">To: Aiply Designated Copyright Agent (eyenic@naver.com)
+Subject: [DMCA Takedown Notice] Copyright Infringement Report
+
+I hereby report that the content specified below infringes upon my intellectual property rights and request the removal or disabling of access to this material.
+
+1. Original Work Infringed: [Description of your original track, album, or voice, and official release link, etc.]
+2. Location of Infringing Content on Aiply: [Exact URL link or identifying information of the unauthorized upload on Aiply]
+3. Complaining Party's Name (or Company/Agency Name): [Your Legal Name]
+4. Contact Information: [Phone Number], [Email Address], [Physical Address with Postal Code]
+
+I have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law. Furthermore, I state under penalty of perjury that the information in this notification is accurate, and that I am the owner, or an authorized agent to act on behalf of the owner, of the exclusive right that is allegedly infringed.
+
+[Date: MM/DD/YYYY]
+[Electronic Signature: Type your full legal name]</div>
+            </div>
+
+            <div class="card">
+                <h2>2. Counter-Notice for Removed Content</h2>
+                <p>If you firmly believe that the content you uploaded to Aiply was wrongfully removed or disabled as a result of <span class="highlight">mistake or misidentification</span> (e.g., you possess a valid commercial license for the beat, or your use qualifies as Fair Use), you may submit a Counter-Notice to us.</p>
+                <p>Your Counter-Notice email <span class="alert-text">must include the following 4 items</span> required by law (DMCA § 512(g)(3)).</p>
+                <ol>
+                    <li><span class="highlight">Identification of Removed Material:</span> Identification of the material that has been removed or disabled and the location (URL) at which the material appeared on Aiply before it was removed.</li>
+                    <li><span class="highlight">Statement Under Penalty of Perjury:</span> A statement: <i>"I state under penalty of perjury that I have a good faith belief that the material was removed or disabled as a result of mistake or misidentification of the material to be removed or disabled."</i></li>
+                    <li><span class="highlight">Contact Info & Consent to Jurisdiction:</span> Your legal name, physical address, telephone number, and email address. And a statement that <i>"I consent to the jurisdiction of the Federal District Court for the judicial district in which my address is located (for US residents), or the Gwangju District Court of the Republic of Korea (for non-US residents), and that I will accept service of process from the person who provided the original infringement notification or an agent of such person."</i></li>
+                    <li><span class="highlight">Signature:</span> Your physical or electronic signature.</li>
+                </ol>
+
+                <h3>📩 DMCA Counter-Notice Template (Copy & Paste)</h3>
+<div class="template-box">To: Aiply Designated Copyright Agent (eyenic@naver.com)
+Subject: [DMCA Counter-Notice] Response to Takedown
+
+1. Removed Content: [Track name and exact URL link on Aiply before removal]
+2. I state under penalty of perjury that I have a good faith belief that the material was removed or disabled as a result of mistake or misidentification by the complaining party. [Brief reason: e.g., I have purchased a valid commercial license for this beat.]
+3. I consent to the jurisdiction of the Gwangju District Court of the Republic of Korea, or the appropriate US Federal District Court, as specified in your Terms of Service, and I will accept service of process from the person who provided the original infringement notification or their agent.
+4. Name: [Your Legal Name]
+5. Contact Information: [Phone Number], [Email Address], [Physical Address with Postal Code]
+
+[Date: MM/DD/YYYY]
+[Electronic Signature: Type your full legal name]</div>
+                
+                <p><span class="highlight">[Procedure After Receiving a Counter-Notice]</span><br>
+                Upon receiving a valid Counter-Notice, we will promptly forward a copy to the original complaining party. Unless the original complaining party notifies us within <span class="highlight">10 to 14 business days</span> that they have filed a court action seeking a court order to restrain the user from engaging in infringing activity relating to the material, we may restore the content and resume access on Aiply after that period.</p>
+            </div>
+
+            <div class="card alert-card">
+                <h2>3. Repeat Infringer Policy & Legal Warnings</h2>
+                <p>Aiply enforces a <span class="highlight">Zero Tolerance</span> policy for the protection of creators' intellectual property rights. Content found to infringe on the rights of others (including copyrights and voice rights) will be immediately removed. Users who repeatedly commit such acts, or those found guilty of severe violations such as deepfakes (unauthorized voice cloning) (<span class="alert-text">Repeat Infringers</span>), will have their <span class="alert-text">accounts permanently suspended without prior notice</span> in accordance with our Community Guidelines.</p>
+                <p>🚨 <span class="highlight">Nullification of Contribution Metrics:</span> If an account is permanently suspended, all platform activity metrics (Points and Notes) unjustly accumulated and any pending 'Creator and Activity Support Funds' associated with that account will be immediately nullified (reduced to 0).</p>
+                
+                <h3 style="margin-top: 20px;">⚠️ Warning Against False Claims and Counter-Notices</h3>
+                <p>Under Section 512(f) of the US DMCA and the Copyright Act of the Republic of Korea, if you knowingly materially misrepresent that material is infringing, or conversely, falsely submit a counter-notice that it is not infringing, <span class="alert-text">you may be subject to severe civil and criminal liability for damages incurred by us or other users, including attorneys' fees and court judgments.</span> If you are unsure whether your rights have been clearly infringed, we strongly recommend seeking advice from a legal professional before submitting a notice.</p>
+            </div>
+        </div>
+
+        <div id="japanese" class="lang-section">
+            <h2 class="lang-title">著作権およびDMCAポリシー (JP)</h2>
+
+            <div class="intro-box">
+                <p>Aiply（運営会社 SYNAPTIVE、以下「当社」）は、クリエイターの権利を最優先に尊重し、他人の知的財産権を侵害する行為を厳格に禁止します。</p>
+                <p>オンラインサービスプロバイダー（OSP）として、当社は米国デジタルミレニアム著作権法（<span class="highlight">DMCA, 17 U.S.C. § 512</span>）および大韓民国著作権法など、グローバルな知的財産権法を遵守します。本ポリシーは、著作権侵害の主張に対して迅速に対応し、不当にコンテンツを削除されたユーザーの権利を保護するための明確な手続きを規定します。</p>
+            </div>
+
+            <div class="card">
+                <h2>1. 著作権侵害の申告方法（DMCA削除通知 / Takedown Notice）</h2>
+                <p>あなたの著作物（音源、歌詞、アルバムアート等）やパブリシティ権（音声等）がAiplyプラットフォーム内で無断で使用され、権利を侵害されたと判断した場合、当社の<span class="highlight">指定著作権代理人（Designated Copyright Agent）</span>にメールで書面による申告を行ってください。</p>
+                <p>適法かつ迅速な対応のため、申告メールには法律（DMCA第512条(c)(3)項）で要求される<span class="alert-text">以下の6つの必須項目</span>がすべて含まれていなければなりません。一つでも欠けている場合、申告が有効に受理されない場合があります。</p>
+                <ol>
+                    <li><span class="highlight">侵害されたオリジナル著作物の特定:</span> 侵害されたと主張するオリジナル著作物に関する具体的な説明（原作者の曲名、公式リリースリンク等）。</li>
+                    <li><span class="highlight">侵害コンテンツの場所の特定（URL必須）:</span> 当社がAiply内で正確に特定し措置を講じられるよう、侵害しているコンテンツの具体的な共有リンク（URL）または正確なタイトルとアーティスト名。</li>
+                    <li><span class="highlight">申告者の連絡先情報:</span> 法的氏名、郵便番号を含む物理的住所、電話番号、およびメールアドレス。</li>
+                    <li><span class="highlight">誠実な信念の表明（Good Faith Belief）:</span> <i>「私は、申告された方法での当該資料の使用が、著作権者、その代理人、または法律によって許可されていないと誠実に（good faith）確信しています。」</i>という明示的な表明。</li>
+                    <li><span class="highlight">偽証罪の罰則を承知した上での正確性の表明（Penalty of Perjury）:</span> <i>「本通知書の情報は正確であり、偽証罪の罰則を承知した上で、私が侵害されたと推定される独占的権利の所有者であるか、または所有者に代わって行動する権限があることを表明します。」</i>という明示的な表明。</li>
+                    <li><span class="highlight">署名:</span> 著作権者本人または権限を委任された適法な代理人の物理的または電子署名（メールの末尾に法的氏名をフルネームで記載することで電子署名に代えることができます）。</li>
+                </ol>
+
+                <h3>📩 著作権侵害申告テンプレート（コピー＆ペースト用）</h3>
+                <p>以下のテンプレートをコピーし、括弧 <code>[ ]</code> 内を記入の上、<a href="mailto:eyenic@naver.com" class="email-link">eyenic@naver.com</a> へ送信してください。</p>
+<div class="template-box">宛先: Aiply 指定著作権代理人 (eyenic@naver.com)
+件名: [DMCA Takedown Notice] 著作権侵害の申告
+
+私は、以下に明記されたコンテンツが私の知的財産権を侵害していることを申告し、当該コンテンツの削除またはアクセスの遮断を要請します。
+
+1. 侵害されたオリジナル著作物: [あなたのオリジナル曲名、音声の説明、公式リリースリンク等]
+2. Aiply内の侵害コンテンツの場所: [Aiply内の無断アップロードされた音源の正確なURLリンク]
+3. 申告者氏名（または会社/所属事務所名）: [法的氏名]
+4. 連絡先: [電話番号]、[メールアドレス]、[郵便番号および物理的住所]
+
+私は、申告された方法での当該資料の使用が、著作権者、その代理人、または法律によって許可されていないと誠実に確信しています。
+
+本通知書の情報は正確であり、偽証罪の罰則を承知した上で、私が侵害されたと推定される独占的権利の所有者であるか、または所有者に代わって行動する権限があることを表明します。
+
+[作成日: YYYY年 MM月 DD日]
+[電子署名: あなたの法的氏名を記載]</div>
+            </div>
+
+            <div class="card">
+                <h2>2. コンテンツ削除に対する異議申し立て（DMCA Counter-Notice）</h2>
+                <p>あなたがAiplyにアップロードしたコンテンツが、<span class="highlight">他人のミスや誤認によって不当に削除された、またはアクセスが遮断されたと確信する場合</span>（例：あなたが当該ビートの適法な商業用ライセンスを保有している場合、フェアユースに該当する場合）、当社に対して異議申し立て（Counter-Notice）を提出することができます。</p>
+                <p>異議申し立てメールには、法律（DMCA第512条(g)(3)項）に従い、<span class="alert-text">以下の4つの項目</span>が必ず含まれていなければなりません。</p>
+                <ol>
+                    <li><span class="highlight">削除されたコンテンツの特定:</span> 削除またはアクセスが遮断された資料の識別情報、および削除される前にAiply内で表示されていた正確な場所（URL）。</li>
+                    <li><span class="highlight">偽証罪の罰則を承知した上での誠実な信念の表明:</span> <i>「偽証罪の罰則を承知した上で、私は当該資料がミスや誤認によって削除またはアクセスが遮断されたと誠実に確信しています。」</i>という表明。</li>
+                    <li><span class="highlight">連絡先および管轄権への同意の表明:</span> 法的氏名、物理的住所、電話番号、メールアドレス。および<i>「私は、私の住所を管轄する連邦地方裁判所（米国居住者の場合）、または当社が位置する管轄裁判所である大韓民国光州地方法院（米国以外の居住者の場合）の管轄権に同意し、最初に著作権侵害を申告した者またはその代理人からの訴状の送達を受け入れます。」</i>という表明。</li>
+                    <li><span class="highlight">署名:</span> 物理的または電子署名。</li>
+                </ol>
+
+                <h3>📩 異議申し立てテンプレート（コピー＆ペースト用）</h3>
+<div class="template-box">宛先: Aiply 指定著作権代理人 (eyenic@naver.com)
+件名: [DMCA Counter-Notice] 著作権異議申し立て
+
+1. 削除されたコンテンツ: [削除される前のAiply内の曲名および正確なURL]
+2. 偽証罪の罰則を承知した上で、私は当該資料が申告者のミスや誤認によって不当に削除または遮断されたと誠実に確信しています。[簡単な理由: 例 - 私はこのビートの適法な商業的ライセンスを購入しました。]
+3. 私は、当社のサービス利用規約に明記された管轄裁判所（大韓民国光州地方法院または米国の該当する連邦地方裁判所）の管轄権に同意し、最初に著作権侵害を申告した者またはその代理人からの訴状の送達を受け入れます。
+4. 氏名: [法的氏名]
+5. 連絡先: [電話番号]、[メールアドレス]、[郵便番号および物理的住所]
+
+[作成日: YYYY年 MM月 DD日]
+[電子署名: あなたの法的氏名を記載]</div>
+                <p><span class="highlight">【異議申し立て受理後の手続き】</span><br>
+                当社が有効な異議申し立てを受理した場合、その写しを最初の申告者に直ちに転送します。最初の申告者が異議申し立てを受け取ってから<span class="highlight">10～14営業日以内</span>に、「該当ユーザーのコンテンツ使用を禁止するための裁判所への訴訟（仮処分等）を提起した」という公式書類を当社に通知しない限り、当社は当該期間経過後にあなたのコンテンツをAiplyに復元することができます。</p>
+            </div>
+
+            <div class="card alert-card">
+                <h2>3. 反復違反者ポリシーおよび法的責任の警告</h2>
+                <p>Aiplyはクリエイターの知的財産権保護において<span class="highlight">ゼロ・トレランス（無寛容）の原則</span>を適用します。他人の権利を侵害したことが確認されたユーザーのコンテンツは即時削除され、このような行為が反復されるか、ディープフェイク（無断ボイスクローニング）などの重大な違反が発覚したユーザー（Repeat Infringer）は、コミュニティガイドラインに従い<span class="alert-text">事前の通知なしにアカウントが永久停止</span>されます。</p>
+                <p>🚨 <span class="highlight">活動指標の無効化:</span> アカウントが永久停止された場合、そのアカウントに不当に蓄積されていたすべてのプラットフォーム活動指標（ポイントおよびノート）と、精算待機中の「創作および活動補償支援金」は直ちに無効化（消滅）処理されます。</p>
+                
+                <h3 style="margin-top: 20px;">⚠️ 虚偽の申告および異議申し立てに対する警告</h3>
+                <p>米国DMCA第512条(f)項および関連法律に基づき、特定のコンテンツが権利を侵害していると故意に虚偽の申告を行ったり、逆に侵害していないと虚偽の異議申し立てを提出した場合、<span class="alert-text">あなたは当社または他のユーザーが被った金銭的損害（弁護士費用や裁判所の判決金を含む）に対して、莫大な民事・刑事上の賠償責任を負う可能性があります。</span>ご自身の権利が明確に侵害されているか確信が持てない場合は、申告を提出する前に法律専門家の助言を求めることを強くお勧めします。</p>
+            </div>
+        </div>
+
+        <div id="korean" class="lang-section">
+            <h2 class="lang-title">저작권 보호 및 DMCA 정책 (KR)</h2>
+
+            <div class="intro-box">
+                <p>Aiply(운영사 SYNAPTIVE, 이하 "당사")는 창작자의 권리를 최우선으로 존중하며, 타인의 지식재산권을 침해하는 행위를 엄격하게 금지합니다.</p>
+                <p>당사는 온라인 서비스 제공자(OSP)로서 대한민국 저작권법 및 <span class="highlight">미국 디지털 밀레니엄 저작권법(DMCA, 17 U.S.C. § 512)</span> 등 글로벌 지식재산권 법령을 준수합니다. 본 정책은 저작권 침해 주장에 대해 신속하게 대응하고, 억울하게 콘텐츠가 삭제된 사용자의 권리를 보호하기 위한 명확한 절차를 규정합니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>1. 저작권 침해 신고 방법 (DMCA Takedown Notice)</h2>
+                <p>귀하의 저작물(음원, 가사, 앨범 아트 등)이나 퍼블리시티권(음성 등)이 Aiply 플랫폼 내에서 무단으로 사용되어 권리를 침해당했다고 판단되는 경우, 당사의 <span class="highlight">지정 저작권 대리인(Designated Copyright Agent)</span>에게 이메일로 서면 신고해 주시기 바랍니다.</p>
+                <p>적법하고 신속한 조치를 위해, 귀하의 신고 이메일에는 법률(DMCA 제512조(c)(3)항)에서 요구하는 <span class="alert-text">다음의 6가지 항목이 반드시 포함되어야 합니다.</span> 하나라도 누락될 경우 신고가 유효하게 접수되지 않을 수 있습니다.</p>
+                <ol>
+                    <li><span class="highlight">침해당한 원본 저작물의 특정:</span> 침해당했다고 주장하는 귀하의 원본 저작물에 대한 구체적인 설명 (원작자의 곡명, 공식 발매 링크 등).</li>
+                    <li><span class="highlight">침해 콘텐츠의 위치 특정 (URL 필수):</span> 당사가 Aiply 플랫폼 내에서 해당 콘텐츠를 정확히 찾아 조치할 수 있도록, 권리를 침해하고 있는 콘텐츠의 구체적인 공유 링크(URL) 또는 정확한 제목과 아티스트명.</li>
+                    <li><span class="highlight">신고자의 연락처 정보:</span> 귀하의 법적 성명, 우편 번호를 포함한 물리적 주소, 전화번호 및 이메일 주소.</li>
+                    <li><span class="highlight">선의의 믿음 진술 (Good Faith Belief):</span> <i>"본인은 신고된 방식으로 해당 자료를 사용하는 것이 저작권자, 그 대리인 또는 법률에 의해 승인되지 않았음을 선의로 굳게 믿습니다."</i> 라는 명시적 진술.</li>
+                    <li><span class="highlight">위증 시 처벌 감수 및 정확성 진술 (Penalty of Perjury):</span> <i>"본 통지서의 정보는 정확하며, 위증 시 처벌을 받을 것을 감수하고 본인이 침해당한 것으로 추정되는 독점적 권리의 소유자이거나 소유자를 대신하여 행동할 권한이 있음을 진술합니다."</i> 라는 명시적 진술.</li>
+                    <li><span class="highlight">서명:</span> 저작권자 본인 또는 권한을 위임받은 적법한 대리인의 물리적 또는 전자 서명 (이메일 하단에 법적 성명을 온전히 기재하는 것으로 전자 서명을 갈음할 수 있습니다).</li>
+                </ol>
+
+                <h3>📩 저작권 침해 신고 양식 (이메일 복사/붙여넣기용)</h3>
+                <p>아래 양식을 복사하여 괄호 <code>[ ]</code> 안의 내용을 작성한 후 <a href="mailto:eyenic@naver.com" class="email-link">eyenic@naver.com</a>으로 전송해 주십시오.</p>
+                
+<div class="template-box">수신: Aiply 지정 저작권 대리인 앞 (eyenic@naver.com)
+제목: [저작권 침해 신고] DMCA Takedown Notice
+
+본인은 아래 명시된 콘텐츠가 본인의 지식재산권을 침해하고 있음을 신고하며, 해당 콘텐츠의 삭제 또는 접근 차단을 요청합니다.
+
+1. 침해당한 원본 저작물: [귀하의 원본 곡명, 앨범명, 또는 음성에 대한 설명 및 공식 발매 링크 등]
+2. Aiply 내의 침해 콘텐츠 위치: [Aiply 플랫폼 내 무단 업로드된 음원의 정확한 URL 링크 또는 식별 정보]
+3. 신고자 성명(또는 회사/소속사명): [법적 성명]
+4. 연락처: [전화번호], [이메일 주소], [우편번호 및 물리적 주소]
+
+본인은 신고된 콘텐츠의 사용이 저작권자, 대리인 또는 법률에 의해 승인되지 않았음을 선의로 굳게 믿습니다. 또한, 위증 시 처벌을 받을 것을 감수하고, 본 통지서의 모든 정보가 정확하며 본인이 권리 소유자 본인이거나 적법한 대리인임을 엄숙히 진술합니다.
+
+[작성일자: YYYY년 MM월 DD일]
+[전자 서명: 귀하의 법적 성명 기재]</div>
+            </div>
+
+            <div class="card">
+                <h2>2. 콘텐츠 삭제에 대한 반박 통지 (DMCA Counter-Notice)</h2>
+                <p>만약 귀하가 Aiply에 업로드한 콘텐츠가 <span class="highlight">타인의 실수나 오인으로 인해 부당하게 삭제되었거나 접근이 차단되었다고 굳게 믿는 경우</span>(예: 귀하가 해당 비트의 적법한 상업용 라이선스를 보유한 경우, 공정 이용(Fair Use)에 해당하는 경우), 귀하는 당사에 반박 통지(Counter-Notice)를 제출할 수 있습니다.</p>
+                <p>반박 통지 이메일에는 법률(DMCA 제512조(g)(3)항)에 따라 <span class="alert-text">반드시 다음의 4가지 항목이 포함되어야 합니다.</span></p>
+                <ol>
+                    <li><span class="highlight">삭제된 콘텐츠 특정:</span> 삭제되거나 접근이 차단된 자료의 식별 정보 및 해당 자료가 삭제되기 전에 표시되었던 Aiply 내의 정확한 위치(URL).</li>
+                    <li><span class="highlight">선의의 믿음 및 위증 시 처벌 감수 진술:</span> <i>"위증 시 처벌을 감수하고, 본인은 실수나 오인으로 인해 해당 자료가 삭제되거나 접근이 차단되었다고 선의로 굳게 믿습니다."</i> 라는 명시적 진술.</li>
+                    <li><span class="highlight">사용자 연락처 및 관할권 동의 진술:</span> 귀하의 법적 성명, 물리적 주소, 전화번호 및 이메일 주소. 그리고 <i>"본인은 귀하의 주소지를 관할하는 연방 지방 법원(미국 거주자의 경우) 또는 당사가 위치한 관할 법원인 대한민국 광주지방법원(미국 외 거주자의 경우)의 관할권에 동의하며, 최초로 저작권 침해를 신고한 자 또는 그 대리인으로부터의 소장 송달을 수락합니다."</i> 라는 진술.</li>
+                    <li><span class="highlight">서명:</span> 귀하의 물리적 또는 전자 서명.</li>
+                </ol>
+
+                <h3>📩 반박 통지 양식 (이메일 복사/붙여넣기용)</h3>
+<div class="template-box">수신: Aiply 지정 저작권 대리인 앞 (eyenic@naver.com)
+제목: [저작권 반박 통지] DMCA Counter-Notice
+
+1. 삭제된 콘텐츠: [삭제되기 전의 Aiply 내 곡명 및 정확한 URL 링크]
+2. 본인은 위증 시 처벌을 감수하고, 해당 자료가 신고자의 실수나 오인으로 인해 부당하게 삭제되었거나 차단되었다고 선의로 굳게 믿습니다. [간략한 사유 기재: 예 - 본인은 해당 비트의 적법한 상업적 라이선스를 구매하였습니다.]
+3. 본인은 당사의 서비스 이용약관에 명시된 관할 법원(대한민국 광주지방법원 또는 미국 관할 연방 지방 법원)의 관할권에 동의하며, 최초로 저작권 침해를 신고한 자 또는 그 대리인으로부터의 소장 송달을 수락합니다.
+4. 성명: [법적 성명]
+5. 연락처: [전화번호], [이메일 주소], [우편번호 및 물리적 주소]
+
+[작성일자: YYYY년 MM월 DD일]
+[전자 서명: 귀하의 법적 성명 기재]</div>
+                
+                <p><span class="highlight">[반박 통지 접수 이후의 절차]</span><br>
+                당사가 유효한 반박 통지를 접수하면, 해당 내용의 사본을 최초 신고자에게 즉시 전달합니다. 최초 신고자가 반박 통지를 전달받은 후 <span class="highlight">영업일 기준 10~14일 이내</span>에 "해당 사용자의 콘텐츠 사용을 금지하기 위한 법원 소송(가처분 등)을 제기했다"는 공식 서류를 당사에 통보하지 않는 한, 당사는 해당 기간 이후 귀하의 콘텐츠를 Aiply에 복구하고 접근을 재개할 수 있습니다.</p>
+            </div>
+
+            <div class="card alert-card">
+                <h2>3. 반복 위반자 정책 및 강력한 법적 책임 경고</h2>
+                <p>Aiply는 창작자의 지식재산권 보호에 <span class="highlight">무관용 원칙(Zero Tolerance)</span>을 적용합니다. 타인의 권리(저작권 및 음성권 포함)를 침해한 것으로 확인된 사용자의 콘텐츠는 즉각 삭제되며, 이러한 행위가 2회 이상 반복되거나 딥페이크(무단 보이스 클로닝) 등 중대한 위반이 적발된 사용자(<span class="alert-text">Repeat Infringer</span>)는 커뮤니티 가이드라인에 따라 <span class="alert-text">사전 통지 없이 계정이 영구 정지</span>됩니다.</p>
+                <p>🚨 <span class="highlight">지표 무효화 주의:</span> 계정이 영구 정지될 경우, 해당 계정에 부당하게 누적되어 있던 모든 플랫폼 활동 지표(포인트 및 노트)와 정산 대기 중인 '창작 및 활동 보상 지원금'은 즉시 무효화(소멸) 처리됩니다.</p>
+                
+                <h3 style="margin-top: 20px;">⚠️ 허위 신고 및 반박에 대한 강력한 법적 책임</h3>
+                <p>미국 DMCA 제512조(f)항 및 대한민국 저작권법 등 관련 법률에 따라, 특정 콘텐츠가 권리를 침해한다고 고의로 허위 신고하거나, 반대로 침해하지 않았다고 허위로 반박 통지를 제출하는 경우, <span class="alert-text">귀하는 당사 또는 다른 사용자가 입은 금전적 손해(변호사 수임료, 영업 방해 및 법원 판결금 포함)에 대해 막대한 민·형사상 배상 책임을 질 수 있습니다.</span> 본인의 권리가 명확히 침해되었는지 확신할 수 없는 경우, 신고를 제출하기 전에 법률 전문가의 조언을 구하시기를 강력히 권장합니다.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Aiply. <a href="index.html">Back to Home</a></p>
+            <p style="margin-top: 10px;">Contact: <a href="mailto:eyenic@naver.com">eyenic@naver.com</a></p>
+        </div>
+
+    </div>
+
+    <script>
+        // 상단 네비게이션 클릭 시 부드러운 스크롤 애니메이션 및 스티키 헤더 가림 방지
+        document.querySelectorAll('.lang-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const offset = 80; 
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
