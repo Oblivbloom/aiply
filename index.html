@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aiply Guide: Turn Your AI Music into Value</title>
+    <title>Aiply Global Guide: Empowering AI Creativity</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- Chosen Palette: Warm Sand & Signature Gold (Neutrals: #FAFAED, #EAE4D9, Dark: #2C2A29, Accent: #C69C6D) -->
-    <!-- Application Structure Plan: The SPA uses a "Virtual Interactive Tour" structure that mirrors the narrative flow of the provided YouTube video scenario. A language selection system has been integrated to support global expansion (KO, EN, JA, PT). It begins with a Hero section, followed by a tabbed interface for Listener and Artist perspectives, an Ecosystem Dashboard, and a legally-fortified Footer. This structure prioritizes user education and legal transparency, ensuring a clear path from discovery to monetization. -->
+    <!-- Chosen Palette: Deep Onyx & Polished Gold (Primary: #0A0A0A, Surface: #161616, Accent: #C69C6D) -->
+    <!-- Application Structure Plan: The SPA is designed as a "Brand Experience & Legal Defense Hub." It prioritizes English as the default global language. The structure follows a logical funnel: 1. Brand Identity (Logo/Symbol), 2. Narrative Experience (Listener/Artist paths), 3. Data-driven Ecosystem (Point/Note balance), and 4. Legal Integrity (Fortified Footer). This architecture ensures that users, investors, and store reviewers see a professional, compliant, and scalable global platform. -->
     <!-- Visualization & Content Choices: 
-         - Goal: Multi-language Support -> Method: Centralized JS translation object mapping to data-i18n attributes.
-         - Goal: Inform & Engage (Stages 1-3) -> Method: Interactive HTML/Tailwind cards with dynamic state-driven text updates.
-         - Goal: Show Symbiotic Growth (Stage 4) -> Method: Chart.js line chart with language-aware labels.
-         - Goal: Global Legal Compliance (Stage 5) -> Method: Fortified footer with essential policy links including DMCA and Account Deletion.
+         - Goal: Global Accessibility -> Method: JS-based i18n system for 6 languages (EN, KO, JA, PT, FR, DE).
+         - Goal: Brand Recognition -> Method: Prominent placement of provided JPG logos/symbols with CSS filter enhancements.
+         - Goal: Non-Financial Definition -> Method: Descriptive content blocks defining Point as 'Support' and Note as 'Contribution'.
+         - Goal: Symbiotic Growth Visualization -> Method: Chart.js Line chart with dual axes to show the correlation between Note and Point without financial terminology.
+         - Goal: Legal Compliance -> Method: Specific footer links mapped to Aiply's iron-clad defense policies.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
@@ -24,15 +25,15 @@
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        sand: { 50: '#FAFAED', 100: '#F4F0E6', 200: '#EAE4D9', 800: '#4A4641', 900: '#2C2A29' },
-                        gold: { 500: '#C69C6D', 600: '#B3895D' }
+                        dark: { 900: '#0A0A0A', 800: '#121212', 700: '#1E1E1E' },
+                        gold: { 400: '#D4AF37', 500: '#C69C6D', 600: '#B3895D' }
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #FAFAED; color: #2C2A29; overflow-x: hidden; }
+        body { background-color: #0A0A0A; color: #D1D1D1; overflow-x: hidden; }
         .tab-btn.active { border-bottom: 4px solid #C69C6D; color: #C69C6D; font-weight: 800; }
         .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
         .tab-content.active { display: block; }
@@ -42,179 +43,187 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 40vh;
-            max-height: 400px;
-            min-height: 250px;
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border: 1px solid #EAE4D9;
+            margin: 2rem auto;
+            height: 350px;
+            background: #161616;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid #2A2A2A;
         }
-        @media (min-width: 768px) { .chart-container { height: 350px; } }
+
+        .logo-img { max-height: 80px; width: auto; transition: transform 0.3s ease; }
+        .symbol-img { max-height: 120px; width: auto; border-radius: 24px; box-shadow: 0 0 30px rgba(198, 156, 109, 0.3); }
         
-        .feature-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); transition: all 0.2s ease; cursor: pointer; }
-        .feature-card.selected { border-color: #C69C6D; background-color: #FAFAED; }
+        .footer-links a { text-decoration: none; color: #888; transition: color 0.2s; font-size: 0.85rem; }
+        .footer-links a:hover { color: #C69C6D; }
         
-        .footer-links a { text-decoration: none; color: #C69C6D; transition: color 0.2s; font-size: 0.9rem; }
-        .footer-links a:hover { color: #2C2A29; }
+        .nav-sticky { backdrop-filter: blur(15px); background: rgba(10, 10, 10, 0.8); }
+        .btn-gold { background: linear-gradient(135deg, #C69C6D 0%, #B3895D 100%); transition: all 0.3s ease; }
+        .btn-gold:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(198, 156, 109, 0.2); }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header & Language Switcher -->
-    <nav class="bg-sand-900 py-3 px-6 flex justify-end gap-2">
-        <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-transparent text-sand-50 text-xs border border-sand-200 rounded px-2 py-1 outline-none">
-            <option value="en" class="text-sand-900">English</option>
-            <option value="ja" class="text-sand-900">日本語</option>
-            <option value="ko" class="text-sand-900">한국어</option>            
-            <option value="pt" class="text-sand-900">Português (BR)</option>
-        </select>
+    <!-- Header Navigation -->
+    <nav class="nav-sticky sticky top-0 z-50 py-4 px-6 flex justify-between items-center border-b border-white/5">
+        <div class="flex items-center gap-4">
+            <img src="simbol.jpg" alt="Aiply Symbol" class="h-10 w-10 rounded-lg shadow-gold" onerror="this.src='https://placehold.co/100x100/C69C6D/000000?text=S'">
+            <img src="AIPLY_LOGO_black03.jpg" alt="Aiply Logo" class="h-8 hidden md:block" onerror="this.src='https://placehold.co/200x50/000000/C69C6D?text=AIPLY'">
+        </div>
+        <div class="flex items-center gap-4">
+            <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-dark-700 text-gold-500 text-sm border border-gold-500/30 rounded-lg px-3 py-1.5 outline-none focus:ring-2 ring-gold-500">
+                <option value="en">English (US)</option>
+                <option value="ko">한국어 (KR)</option>
+                <option value="ja">日本語 (JP)</option>
+                <option value="pt">Português (BR)</option>
+                <option value="fr">Français (FR)</option>
+                <option value="de">Deutsch (DE)</option>
+            </select>
+        </div>
     </nav>
 
-    <!-- STAGE 1: Hero / Hook -->
-    <header class="w-full bg-sand-900 text-sand-50 py-20 px-6 text-center shadow-lg relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 text-[10rem] font-black leading-none select-none flex items-center justify-center overflow-hidden">
-            AIPLY
+    <!-- STAGE 1: Hero -->
+    <header class="relative w-full py-24 px-6 text-center overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full opacity-5 pointer-events-none">
+            <h1 class="text-[20vw] font-black leading-none">AIPLY</h1>
         </div>
+        
         <div class="relative z-10 max-w-4xl mx-auto">
-            <h2 class="text-gold-500 font-bold tracking-widest text-sm mb-4 uppercase" data-i18n="hero_sub">AI 음악의 새로운 혁명</h2>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight" data-i18n="hero_title">Aiply Guide:<br>Turn Your AI Music into Value</h1>
-            <p class="text-xl md:text-2xl text-sand-200 mb-10 font-light" data-i18n="hero_desc">"단순히 음악을 듣기만 하셨나요?<br>이제 당신의 귀가, 당신의 창작이 실제 가치가 되는 세상."</p>
-            <button onclick="document.getElementById('tour-section').scrollIntoView({behavior: 'smooth'})" class="bg-gold-500 hover:bg-gold-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-colors shadow-xl" data-i18n="hero_btn">
-                에이플리 완벽 활용 가이드 시작하기 ⬇
+            <div class="flex justify-center mb-8">
+                <img src="simbol.jpg" alt="Aiply Symbol Large" class="symbol-img" onerror="this.style.display='none'">
+            </div>
+            <img src="AIPLY_LOGO_black03.jpg" alt="Aiply Logo Large" class="mx-auto h-16 md:h-20 mb-8" onerror="this.style.display='none'">
+            
+            <h2 class="text-gold-500 font-bold tracking-[0.3em] text-sm md:text-base mb-6 uppercase" data-i18n="hero_sub">THE FUTURE OF AI MUSIC CURATION</h2>
+            <h1 class="text-4xl md:text-7xl font-extrabold mb-8 text-white leading-tight" data-i18n="hero_title">Where Listening Creates<br><span class="text-gold-500">Pure Value</span></h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-12 font-light max-w-2xl mx-auto" data-i18n="hero_desc">Step into an ecosystem where your ears empower creators and AI creativity is rewarded with integrity.</p>
+            
+            <button onclick="document.getElementById('tour-section').scrollIntoView({behavior: 'smooth'})" class="btn-gold text-white font-extrabold py-5 px-12 rounded-full text-xl shadow-2xl" data-i18n="hero_btn">
+                EXPLORE AIPLY GUIDE ⬇
             </button>
         </div>
     </header>
 
-    <!-- Interactive Tour Section -->
-    <main id="tour-section" class="max-w-6xl mx-auto px-4 py-16">
+    <!-- Main Content Tour -->
+    <main id="tour-section" class="max-w-6xl mx-auto px-6 py-20">
         
-        <div class="text-center mb-12">
-            <p class="text-sand-800 text-lg max-w-2xl mx-auto" data-i18n="tour_intro">
-                아래 탭을 클릭하여 리스너(팬)와 아티스트(창작자)의 관점에서 에이플리의 혁신적인 시스템을 직접 탐색해보세요. 두 역할이 어떻게 만나 가치의 선순환을 이루는지 확인할 수 있습니다.
+        <div class="text-center mb-16">
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" data-i18n="tour_intro">
+                Discover the synergy between listeners and artists. Aiply transforms passive listening into active support, ensuring a virtuous cycle of creativity and reward.
             </p>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex justify-center border-b-2 border-sand-200 mb-10 overflow-x-auto">
-            <button class="tab-btn active px-6 py-4 text-lg font-semibold text-sand-800 transition-colors whitespace-nowrap" data-target="tab-listener" data-i18n="tab_listener">
-                🎧 리스너 가이드
+        <div class="flex justify-center border-b border-white/10 mb-12 overflow-x-auto">
+            <button class="tab-btn active px-8 py-5 text-lg font-semibold text-gray-400 transition-all whitespace-nowrap" data-target="tab-listener" data-i18n="tab_listener">
+                🎧 Listener Path
             </button>
-            <button class="tab-btn px-6 py-4 text-lg font-semibold text-sand-800 transition-colors whitespace-nowrap" data-target="tab-artist" data-i18n="tab_artist">
-                🎙️ 아티스트 가이드
+            <button class="tab-btn px-8 py-5 text-lg font-semibold text-gray-400 transition-all whitespace-nowrap" data-target="tab-artist" data-i18n="tab_artist">
+                🎙️ Artist Path
             </button>
-            <button class="tab-btn px-6 py-4 text-lg font-semibold text-sand-800 transition-colors whitespace-nowrap" data-target="tab-ecosystem" data-i18n="tab_ecosystem">
-                🔄 에코시스템
+            <button class="tab-btn px-8 py-5 text-lg font-semibold text-gray-400 transition-all whitespace-nowrap" data-target="tab-ecosystem" data-i18n="tab_ecosystem">
+                🔄 Ecosystem
             </button>
         </div>
 
-        <!-- STAGE 2: Listener Tab -->
+        <!-- STAGE 2: Listener -->
         <div id="tab-listener" class="tab-content active">
-            <div class="bg-white rounded-2xl shadow-sm border border-sand-100 p-8">
-                <h3 class="text-2xl font-bold text-sand-900 mb-4" data-i18n="l_title">리스너의 여정: 취향의 발견부터 컬렉터가 되기까지</h3>
-                <p class="text-sand-800 mb-8 leading-relaxed" data-i18n="l_desc">
-                    이 섹션은 에이플리 앱 내에서 일반 청취자가 경험하는 핵심 기능을 설명합니다. 좋아하는 아티스트를 직접 후원하고, 플랫폼의 기여자가 되는 과정을 아래 카드를 클릭하여 확인하세요.
-                </p>
+            <div class="bg-dark-800 rounded-3xl p-10 border border-white/5 shadow-inner">
+                <h3 class="text-3xl font-bold text-white mb-6" data-i18n="l_title">Listener's Journey: From Discovery to Curator</h3>
+                <p class="text-gray-400 mb-10 text-lg" data-i18n="l_desc">Explore how your interaction fuels the platform. Every skip, play, and 'Thanks' counts toward the ecosystem's health.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="feature-card border-2 border-transparent bg-sand-50 rounded-xl p-6 text-center selected" onclick="updateListenerView('muse', this)">
-                        <div class="text-4xl mb-4">💬</div>
-                        <h4 class="font-bold text-lg mb-2" data-i18n="l_f1">1. AI Muse 대화</h4>
-                        <p class="text-sm text-sand-800" data-i18n="l_f1_sub">내 취향에 맞는 곡 추천받기</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                    <div class="feature-card bg-dark-700 p-8 rounded-2xl border border-white/5 selected" onclick="updateListenerView('muse', this)">
+                        <div class="text-5xl mb-6">💬</div>
+                        <h4 class="font-bold text-xl mb-3 text-gold-500" data-i18n="l_f1">AI Muse Chat</h4>
+                        <p class="text-sm text-gray-400" data-i18n="l_f1_sub">Personalized AI recommendations</p>
                     </div>
-                    <div class="feature-card border-2 border-transparent bg-sand-50 rounded-xl p-6 text-center" onclick="updateListenerView('thanks', this)">
-                        <div class="text-4xl mb-4">💖</div>
-                        <h4 class="font-bold text-lg mb-2" data-i18n="l_f2">2. 슈퍼땡스 후원</h4>
-                        <p class="text-sm text-sand-800" data-i18n="l_f2_sub">마음에 드는 아티스트 후원하기</p>
+                    <div class="feature-card bg-dark-700 p-8 rounded-2xl border border-white/5" onclick="updateListenerView('thanks', this)">
+                        <div class="text-5xl mb-6">💖</div>
+                        <h4 class="font-bold text-xl mb-3 text-gold-500" data-i18n="l_f2">Super Thanks</h4>
+                        <p class="text-sm text-gray-400" data-i18n="l_f2_sub">Direct support for creators</p>
                     </div>
-                    <div class="feature-card border-2 border-transparent bg-sand-50 rounded-xl p-6 text-center" onclick="updateListenerView('note', this)">
-                        <div class="text-4xl mb-4">📝</div>
-                        <h4 class="font-bold text-lg mb-2" data-i18n="l_f3">3. Note 수집</h4>
-                        <p class="text-sm text-sand-800" data-i18n="l_f3_sub">기여도를 쌓고 컬렉터 되기</p>
+                    <div class="feature-card bg-dark-700 p-8 rounded-2xl border border-white/5" onclick="updateListenerView('note', this)">
+                        <div class="text-5xl mb-6">📝</div>
+                        <h4 class="font-bold text-xl mb-3 text-gold-500" data-i18n="l_f3">Note Collection</h4>
+                        <p class="text-sm text-gray-400" data-i18n="l_f3_sub">Build your curator influence</p>
                     </div>
                 </div>
 
-                <div id="listener-detail-box" class="bg-sand-900 text-sand-50 p-8 rounded-xl border-l-8 border-gold-500 min-h-[150px] flex items-center">
+                <div id="listener-detail-box" class="bg-black/40 p-10 rounded-2xl border-l-4 border-gold-500 flex items-center min-h-[160px]">
                     <div>
-                        <h5 class="text-xl font-bold text-gold-500 mb-2" data-i18n="l_d_title">AI Muse와 대화하며 음악 탐색</h5>
-                        <p class="text-lg font-light" data-i18n="l_d_desc">"오늘 비가 오는데 듣기 좋은 재즈풍의 AI 음악을 추천해줘." AI 챗봇(Muse)이 수많은 생성 음악 중 당신의 기분에 완벽히 맞는 트랙을 실시간으로 찾아줍니다.</p>
+                        <h5 class="text-2xl font-bold text-gold-500 mb-4" data-i18n="l_d_title">Discover Music via AI Muse</h5>
+                        <p class="text-xl font-light text-white leading-relaxed" data-i18n="l_d_desc">"Recommend some rainy day jazz." AI Muse scours the metadata of thousands of tracks to find the perfect sonic match for your current state.</p>
                     </div>
-                </div>
-                <div class="mt-6 text-center">
-                    <p class="text-lg font-semibold text-gold-600 italic" data-i18n="l_quote">"당신의 응원이 아티스트의 창작을 지속하게 합니다."</p>
                 </div>
             </div>
         </div>
 
-        <!-- STAGE 3: Artist Tab -->
+        <!-- STAGE 3: Artist -->
         <div id="tab-artist" class="tab-content">
-            <div class="bg-white rounded-2xl shadow-sm border border-sand-100 p-8">
-                <h3 class="text-2xl font-bold text-sand-900 mb-4" data-i18n="a_title">아티스트의 여정: 권리 증빙부터 팬덤 형성까지</h3>
-                <p class="text-sand-800 mb-8 leading-relaxed" data-i18n="a_desc">
-                    이 섹션은 AI 음악 창작자가 에이플리에서 자신의 곡을 안전하게 공유하고 수익화하는 과정을 보여줍니다. 권리 증빙이라는 강력한 법적 안전장치를 통해 공식 아티스트로 거듭나는 과정을 시뮬레이션 해보세요.
-                </p>
+            <div class="bg-dark-800 rounded-3xl p-10 border border-white/5">
+                <h3 class="text-3xl font-bold text-white mb-6" data-i18n="a_title">Artist Path: Verification to Fandom</h3>
+                <p class="text-gray-400 mb-10 text-lg" data-i18n="a_desc">For AI music creators, Aiply provides a secure harbor. We prioritize legal clarity and commercial rights above all.</p>
 
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="w-full md:w-1/3 bg-sand-50 p-6 rounded-xl border border-sand-100">
-                        <h4 class="font-bold text-lg mb-6" data-i18n="a_p_title">성장 프로세스</h4>
-                        <ul class="relative border-l-2 border-sand-200 ml-3">
-                            <li class="mb-8 ml-6">
-                                <span class="absolute flex items-center justify-center w-8 h-8 bg-gold-500 rounded-full -left-4 ring-4 ring-white text-white text-sm font-bold" id="step1-icon">1</span>
-                                <h5 class="font-bold text-sand-900" data-i18n="a_s1">Creator Pro 구독</h5>
-                                <p class="text-sm text-sand-800 mt-1" data-i18n="a_s1_sub">음원 무제한 업로드 & 배터리 500 혜택</p>
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <div class="w-full lg:w-1/3 bg-dark-700 p-8 rounded-2xl border border-white/5">
+                        <h4 class="font-bold text-xl mb-8 text-white" data-i18n="a_p_title">Growth Process</h4>
+                        <ul class="space-y-10 relative">
+                            <li class="flex gap-6 items-center">
+                                <span class="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black font-black" id="step1-icon">1</span>
+                                <div>
+                                    <h5 class="font-bold text-white" data-i18n="a_s1">Creator Pro</h5>
+                                    <p class="text-xs text-gray-400" data-i18n="a_s1_sub">Unlimited Uploads & 500 Battery</p>
+                                </div>
                             </li>
-                            <li class="mb-8 ml-6">
-                                <span class="absolute flex items-center justify-center w-8 h-8 bg-sand-200 rounded-full -left-4 ring-4 ring-white text-sand-800 text-sm font-bold transition-colors" id="step2-icon">2</span>
-                                <h5 class="font-bold text-sand-900" data-i18n="a_s2">상업적 권리 증빙</h5>
-                                <p class="text-sm text-sand-800 mt-1" data-i18n="a_s2_sub">Suno/Udio 유료 영수증 업로드</p>
+                            <li class="flex gap-6 items-center">
+                                <span class="flex-shrink-0 w-10 h-10 rounded-full bg-dark-900 border border-gold-500/30 flex items-center justify-center text-gray-500 font-black transition-all" id="step2-icon">2</span>
+                                <div>
+                                    <h5 class="font-bold text-white" data-i18n="a_s2">Rights Proof</h5>
+                                    <p class="text-xs text-gray-400" data-i18n="a_s2_sub">Legal verification of AI assets</p>
+                                </div>
                             </li>
-                            <li class="ml-6">
-                                <span class="absolute flex items-center justify-center w-8 h-8 bg-sand-200 rounded-full -left-4 ring-4 ring-white text-sand-800 text-sm font-bold transition-colors" id="step3-icon">3</span>
-                                <h5 class="font-bold text-sand-900" data-i18n="a_s3">팬덤 형성 및 노출</h5>
-                                <p class="text-sm text-sand-800 mt-1" data-i18n="a_s3_sub">내 음악이 메인 탑에 노출되며 가치 창출</p>
+                            <li class="flex gap-6 items-center">
+                                <span class="flex-shrink-0 w-10 h-10 rounded-full bg-dark-900 border border-gold-500/30 flex items-center justify-center text-gray-500 font-black transition-all" id="step3-icon">3</span>
+                                <div>
+                                    <h5 class="font-bold text-white" data-i18n="a_s3">Exposure</h5>
+                                    <p class="text-xs text-gray-400" data-i18n="a_s3_sub">Main chart top placement</p>
+                                </div>
                             </li>
                         </ul>
-                        <button onclick="advanceArtistStep()" class="mt-6 w-full bg-sand-900 text-white py-3 rounded-lg hover:bg-sand-800 font-semibold transition-colors" data-i18n="a_p_btn">
-                            다음 단계 시뮬레이션 🚀
+                        <button onclick="advanceArtistStep()" class="mt-12 w-full btn-gold text-white py-4 rounded-xl font-bold uppercase tracking-wider" data-i18n="a_p_btn">
+                            Simulate Next Step 🚀
                         </button>
                     </div>
 
-                    <div class="w-full md:w-2/3 bg-sand-900 rounded-xl p-8 text-sand-50 h-full min-h-[300px] flex flex-col justify-center border-l-8 border-gold-500" id="artist-display">
-                        <div class="text-6xl mb-4">🔋</div>
-                        <h5 class="text-2xl font-bold text-gold-500 mb-2" data-i18n="a_d_title">Creator Pro 구독 혜택</h5>
-                        <p class="text-lg font-light" data-i18n="a_d_desc">가장 먼저 Creator Pro로 업그레이드하세요. 창작의 한계가 사라집니다. 매일 500 배터리가 제공되며, 당신이 생성한 트랙을 무제한으로 플랫폼에 업로드할 자격이 주어집니다.</p>
+                    <div class="w-full lg:w-2/3 bg-black/40 rounded-2xl p-10 flex flex-col justify-center border-t-4 border-gold-500" id="artist-display">
+                        <div class="text-7xl mb-8">🔋</div>
+                        <h5 class="text-3xl font-bold text-gold-500 mb-6" data-i18n="a_d_title">Creator Pro Subscription</h5>
+                        <p class="text-xl font-light text-white leading-relaxed" data-i18n="a_d_desc">Upgrade to Creator Pro to unlock the full potential of Aiply. Get 500 battery daily and the right to upload unlimited tracks to the marketplace.</p>
                     </div>
-                </div>
-                <div class="mt-8 text-center">
-                    <p class="text-lg font-semibold text-gold-600 italic" data-i18n="a_quote">"권리 증빙 한 번으로 당신은 에이플리의 공식 아티스트가 됩니다."</p>
                 </div>
             </div>
         </div>
 
-        <!-- STAGE 4: Ecosystem Tab -->
+        <!-- STAGE 4: Ecosystem -->
         <div id="tab-ecosystem" class="tab-content">
-            <div class="bg-white rounded-2xl shadow-sm border border-sand-100 p-8">
-                <h3 class="text-2xl font-bold text-sand-900 mb-4" data-i18n="e_title">에이플리 에코시스템: 가치의 선순환</h3>
-                <p class="text-sand-800 mb-6 leading-relaxed" data-i18n="e_desc">
-                    에이플리는 단순한 스트리밍이 아닌, 금융권 용어를 배제한 순수한 '팬덤 에코시스템'입니다. 이 차트는 리스너의 기여도(Note)가 상승함에 따라 아티스트의 창작 지원금(Point)이 어떻게 동반 성장하는지 그 선순환 구조를 시각화합니다.
-                </p>
+            <div class="bg-dark-800 rounded-3xl p-10 border border-white/5">
+                <h3 class="text-3xl font-bold text-white mb-6" data-i18n="e_title">Aiply Ecosystem: The Virtuous Cycle</h3>
+                <p class="text-gray-400 mb-10 text-lg leading-relaxed" data-i18n="e_desc">Aiply is a pure fandom ecosystem. We replace complex financial terms with simple contribution metrics: Points for Support, and Notes for Influence.</p>
 
-                <div class="flex flex-col md:flex-row gap-6 mb-8">
-                    <div class="flex-1 bg-sand-50 p-6 rounded-xl border border-sand-200 flex items-center gap-4">
-                        <div class="text-4xl">💰</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-dark-700 p-8 rounded-2xl border border-white/5 flex items-center gap-6">
+                        <div class="text-5xl">💰</div>
                         <div>
-                            <h4 class="font-bold text-lg" data-i18n="e_p">포인트 (Point)</h4>
-                            <p class="text-sm text-sand-800" data-i18n="e_p_sub">아티스트를 향한 순수한 창작 지원금</p>
+                            <h4 class="font-bold text-xl text-white" data-i18n="e_p">Support Point</h4>
+                            <p class="text-sm text-gray-400" data-i18n="e_p_sub">Pure support funds for creator activities</p>
                         </div>
                     </div>
-                    <div class="flex-1 bg-sand-50 p-6 rounded-xl border border-sand-200 flex items-center gap-4">
-                        <div class="text-4xl">🌟</div>
+                    <div class="bg-dark-700 p-8 rounded-2xl border border-white/5 flex items-center gap-6">
+                        <div class="text-5xl">🌟</div>
                         <div>
-                            <h4 class="font-bold text-lg" data-i18n="e_n">기여도 (Note)</h4>
-                            <p class="text-sm text-sand-800" data-i18n="e_n_sub">플랫폼 내 리스너의 영향력 및 컬렉터 지수</p>
+                            <h4 class="font-bold text-xl text-white" data-i18n="e_n">Contribution Note</h4>
+                            <p class="text-sm text-gray-400" data-i18n="e_n_sub">Platform influence and collector index</p>
                         </div>
                     </div>
                 </div>
@@ -223,230 +232,318 @@
                     <canvas id="ecosystemChart"></canvas>
                 </div>
 
-                <div class="mt-6 text-center">
-                    <button onclick="simulateEcosystemGrowth()" class="bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-8 rounded-lg transition-colors" data-i18n="e_btn">
-                        선순환 성장 시뮬레이션 실행 📈
+                <div class="mt-12 text-center">
+                    <button onclick="simulateEcosystemGrowth()" class="btn-gold text-white font-bold py-4 px-12 rounded-xl text-lg mb-6" data-i18n="e_btn">
+                        RUN GROWTH SIMULATION 📈
                     </button>
-                    <p class="mt-4 text-lg font-semibold text-sand-900 italic" data-i18n="e_quote">"창작 지원과 기여 보상이 선순환하는 글로벌 팬덤 커뮤니티입니다."</p>
+                    <p class="text-lg font-semibold text-gold-500 italic" data-i18n="e_quote">"A global community where support and rewards cycle in harmony."</p>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-sand-900 text-center py-16 px-4 mt-12 border-t-8 border-gold-500 text-sand-200">
-        <div class="footer-links mb-6 flex flex-wrap justify-center gap-x-4 gap-y-2">
-            <a href="terms.html">Terms of Service</a>
-            <span class="text-sand-800 hidden md:inline">|</span>
-            <a href="PrivacyPolicy.html">Privacy Policy</a>
-            <span class="text-sand-800 hidden md:inline">|</span>
-            <a href="guidelines.html">Guidelines</a>
-            <span class="text-sand-800 hidden md:inline">|</span>
-            <a href="dmca.html">Copyright & DMCA Policy</a>
-            <span class="text-sand-800 hidden md:inline">|</span>
-            <a href="monetization.html">Monetization</a>
-            <span class="text-sand-800 hidden md:inline">|</span>
-            <a href="delete.html" style="color: #FF5252;">Request Account Deletion</a>
-        </div>
-        <p class="mb-2">&copy; 2026 Aiply. All rights reserved.</p>
-        <p>Contact: eyenic@naver.com</p>
-        
-        <div class="mt-10 max-w-xl mx-auto text-xs text-sand-800 leading-tight">
-            Aiply is a UGC brokerage platform specializing in AI-generated music. We ensure commercial rights verification for all uploads to protect creators and listeners.
+    <!-- FOOTER: Global Legal & Deletion -->
+    <footer class="bg-dark-900 border-t border-white/5 py-20 px-6 text-center">
+        <div class="max-w-6xl mx-auto">
+            <img src="simbol.jpg" alt="Aiply Symbol Footer" class="h-12 w-12 mx-auto mb-8 rounded-xl opacity-80" onerror="this.style.display='none'">
+            <img src="AIPLY_LOGO_black03.jpg" alt="Aiply Logo Footer" class="h-10 mx-auto mb-10 opacity-80" onerror="this.style.display='none'">
+            
+            <div class="footer-links flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
+                <a href="terms.html">Terms of Service</a>
+                <a href="PrivacyPolicy.html">Privacy Policy</a>
+                <a href="guidelines.html">Guidelines</a>
+                <a href="dmca.html">Copyright & DMCA Policy</a>
+                <a href="monetization.html">Monetization Policy</a>
+                <a href="delete.html" class="text-red-500/80 hover:text-red-500 font-bold">Request Account Deletion</a>
+            </div>
+            
+            <p class="text-gray-600 text-sm mb-4" data-i18n="footer_copy">&copy; 2026 AIPLY. SYNAPTIVE. All rights reserved.</p>
+            <p class="text-gray-600 text-sm">Contact: eyenic@naver.com</p>
+            
+            <div class="mt-12 max-w-2xl mx-auto text-[10px] text-gray-700 leading-tight uppercase tracking-widest" data-i18n="footer_disclaimer">
+                AIPLY IS A UGC BROKERAGE PLATFORM SPECIALIZING IN AI-GENERATED MUSIC. WE ADHERE TO STRICT GLOBAL STANDARDS OF INTELLECTUAL PROPERTY AND COMMERCIAL RIGHTS VERIFICATION.
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- Translation & State Engine -->
     <script>
-        // --- TRANSLATIONS OBJECT ---
         const translations = {
+            en: {
+                hero_sub: "THE FUTURE OF AI MUSIC CURATION",
+                hero_title: "Where Listening Creates<br><span class='text-gold-500'>Pure Value</span>",
+                hero_desc: "Step into an ecosystem where your ears empower creators and AI creativity is rewarded with integrity.",
+                hero_btn: "EXPLORE AIPLY GUIDE ⬇",
+                tour_intro: "Discover the synergy between listeners and artists. Aiply transforms passive listening into active support, ensuring a virtuous cycle of creativity and reward.",
+                tab_listener: "🎧 Listener Path",
+                tab_artist: "🎙️ Artist Path",
+                tab_ecosystem: "🔄 Ecosystem",
+                l_title: "Listener's Journey: From Discovery to Curator",
+                l_desc: "Explore how your interaction fuels the platform. Every skip, play, and 'Thanks' counts toward the ecosystem's health.",
+                l_f1: "AI Muse Chat",
+                l_f1_sub: "Personalized AI recommendations",
+                l_f2: "Super Thanks",
+                l_f2_sub: "Direct support for creators",
+                l_f3: "Note Collection",
+                l_f3_sub: "Build your curator influence",
+                l_d_title: "Discover Music via AI Muse",
+                l_d_desc: "\"Recommend some rainy day jazz.\" AI Muse scours the metadata of thousands of tracks to find the perfect sonic match for your current state.",
+                a_title: "Artist Path: Verification to Fandom",
+                a_desc: "For AI music creators, Aiply provides a secure harbor. We prioritize legal clarity and commercial rights above all.",
+                a_p_title: "Growth Process",
+                a_s1: "Creator Pro",
+                a_s1_sub: "Unlimited Uploads & 500 Battery",
+                a_s2: "Rights Proof",
+                a_s2_sub: "Legal verification of AI assets",
+                a_s3: "Exposure",
+                a_s3_sub: "Main chart top placement",
+                a_p_btn: "Simulate Next Step 🚀",
+                a_d_title: "Creator Pro Subscription",
+                a_d_desc: "Upgrade to Creator Pro to unlock the full potential of Aiply. Get 500 battery daily and the right to upload unlimited tracks to the marketplace.",
+                e_title: "Aiply Ecosystem: The Virtuous Cycle",
+                e_desc: "Aiply is a pure fandom ecosystem. We replace complex financial terms with simple contribution metrics: Points for Support, and Notes for Influence.",
+                e_p: "Support Point",
+                e_p_sub: "Pure support funds for creator activities",
+                e_n: "Contribution Note",
+                e_n_sub: "Platform influence and collector index",
+                e_btn: "RUN GROWTH SIMULATION 📈",
+                e_quote: "\"A global community where support and rewards cycle in harmony.\"",
+                chart_points: "Support Points",
+                chart_notes: "Contribution Notes",
+                footer_copy: "© 2026 AIPLY. SYNAPTIVE. All rights reserved.",
+                footer_disclaimer: "AIPLY IS A UGC BROKERAGE PLATFORM SPECIALIZING IN AI-GENERATED MUSIC. WE ADHERE TO STRICT GLOBAL STANDARDS OF INTELLECTUAL PROPERTY AND COMMERCIAL RIGHTS VERIFICATION."
+            },
             ko: {
-                hero_sub: "AI 음악의 새로운 혁명",
-                hero_title: "Aiply Guide: 창작의 가치를 가치로 바꾸다",
-                hero_desc: "단순히 음악을 듣기만 하셨나요? 이제 당신의 귀가, 당신의 창작이 실제 가치가 되는 세상.",
-                hero_btn: "에이플리 완벽 활용 가이드 시작하기 ⬇",
-                tour_intro: "아래 탭을 클릭하여 리스너(팬)와 아티스트(창작자)의 관점에서 에이플리의 혁신적인 시스템을 직접 탐색해보세요.",
+                hero_sub: "AI 음악 큐레이션의 미래",
+                hero_title: "듣는 것이 곧<br><span class='text-gold-500'>가치가 되는 곳</span>",
+                hero_desc: "당신의 청취가 크리에이터에게 힘이 되고, AI 창작이 정당하게 보상받는 건강한 생태계로 초대합니다.",
+                hero_btn: "에이플리 가이드 탐색 ⬇",
+                tour_intro: "리스너와 아티스트의 시너지를 확인하세요. 에이플리는 단순한 청취를 능동적인 지원으로 바꾸어 창작과 보상의 선순환을 보장합니다.",
                 tab_listener: "🎧 리스너 가이드",
                 tab_artist: "🎙️ 아티스트 가이드",
                 tab_ecosystem: "🔄 에코시스템",
-                l_title: "리스너의 여정: 취향의 발견부터 컬렉터가 되기까지",
-                l_desc: "에이플리 앱 내에서 일반 청취자가 경험하는 핵심 기능을 설명합니다.",
-                l_f1: "1. AI Muse 대화",
-                l_f1_sub: "내 취향에 맞는 곡 추천받기",
-                l_f2: "2. 슈퍼땡스 후원",
-                l_f2_sub: "아티스트 직접 후원하기",
-                l_f3: "3. Note 수집",
-                l_f3_sub: "기여도를 쌓고 컬렉터 되기",
-                l_d_title: "AI Muse와 대화하며 음악 탐색",
-                l_d_desc: "\"오늘 비가 오는데 듣기 좋은 재즈풍의 음악을 추천해줘.\" AI가 당신의 기분에 맞는 곡을 찾아줍니다.",
-                l_quote: "\"당신의 응원이 아티스트의 창작을 지속하게 합니다.\"",
-                a_title: "아티스트의 여정: 권리 증빙부터 팬덤 형성까지",
-                a_desc: "AI 음악 창작자가 자신의 곡을 안전하게 공유하고 가치를 창출하는 과정을 시뮬레이션 하세요.",
+                l_title: "리스너의 여정: 발견에서 컬렉터까지",
+                l_desc: "당신의 상호작용이 어떻게 플랫폼의 동력이 되는지 확인하세요. 모든 재생과 '슈퍼땡스'가 생태계의 영양분이 됩니다.",
+                l_f1: "AI Muse 대화",
+                l_f1_sub: "개인화된 AI 추천 서비스",
+                l_f2: "슈퍼땡스",
+                l_f2_sub: "아티스트 직접 후원 시스템",
+                l_f3: "노트(Note) 수집",
+                l_f3_sub: "나만의 큐레이터 영향력 강화",
+                l_d_title: "AI Muse와 음악 탐색",
+                l_d_desc: "\"비 오는 날 듣기 좋은 재즈 추천해줘.\" AI Muse가 수천 개의 트랙 중 당신의 기분에 딱 맞는 곡을 실시간으로 찾아냅니다.",
+                a_title: "아티스트 가이드: 증빙에서 팬덤까지",
+                a_desc: "AI 음악 창작자를 위한 안전한 항구. 에이플리는 법적 명확성과 상업적 권리를 최우선으로 합니다.",
                 a_p_title: "성장 프로세스",
-                a_s1: "Creator Pro 구독",
-                a_s1_sub: "음원 무제한 업로드 & 배터리 500",
-                a_s2: "상업적 권리 증빙",
-                a_s2_sub: "유료 플랜 영수증 업로드 (법적 보호)",
-                a_s3: "팬덤 형성 및 노출",
-                a_s3_sub: "메인 차트 노출 및 기여 보상 창출",
+                a_s1: "크리에이터 프로",
+                a_s1_sub: "무제한 업로드 및 500 배터리",
+                a_s2: "권리 증빙",
+                a_s2_sub: "AI 자산의 법적 권리 확인",
+                a_s3: "노출 가속화",
+                a_s3_sub: "메인 차트 상단 배치",
                 a_p_btn: "다음 단계 시뮬레이션 🚀",
-                a_d_title: "Creator Pro 구독 혜택",
-                a_d_desc: "매일 500 배터리가 제공되며, 생성한 트랙을 무제한으로 플랫폼에 업로드할 자격이 주어집니다.",
-                a_quote: "\"권리 증빙 한 번으로 당신은 에이플리의 공식 아티스트가 됩니다.\"",
+                a_d_title: "크리에이터 프로 구독",
+                a_d_desc: "크리에이터 프로로 업그레이드하여 에이플리의 잠재력을 100% 활용하세요. 매일 500 배터리와 무제한 업로드 권한이 주어집니다.",
                 e_title: "에이플리 에코시스템: 가치의 선순환",
-                e_desc: "에이플리는 금융권 용어를 배제한 순수한 '팬덤 에코시스템'입니다.",
-                e_p: "포인트 (Point)",
-                e_p_sub: "아티스트를 향한 창작 지원금",
-                e_n: "기여도 (Note)",
-                e_n_sub: "리스너의 영향력 및 컬렉터 지수",
-                e_btn: "선순환 성장 시뮬레이션 실행 📈",
-                e_quote: "\"창작 지원과 기여 보상이 선순환하는 글로벌 커뮤니티입니다.\"",
-                chart_points: "창작 지원금 (Points)",
-                chart_notes: "리스너 영향력 (Notes)"
-            },
-            en: {
-                hero_sub: "New Revolution of AI Music",
-                hero_title: "Aiply Guide: Turn Your Creativity into Value",
-                hero_desc: "Did you just listen to music? Now, your ears and creations become real value.",
-                hero_btn: "Start Aiply Guide ⬇",
-                tour_intro: "Click the tabs below to explore Aiply's innovative system from the perspective of listeners and artists.",
-                tab_listener: "🎧 Listener Guide",
-                tab_artist: "🎙️ Artist Guide",
-                tab_ecosystem: "🔄 Ecosystem",
-                l_title: "Listener's Journey: Discovery to Collection",
-                l_desc: "Explaining the core features experienced by listeners in the Aiply app.",
-                l_f1: "1. AI Muse Chat",
-                l_f1_sub: "Get music recommendations",
-                l_f2: "2. Super Thanks",
-                l_f2_sub: "Support artists directly",
-                l_f3: "3. Note Collection",
-                l_f3_sub: "Build influence as a collector",
-                l_d_title: "Explore Music with AI Muse",
-                l_d_desc: "\"Recommend some rainy day jazz.\" AI finds the perfect track for your mood in real-time.",
-                l_quote: "\"Your support keeps the artists creating.\"",
-                a_title: "Artist's Journey: Rights to Fandom",
-                a_desc: "Simulate how AI creators safely share music and generate value.",
-                a_p_title: "Growth Process",
-                a_s1: "Creator Pro Subscription",
-                a_s1_sub: "Unlimited uploads & 500 Battery",
-                a_s2: "Rights Verification",
-                a_s2_sub: "Upload paid plan receipts (Legal protection)",
-                a_s3: "Fandom & Exposure",
-                a_s3_sub: "Top chart exposure & reward generation",
-                a_p_btn: "Simulate Next Step 🚀",
-                a_d_title: "Creator Pro Benefits",
-                a_d_desc: "Get 500 daily battery and unlimited upload rights for your AI tracks.",
-                a_quote: "\"One verification makes you an official Aiply artist.\"",
-                e_title: "Aiply Ecosystem: The Virtuous Cycle",
-                e_desc: "Aiply is a pure 'Fandom Ecosystem', excluding financial terminology.",
-                e_p: "Point (Point)",
-                e_p_sub: "Direct support for artists",
-                e_n: "Note (Note)",
-                e_n_sub: "Listener influence & collector index",
-                e_btn: "Run Growth Simulation 📈",
-                e_quote: "\"A global community where support and contribution cycle together.\"",
-                chart_points: "Artist Support (Points)",
-                chart_notes: "Listener Influence (Notes)"
+                e_desc: "에이플리는 순수한 팬덤 생태계입니다. 금융 용어 대신 '지원 포인트'와 '기여 노트'라는 직관적인 지표를 사용합니다.",
+                e_p: "지원 포인트 (Point)",
+                e_p_sub: "창작 활동을 위한 순수 지원금",
+                e_n: "기여 노트 (Note)",
+                e_n_sub: "플랫폼 영향력 및 컬렉터 지수",
+                e_btn: "성장 시뮬레이션 실행 📈",
+                e_quote: "\"지원과 보상이 조화롭게 순환하는 글로벌 커뮤니티입니다.\"",
+                chart_points: "지원 포인트",
+                chart_notes: "기여 노트",
+                footer_copy: "© 2026 AIPLY. SYNAPTIVE. 모든 권리 보유.",
+                footer_disclaimer: "에이플리는 AI 생성 음악 전문 UGC 중개 플랫폼입니다. 우리는 지식 재산권 및 상업적 권리 증빙의 엄격한 글로벌 표준을 준수합니다."
             },
             ja: {
-                hero_sub: "AI音楽の新しい革命",
-                hero_title: "Aiply Guide: 創作の価値を価値に変える",
-                hero_desc: "ただ音楽を聴くだけでしたか？これからはあなたの耳と創作がリアルの価値になります。",
-                hero_btn: "ガイドを開始する ⬇",
-                tour_intro: "下のタブをクリックして、リスナーとアーティストの視点から革新的なシステムを体験してください。",
+                hero_sub: "AI音楽キュレーションの未来",
+                hero_title: "聴くことが<br><span class='text-gold-500'>価値に変わる場所</span>",
+                hero_desc: "あなたのリス닝がクリエイターの力になり、AIの創造性が正当に報われるエコシステムへ招待します。",
+                hero_btn: "ガイドを探索する ⬇",
+                tour_intro: "リスナーとアーティストの相乗効果を確認してください。Aiplyは受動的な聴取を能動的なサポートに変え、創造と報酬の好循環を保証します。",
                 tab_listener: "🎧 リスナーガイド",
-                tab_artist: "🎙️ アー티스트ガイド",
+                tab_artist: "🎙️ アーティストガイド",
                 tab_ecosystem: "🔄 エコシステム",
-                l_title: "リスナーの旅: 発見からコレクターへ",
-                l_desc: "Aiplyアプリでリスナーが体験する主な機能を説明します。",
-                l_f1: "1. AI Muse対話",
-                l_f1_sub: "おすすめの曲を受け取る",
-                l_f2: "2. Super Thanks",
-                l_f2_sub: "アーティストを直接支援",
-                l_f3: "3. Note収集",
-                l_f3_sub: "コレクターとして寄与度を積む",
-                l_d_title: "AI Museと対話して音楽探索",
-                l_d_desc: "「雨の日に合うジャズを教えて」AIがあなたの気分にぴったりの曲をリアルタイムで探します。",
-                l_quote: "「あなたの応援がアーティストの創作を支えます」",
-                a_title: "アーティストの旅: 権利証明からファン層形成まで",
-                a_desc: "AI音楽クリエイターが安全に曲を共有し、価値を創出する過程を体験してください。",
+                l_title: "リスナーの旅：発見からコレクターへ",
+                l_desc: "あなたの相互作用がどのようにプラットフォームの動力になるかを確認してください。すべての再生と「スーパーサンクス」がエコシステムの栄養になります。",
+                l_f1: "AI Museチャット",
+                l_f1_sub: "パーソナライズされたAI推奨",
+                l_f2: "スーパーサンクス",
+                l_f2_sub: "クリエイター直接支援システム",
+                l_f3: "ノート(Note)収集",
+                l_f3_sub: "独自のキュレーター影響力の強化",
+                l_d_title: "AI Museで音楽を探索",
+                l_d_desc: "「雨の日に聴きたいジャズを教えて。」AI Museが数千のトラックからあなたの気分にぴったりの曲をリアルタイムで見つけ出します。",
+                a_title: "アーティストガイド：証明からファンダムまで",
+                a_desc: "AI音楽クリエイターのための安全な港。Aiplyは法的明確性と商業的権利を最優先します。",
                 a_p_title: "成長プロセス",
-                a_s1: "Creator Pro購読",
-                a_s1_sub: "無制限アップロード＆500バッテリー",
-                a_s2: "商用利用権利の証明",
-                a_s2_sub: "有料プラン領収書アップロード (法的保護)",
-                a_s3: "ファン層の形成と露出",
-                a_s3_sub: "チャート上位露出と寄与報酬の創出",
-                a_p_btn: "次のステップ 🚀",
-                a_d_title: "Creator Proの特典",
-                a_d_desc: "毎日500バッテリーを提供し、無制限のアップロード資格が付与されます。",
-                a_quote: "「権利証明一つで、あなたはAiplyの公式アーティストになります」",
-                e_title: "Aiplyエコシステム: 価値の好循環",
-                e_desc: "Aiplyは金融用語を排除した純粋な「ファン層エコシステム」です。",
-                e_p: "ポイント (Point)",
-                e_p_sub: "アーティストへの直接的な創作支援金",
-                e_n: "寄与度 (Note)",
-                e_n_sub: "リスナーの影響力とコレクター指数",
+                a_s1: "クリエイタープロ",
+                a_s1_sub: "無制限アップロードと500バッテリー",
+                a_s2: "権利証明",
+                a_s2_sub: "AI資産の法的権利確認",
+                a_s3: "露出の加速",
+                a_s3_sub: "メインチャートの上位配置",
+                a_p_btn: "次のステップをシミュレート 🚀",
+                a_d_title: "クリエイタープロ購読",
+                a_d_desc: "クリエイタープロにアップグレードして、Aiplyの可能性を100%活用しましょう。毎日500バッテリーと無制限のアップロード権限が付与されます。",
+                e_title: "Aiplyエコシステム：価値の好循環",
+                e_desc: "Aiplyは純粋なファンダムエコシステムです。金融用語の代わりに「支援ポイント」と「貢献ノート」という直感的な指標を使用します。",
+                e_p: "支援ポイント (Point)",
+                e_p_sub: "創作活動のための純粋な支援金",
+                e_n: "貢献ノート (Note)",
+                e_n_sub: "プラットフォームの影響力とコレクター指数",
                 e_btn: "成長シミュレーションを実行 📈",
-                e_quote: "「支援と貢献が循環するグローバルコミュニティです」",
-                chart_points: "創作支援金 (Points)",
-                chart_notes: "寄与度 (Notes)"
+                e_quote: "「支援と報酬が調和して循環するグローバルコミュニティです。」",
+                chart_points: "支援ポイント",
+                chart_notes: "貢献ノート",
+                footer_copy: "© 2026 AIPLY. SYNAPTIVE. 全著作権所有。",
+                footer_disclaimer: "AIPLYはAI生成音楽専門のUGC仲介プラットフォームです。当社は知的財産権および商業的権利証明の厳格な世界的基準を遵守しています。"
             },
             pt: {
-                hero_sub: "Nova Revolução da Música AI",
-                hero_title: "Aiply Guide: Transforme sua Criatividade em Valor",
-                hero_desc: "Você apenas ouvia música? Agora, seus ouvidos e criações tornam-se valor real.",
-                hero_btn: "Iniciar Guia Aiply ⬇",
-                tour_intro: "Clique nas abas abaixo para explorar o sistema inovador da Aiply da perspectiva de ouvintes e artistas.",
+                hero_sub: "O FUTURO DA CURADORIA DE MÚSICA AI",
+                hero_title: "Onde Ouvir Cria<br><span class='text-gold-500'>Valor Puro</span>",
+                hero_desc: "Entre em um ecossistema onde seus ouvidos capacitam criadores e a criatividade da IA é recompensada com integridade.",
+                hero_btn: "EXPLORAR GUIA AIPLY ⬇",
+                tour_intro: "Descubra a sinergia entre ouvintes e artistas. Aiply transforma a escuta passiva em apoio ativo, garantindo um ciclo virtuoso de criatividade e recompensa.",
                 tab_listener: "🎧 Guia do Ouvinte",
                 tab_artist: "🎙️ Guia do Artista",
                 tab_ecosystem: "🔄 Ecossistema",
-                l_title: "Jornada do Ouvinte: Da Descoberta à Coleção",
-                l_desc: "Explicando os principais recursos vivenciados pelos ouvintes no app Aiply.",
-                l_f1: "1. Chat com AI Muse",
-                l_f1_sub: "Receba recomendações de música",
-                l_f2: "2. Super Thanks",
-                l_f2_sub: "Apoie artistas diretamente",
-                l_f3: "3. Coleção de Notes",
-                l_f3_sub: "Crie influência como colecionador",
-                l_d_title: "Explore Música com AI Muse",
-                l_d_desc: "\"Recomende um jazz para dia de chuva.\" A IA encontra a faixa perfeita em tempo real.",
-                l_quote: "\"Seu apoio mantém os artistas criando.\"",
-                a_title: "Jornada do Artista: Dos Direitos ao Fandom",
-                a_desc: "Simule como criadores de IA compartilham música com segurança e geram valor.",
+                l_title: "Jornada do Ouvinte: Da Descoberta ao Curador",
+                l_desc: "Explore como sua interação alimenta a plataforma. Cada play e 'Thanks' conta para a saúde do ecossistema.",
+                l_f1: "Chat AI Muse",
+                l_f1_sub: "Recomendações personalizadas de IA",
+                l_f2: "Super Thanks",
+                l_f2_sub: "Apoio direto para criadores",
+                l_f3: "Coleção de Notes",
+                l_f3_sub: "Construa sua influência de curador",
+                l_d_title: "Descubra Música via AI Muse",
+                l_d_desc: "\"Recomende um jazz para dia de chuva.\" O AI Muse vasculha metadados para encontrar a combinação perfeita para você.",
+                a_title: "Guia do Artista: Da Verificação ao Fandom",
+                a_desc: "Para criadores de música AI, a Aiply oferece um porto seguro. Priorizamos clareza legal e direitos comerciais acima de tudo.",
                 a_p_title: "Processo de Crescimento",
-                a_s1: "Assinatura Creator Pro",
-                a_s1_sub: "Uploads ilimitados e 500 Bateria",
-                a_s2: "Verificação de Direitos",
-                a_s2_sub: "Upload de recibos de planos pagos (Proteção legal)",
-                a_s3: "Fandom e Exposição",
-                a_s3_sub: "Exposição no topo das paradas e geração de recompensas",
+                a_s1: "Creator Pro",
+                a_s1_sub: "Uploads Ilimitados e 500 Bateria",
+                a_s2: "Prova de Direitos",
+                a_s2_sub: "Verificação legal de ativos de IA",
+                a_s3: "Exposição",
+                a_s3_sub: "Posicionamento no topo do chart",
                 a_p_btn: "Simular Próximo Passo 🚀",
-                a_d_title: "Benefícios Creator Pro",
-                a_d_desc: "Obtenha 500 de bateria diária e direitos de upload ilimitados para suas faixas de IA.",
-                a_quote: "\"Uma verificação torna você um artista oficial da Aiply.\"",
-                e_title: "Ecossistema Aiply: O Círculo Virtuoso",
-                e_desc: "Aiply é um puro 'Ecossistema de Fandom', excluindo terminologia financeira.",
-                e_p: "Ponto (Point)",
-                e_p_sub: "Apoio direto aos artistas",
-                e_n: "Contribuição (Note)",
-                e_n_sub: "Influência do ouvinte e índice de colecionador",
-                e_btn: "Executar Simulação de Crescimento 📈",
-                e_quote: "\"Uma comunidade global onde apoio e contribuição ciclam juntos.\"",
-                chart_points: "Apoio ao Artista (Points)",
-                chart_notes: "Influência do Ouvinte (Notes)"
+                a_d_title: "Assinatura Creator Pro",
+                a_d_desc: "Atualize para o Creator Pro para desbloquear todo o potencial da Aiply. Receba 500 de bateria diária e direito de upload ilimitado.",
+                e_title: "Ecossistema Aiply: O Ciclo Virtuoso",
+                e_desc: "A Aiply é um ecossistema de fandom puro. Substituímos termos financeiros por métricas de contribuição: Pontos para Apoio e Notes para Influência.",
+                e_p: "Ponto de Apoio",
+                e_p_sub: "Fundos de apoio puro para atividades criativas",
+                e_n: "Note de Contribuição",
+                e_n_sub: "Influência na plataforma e índice de colecionador",
+                e_btn: "EXECUTAR SIMULAÇÃO DE CRESCIMENTO 📈",
+                e_quote: "\"Uma comunidade global onde apoio e recompensas ciclam em harmonia.\"",
+                chart_points: "Pontos de Apoio",
+                chart_notes: "Notes de Contribuição",
+                footer_copy: "© 2026 AIPLY. SYNAPTIVE. Todos os direitos reservados.",
+                footer_disclaimer: "A AIPLY É UMA PLATAFORMA DE INTERMEDIAÇÃO UGC ESPECIALIZADA EM MÚSICA GERADA POR IA. ADERIMOS A PADRÕES GLOBAIS RÍGIDOS DE PROPRIEDADE INTELECTUAL E VERIFICAÇÃO DE DIREITOS COMERCIAIS."
+            },
+            fr: {
+                hero_sub: "L'AVENIR DE LA CURATION MUSICALE AI",
+                hero_title: "Où l'Écoute Crée<br><span class='text-gold-500'>une Valeur Pure</span>",
+                hero_desc: "Entrez dans un écosystème où vos oreilles responsabilisent les créateurs et où la créativité de l'IA est récompensée avec intégrité.",
+                hero_btn: "EXPLORER LE GUIDE AIPLY ⬇",
+                tour_intro: "Découvrez la synergie entre auditeurs et artistes. Aiply transforme l'écoute passive en soutien actif, assurant un cycle vertueux de créativité et de récompense.",
+                tab_listener: "🎧 Guide Auditeur",
+                tab_artist: "🎙️ Guide Artiste",
+                tab_ecosystem: "🔄 Écosystème",
+                l_title: "Parcours de l'Auditeur : De la Découverte au Curateur",
+                l_desc: "Explorez comment votre interaction alimente la plateforme. Chaque écoute et 'Thanks' compte pour la santé de l'écosystème.",
+                l_f1: "Chat AI Muse",
+                l_f1_sub: "Recommandations IA personnalisées",
+                l_f2: "Super Thanks",
+                l_f2_sub: "Soutien direct aux créateurs",
+                l_f3: "Collection de Notes",
+                l_f3_sub: "Renforcez votre influence de curateur",
+                l_d_title: "Découvrez la Musique via AI Muse",
+                l_d_desc: "\"Recommande du jazz pour un jour de pluie.\" AI Muse parcourt les métadonnées pour trouver le morceau parfait.",
+                a_title: "Parcours de l'Artiste : De la Vérification au Fandom",
+                a_desc: "Pour les créateurs de musique IA, Aiply offre un havre de paix. Nous priorisons la clarté juridique et les droits commerciaux.",
+                a_p_title: "Processus de Croissance",
+                a_s1: "Creator Pro",
+                a_s1_sub: "Uploads Illimités & 500 Batterie",
+                a_s2: "Preuve de Droits",
+                a_s2_sub: "Vérification légale des actifs IA",
+                a_s3: "Exposition",
+                a_s3_sub: "Placement en haut du classement",
+                a_p_btn: "Simuler l'Étape Suivante 🚀",
+                a_d_title: "Abonnement Creator Pro",
+                a_d_desc: "Passez à Creator Pro pour débloquer tout le potentiel d'Aiply. Obtenez 500 de batterie quotidienne et des droits d'upload illimités.",
+                e_title: "L'Écosystème Aiply : Le Cycle Vertueux",
+                e_desc: "Aiply est un pur écosystème de fandom. Nous remplaçons les termes financiers par des mesures de contribution : Points de Soutien et Notes d'Influence.",
+                e_p: "Point de Soutien",
+                e_p_sub: "Fonds de soutien pur pour les activités créatives",
+                e_n: "Note de Contribution",
+                e_n_sub: "Influence plateforme et indice de collectionneur",
+                e_btn: "LANCER LA SIMULATION DE CROISSANCE 📈",
+                e_quote: "\"Une communauté mondiale où soutien et récompenses s'harmonisent.\"",
+                chart_points: "Points de Soutien",
+                chart_notes: "Notes de Contribution",
+                footer_copy: "© 2026 AIPLY. SYNAPTIVE. Tous droits réservés.",
+                footer_disclaimer: "AIPLY EST UNE PLATEFORME DE COURTAGE UGC SPÉCIALISÉE DANS LA MUSIQUE GÉNÉRÉE PAR IA. NOUS RESPECTONS LES NORMES MONDIALES LES PLUS STRICTES EN MATIÈRE DE PROPRIÉTÉ INTELLECTUELLE."
+            },
+            de: {
+                hero_sub: "DIE ZUKUNFT DER KI-MUSIKKURATION",
+                hero_title: "Wo Hören<br><span class='text-gold-500'>reinen Wert schafft</span>",
+                hero_desc: "Treten Sie in ein Ökosystem ein, in dem Ihr Gehör Schöpfer stärkt und KI-Kreativität mit Integrität belohnt wird.",
+                hero_btn: "AIPLY GUIDE ERKUNDEN ⬇",
+                tour_intro: "Entdecken Sie die Synergie zwischen Hörern und Künstlern. Aiply verwandelt passives Hören in aktive Unterstützung und sichert so einen Kreislauf aus Kreativität und Belohnung.",
+                tab_listener: "🎧 Hörer-Leitfaden",
+                tab_artist: "🎙️ Künstler-Leitfaden",
+                tab_ecosystem: "🔄 Ökosystem",
+                l_title: "Die Reise des Hörers: Vom Entdecken zum Kurator",
+                l_desc: "Erkunden Sie, wie Ihre Interaktion die Plattform antreibt. Jedes Abspielen und 'Thanks' zählt für die Gesundheit des Ökosystems.",
+                l_f1: "KI-Muse-Chat",
+                l_f1_sub: "Personalisierte KI-Empfehlungen",
+                l_f2: "Super Thanks",
+                l_f2_sub: "Direkte Unterstützung für Schöpfer",
+                l_f3: "Note-Sammlung",
+                l_f3_sub: "Bauen Sie Ihren Kurator-Einfluss aus",
+                l_d_title: "Musik entdecken via KI-Muse",
+                l_d_desc: "\"Empfiehl mir Jazz für einen Regentag.\" Die KI-Muse findet den perfekten Track für Ihre aktuelle Stimmung.",
+                a_title: "Künstler-Weg: Von der Verifizierung zum Fandom",
+                a_desc: "Für KI-Musikschöpfer bietet Aiply einen sicheren Hafen. Wir priorisieren rechtliche Klarheit und kommerzielle Rechte.",
+                a_p_title: "Wachstumsprozess",
+                a_s1: "Creator Pro",
+                a_s1_sub: "Unbegrenzte Uploads & 500 Batterie",
+                a_s2: "Rechtenachweis",
+                a_s2_sub: "Rechtliche Verifizierung von KI-Assets",
+                a_s3: "Exposition",
+                a_s3_sub: "Platzierung an der Chartspitze",
+                a_p_btn: "Nächsten Schritt simulieren 🚀",
+                a_d_title: "Creator Pro Abonnement",
+                a_d_desc: "Upgrade auf Creator Pro, um das volle Potenzial von Aiply freizuschalten. Erhalten Sie täglich 500 Batterien und unbegrenzte Upload-Rechte.",
+                e_title: "Das Aiply-Ökosystem: Der Teufelskreis des Guten",
+                e_desc: "Aiply ist ein reines Fandom-Ökosystem. Wir ersetzen Finanzbegriffe durch Beitragsmetriken: Support-Punkte und Contribution-Notes.",
+                e_p: "Support-Punkt",
+                e_p_sub: "Reine Unterstützungsgelder für kreative Aktivitäten",
+                e_n: "Contribution-Note",
+                e_n_sub: "Plattformeinfluss und Sammlerindex",
+                e_btn: "WACHSTUMSSIMULATION STARTEN 📈",
+                e_quote: "\"Eine globale Gemeinschaft, in der Unterstützung und Belohnung im Einklang stehen.\"",
+                chart_points: "Support-Punkte",
+                chart_notes: "Contribution-Notes",
+                footer_copy: "© 2026 AIPLY. SYNAPTIVE. Alle Rechte vorbehalten.",
+                footer_disclaimer: "AIPLY IST EINE UGC-MAKLERPLATTFORM, DIE AUF KI-GENERIERTE MUSIK SPEZIALISIERT IST. WIR HALTEN UNS AN STRENGE GLOBALE STANDARDS FÜR GEISTIGES EIGENTUM."
             }
         };
 
-        let currentLang = 'ko';
+        let currentLang = 'en'; // Default to English as requested
 
         function changeLanguage(lang) {
             currentLang = lang;
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    el.innerText = translations[lang][key];
+                    el.innerHTML = translations[lang][key];
                 }
             });
             updateListenerView(currentListenerKey || 'muse');
@@ -479,19 +576,19 @@
 
             const box = document.getElementById('listener-detail-box');
             const icons = { muse: '💬', thanks: '💖', note: '📝' };
-            const title = translations[currentLang][`l_d_title` + (key === 'muse' ? '' : key === 'thanks' ? '_t' : '_n')]; 
-            // Simplified for logic
-            const localizedTitle = key === 'muse' ? translations[currentLang].l_d_title : (key === 'thanks' ? translations[currentLang].l_f2 : translations[currentLang].l_f3);
-            const localizedDesc = key === 'muse' ? translations[currentLang].l_d_desc : (key === 'thanks' ? translations[currentLang].l_f2_sub : translations[currentLang].l_f3_sub);
+            
+            const localizedTitle = translations[currentLang][`l_f${key === 'muse' ? 1 : key === 'thanks' ? 2 : 3}`];
+            const localizedDesc = translations[currentLang][`l_d_${key === 'muse' ? 'desc' : (key === 'thanks' ? 'desc_t' : 'desc_n')}`] || 
+                                 (key === 'muse' ? translations[currentLang].l_d_desc : (key === 'thanks' ? translations[currentLang].l_f2_sub : translations[currentLang].l_f3_sub));
 
             box.style.opacity = '0';
             setTimeout(() => {
                 box.innerHTML = `
-                    <div class="flex items-start gap-6">
-                        <div class="text-6xl hidden sm:block">${icons[key]}</div>
+                    <div class="flex items-start gap-8">
+                        <div class="text-7xl hidden sm:block">${icons[key]}</div>
                         <div>
-                            <h5 class="text-xl font-bold text-gold-500 mb-2">${localizedTitle}</h5>
-                            <p class="text-lg font-light">${localizedDesc}</p>
+                            <h5 class="text-2xl font-bold text-gold-500 mb-4">${localizedTitle}</h5>
+                            <p class="text-xl font-light text-white leading-relaxed">${localizedDesc}</p>
                         </div>
                     </div>
                 `;
@@ -512,27 +609,23 @@
             for(let i=1; i<=3; i++) {
                 const icon = document.getElementById(`step${i}-icon`);
                 if(i <= currentArtistStep) {
-                    icon.classList.replace('bg-sand-200', 'bg-gold-500');
-                    icon.classList.replace('text-sand-800', 'text-white');
+                    icon.className = "flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black font-black";
                 } else {
-                    icon.classList.replace('bg-gold-500', 'bg-sand-200');
-                    icon.classList.replace('text-white', 'text-sand-800');
+                    icon.className = "flex-shrink-0 w-10 h-10 rounded-full bg-dark-900 border border-gold-500/30 flex items-center justify-center text-gray-500 font-black transition-all";
                 }
             }
             const display = document.getElementById('artist-display');
             const icons = { 1: '🔋', 2: '📜', 3: '👑' };
-            const title = translations[currentLang][`a_s${currentArtistStep}`];
-            const desc = translations[currentLang][`a_d_desc` + (currentArtistStep === 1 ? '' : currentArtistStep === 2 ? '' : '')]; 
-            // In a real app we'd map this properly, here we reuse a_d_desc for brevity or logic
+            
             const localizedTitle = translations[currentLang][`a_s${currentArtistStep}`];
             const localizedDesc = currentArtistStep === 1 ? translations[currentLang].a_d_desc : (currentArtistStep === 2 ? translations[currentLang].a_s2_sub : translations[currentLang].a_s3_sub);
 
             display.style.opacity = '0';
             setTimeout(() => {
                 display.innerHTML = `
-                    <div class="text-6xl mb-4">${icons[currentArtistStep]}</div>
-                    <h5 class="text-2xl font-bold text-gold-500 mb-2">${localizedTitle}</h5>
-                    <p class="text-lg font-light">${localizedDesc}</p>
+                    <div class="text-7xl mb-8">${icons[currentArtistStep]}</div>
+                    <h5 class="text-3xl font-bold text-gold-500 mb-6">${localizedTitle}</h5>
+                    <p class="text-xl font-light text-white leading-relaxed">${localizedDesc}</p>
                 `;
                 display.style.opacity = '1';
                 display.style.transition = 'opacity 0.3s ease';
@@ -543,13 +636,13 @@
         let ecosystemChartInstance = null;
         const initialPoints = [10, 15, 20, 25, 30, 35];
         const initialNotes = [5, 8, 12, 18, 22, 28];
-        const growthPoints = [10, 25, 55, 95, 150, 220];
-        const growthNotes = [5, 20, 45, 80, 130, 190];
+        const growthPoints = [10, 35, 75, 125, 190, 270];
+        const growthNotes = [5, 25, 60, 110, 175, 250];
 
         function initChart() {
             const ctx = document.getElementById('ecosystemChart').getContext('2d');
             Chart.defaults.font.family = "'Inter', sans-serif";
-            Chart.defaults.color = '#4A4641';
+            Chart.defaults.color = '#777';
 
             ecosystemChartInstance = new Chart(ctx, {
                 type: 'line',
@@ -561,17 +654,17 @@
                             data: initialPoints,
                             borderColor: '#C69C6D',
                             backgroundColor: 'rgba(198, 156, 109, 0.1)',
-                            borderWidth: 3,
+                            borderWidth: 4,
                             tension: 0.4,
                             fill: true,
                         },
                         {
                             label: translations[currentLang].chart_notes,
                             data: initialNotes,
-                            borderColor: '#2C2A29',
+                            borderColor: '#FFFFFF',
                             backgroundColor: 'transparent',
-                            borderWidth: 3,
-                            borderDash: [5, 5],
+                            borderWidth: 4,
+                            borderDash: [8, 4],
                             tension: 0.4,
                         }
                     ]
@@ -580,11 +673,11 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'top' },
+                        legend: { position: 'top', labels: { color: '#D1D1D1' } },
                     },
                     scales: {
-                        x: { grid: { display: false } },
-                        y: { suggestedMax: 250 }
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { suggestedMax: 300, grid: { color: 'rgba(255,255,255,0.05)' } }
                     }
                 }
             });
@@ -601,11 +694,12 @@
             if(!ecosystemChartInstance) return;
             ecosystemChartInstance.data.datasets[0].data = growthPoints;
             ecosystemChartInstance.data.datasets[1].data = growthNotes;
-            ecosystemChartInstance.update({ duration: 1500, easing: 'easeOutQuart' });
+            ecosystemChartInstance.update({ duration: 2000, easing: 'easeOutQuart' });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             initChart();
+            changeLanguage('en'); // Initial setup
         });
     </script>
 </body>
