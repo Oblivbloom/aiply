@@ -1,118 +1,461 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aiply - AI Music & Market Ecosystem</title>
-    <style>
-        :root {
-            --primary: #00E676; /* 앱의 상승장 초록색 */
-            --bg: #121212;
-            --surface: #1E1E1E;
-            --text: #ffffff;
-            --text-secondary: #B0B0B0;
-        }
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        header {
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(18, 18, 18, 0.95);
-            position: sticky;
-            top: 0;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); letter-spacing: 1px; }
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: radial-gradient(circle at center, #2a2a2a 0%, #121212 70%);
-        }
-        h1 { font-size: 3.5rem; margin-bottom: 20px; background: linear-gradient(45deg, #fff, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        p.subtitle { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; }
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: var(--primary);
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: transform 0.2s;
-        }
-        .btn:hover { transform: scale(1.05); }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            padding: 80px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .card {
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 20px;
-            transition: transform 0.3s;
-            border: 1px solid #333;
-        }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .card h3 { color: var(--primary); margin-top: 0; }
-        
-        footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid #333;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 10px; }
-        .footer-links a:hover { color: var(--primary); }
+    <title>Aiply Guide: Turn Your AI Music into Value</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Warm Sand & Signature Gold (Neutrals: #FAFAED, #EAE4D9, Dark: #2C2A29, Accent: #C69C6D) -->
+    <!-- Application Structure Plan: The SPA uses a "Virtual Interactive Tour" structure that mirrors the narrative flow of the provided YouTube video scenario. It begins with a Hero section (Stage 1), then uses a tabbed interface to let users actively explore the platform from two distinct perspectives: the Listener (Stage 2) and the Artist (Stage 3). It culminates in an Ecosystem Dashboard (Stage 4) that visualizes the platform's core mechanics. A persistent call-to-action (Stage 5) anchors the experience. This tabbed/dashboard approach was chosen to transform a linear video script into an exploratory, self-paced learning experience. -->
+    <!-- Visualization & Content Choices: 
+         - Goal: Inform & Engage (Stages 1-3) -> Method: Interactive HTML/Tailwind cards, state-driven text updates, and progress trackers. Justification: Allows users to "click through" the features like a real app tutorial without using complex SVG mockups.
+         - Goal: Show Relationship & Trends (Stage 4) -> Method: Chart.js dual-axis line chart. Justification: The script describes a "virtuous cycle" between Artist Support (Points) and Listener Influence (Notes). A dynamic line chart perfectly visualizes this symbiotic growth over time.
+         - Goal: Visuals -> Method: Unicode emojis. Justification: Adheres strictly to the NO SVG rule while maintaining visual engagement. 
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .features { grid-template-columns: 1fr; }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        sand: { 50: '#FAFAED', 100: '#F4F0E6', 200: '#EAE4D9', 800: '#4A4641', 900: '#2C2A29' },
+                        gold: { 500: '#C69C6D', 600: '#B3895D' }
+                    }
+                }
+            }
         }
+    </script>
+    <style>
+        body { background-color: #FAFAED; color: #2C2A29; overflow-x: hidden; }
+        .tab-btn.active { border-bottom: 4px solid #C69C6D; color: #C69C6D; font-weight: 800; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* STRICT CHART CONTAINER STYLING */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+            min-height: 250px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #EAE4D9;
+        }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        
+        .feature-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); transition: all 0.2s ease; cursor: pointer; }
+        .feature-card.selected { border-color: #C69C6D; background-color: #FAFAED; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <header>
-        <div class="logo">AIPLY</div>
+    <!-- STAGE 1: Hero / Hook -->
+    <header class="w-full bg-sand-900 text-sand-50 py-20 px-6 text-center shadow-lg relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 text-[10rem] font-black leading-none select-none flex items-center justify-center overflow-hidden">
+            AIPLY
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h2 class="text-gold-500 font-bold tracking-widest text-sm mb-4 uppercase">AI 음악의 새로운 혁명</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Aiply Guide:<br>Turn Your AI Music into Value</h1>
+            <p class="text-xl md:text-2xl text-sand-200 mb-10 font-light">"단순히 음악을 듣기만 하셨나요?<br>이제 당신의 귀가, 당신의 창작이 실제 가치가 되는 세상."</p>
+            <button onclick="document.getElementById('tour-section').scrollIntoView({behavior: 'smooth'})" class="bg-gold-500 hover:bg-gold-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-colors shadow-xl">
+                에이플리 완벽 활용 가이드 시작하기 ⬇
+            </button>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1>Music Meets Economy & AI</h1>
-        <p class="subtitle">
-            Experience the next generation of music streaming. 
-            Trade songs like stocks, chat with AI Muse, and connect with artists directly.
-        </p>
-        <a href="#" class="btn">Coming Soon on Google Play</a>
-    </section>
+    <!-- Interactive Tour Section -->
+    <main id="tour-section" class="max-w-6xl mx-auto px-4 py-16">
+        
+        <div class="text-center mb-12">
+            <p class="text-sand-800 text-lg max-w-2xl mx-auto">
+                아래 탭을 클릭하여 리스너(팬)와 아티스트(창작자)의 관점에서 에이플리의 혁신적인 시스템을 직접 탐색해보세요. 두 역할이 어떻게 만나 가치의 선순환을 이루는지 확인할 수 있습니다.
+            </p>
+        </div>
 
-    <section class="features">
-        <div class="card">
-            <h3>📈 Music Marketplace</h3>
-            <p>Don't just listen—invest. Buy and sell songs using Points. Watch the value of your favorite tracks rise on the real-time dashboard.</p>
+        <!-- Navigation Tabs -->
+        <div class="flex justify-center border-b-2 border-sand-200 mb-10 overflow-x-auto">
+            <button class="tab-btn active px-6 py-4 text-lg font-semibold text-sand-800 transition-colors whitespace-nowrap" data-target="tab-listener">
+                🎧 리스너 가이드 (Stage 2)
+            </button>
+            <button class="tab-btn px-6 py-4 text-lg font-semibold text-sand-800 transition-colors whitespace-nowrap" data-target="tab-artist">
+                🎙️ 아티스트 가이드 (Stage 3)
+            </button>
+            <button class="tab-btn px-6 py-4 text-lg font-semibold text-sand-800 transition-colors whitespace-nowrap" data-target="tab-ecosystem">
+                🔄 에코시스템 (Stage 4)
+            </button>
         </div>
-        <div class="card">
-            <h3>🤖 AI Muse Chat</h3>
-            <p>Meet your new music companion. Powered by Gemini AI, Muse understands your taste and chats with you in real-time.</p>
+
+        <!-- STAGE 2: Listener Tab -->
+        <div id="tab-listener" class="tab-content active">
+            <div class="bg-white rounded-2xl shadow-sm border border-sand-100 p-8">
+                <h3 class="text-2xl font-bold text-sand-900 mb-4">리스너의 여정: 취향의 발견부터 컬렉터가 되기까지</h3>
+                <p class="text-sand-800 mb-8 leading-relaxed">
+                    이 섹션은 에이플리 앱 내에서 일반 청취자가 경험하는 핵심 기능을 설명합니다. 좋아하는 아티스트를 직접 후원하고, 플랫폼의 기여자가 되는 과정을 아래 카드를 클릭하여 확인하세요.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="feature-card border-2 border-transparent bg-sand-50 rounded-xl p-6 text-center selected" onclick="updateListenerView('muse', this)">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h4 class="font-bold text-lg mb-2">1. AI Muse 대화</h4>
+                        <p class="text-sm text-sand-800">내 취향에 맞는 곡 추천받기</p>
+                    </div>
+                    <div class="feature-card border-2 border-transparent bg-sand-50 rounded-xl p-6 text-center" onclick="updateListenerView('thanks', this)">
+                        <div class="text-4xl mb-4">💖</div>
+                        <h4 class="font-bold text-lg mb-2">2. 슈퍼땡스 후원</h4>
+                        <p class="text-sm text-sand-800">마음에 드는 아티스트 후원하기</p>
+                    </div>
+                    <div class="feature-card border-2 border-transparent bg-sand-50 rounded-xl p-6 text-center" onclick="updateListenerView('note', this)">
+                        <div class="text-4xl mb-4">📝</div>
+                        <h4 class="font-bold text-lg mb-2">3. Note 수집</h4>
+                        <p class="text-sm text-sand-800">기여도를 쌓고 컬렉터 되기</p>
+                    </div>
+                </div>
+
+                <div id="listener-detail-box" class="bg-sand-900 text-sand-50 p-8 rounded-xl border-l-8 border-gold-500 min-h-[150px] flex items-center">
+                    <div>
+                        <h5 class="text-xl font-bold text-gold-500 mb-2">AI Muse와 대화하며 음악 탐색</h5>
+                        <p class="text-lg font-light">"오늘 비가 오는데 듣기 좋은 재즈풍의 AI 음악을 추천해줘." AI 챗봇(Muse)이 수많은 생성 음악 중 당신의 기분에 완벽히 맞는 트랙을 실시간으로 찾아줍니다.</p>
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <p class="text-lg font-semibold text-gold-600 italic">"당신의 응원이 아티스트의 창작을 지속하게 합니다."</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <h3>🎧 Premium Streaming</h3>
-            <p>High-quality audio streaming with a smart library system. Cache your favorites and listen offline seamlessly.</p>
+
+        <!-- STAGE 3: Artist Tab -->
+        <div id="tab-artist" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-sand-100 p-8">
+                <h3 class="text-2xl font-bold text-sand-900 mb-4">아티스트의 여정: 권리 증빙부터 팬덤 형성까지</h3>
+                <p class="text-sand-800 mb-8 leading-relaxed">
+                    이 섹션은 AI 음악 창작자가 에이플리에서 자신의 곡을 안전하게 공유하고 수익화하는 과정을 보여줍니다. 권리 증빙이라는 강력한 법적 안전장치를 통해 공식 아티스트로 거듭나는 과정을 시뮬레이션 해보세요.
+                </p>
+
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <!-- Progress Tracker -->
+                    <div class="w-full md:w-1/3 bg-sand-50 p-6 rounded-xl border border-sand-100">
+                        <h4 class="font-bold text-lg mb-6">성장 프로세스</h4>
+                        <ul class="relative border-l-2 border-sand-200 ml-3">
+                            <li class="mb-8 ml-6">
+                                <span class="absolute flex items-center justify-center w-8 h-8 bg-gold-500 rounded-full -left-4 ring-4 ring-white text-white text-sm font-bold" id="step1-icon">1</span>
+                                <h5 class="font-bold text-sand-900">Creator Pro 구독</h5>
+                                <p class="text-sm text-sand-800 mt-1">음원 무제한 업로드 & 배터리 500 혜택</p>
+                            </li>
+                            <li class="mb-8 ml-6">
+                                <span class="absolute flex items-center justify-center w-8 h-8 bg-sand-200 rounded-full -left-4 ring-4 ring-white text-sand-800 text-sm font-bold transition-colors" id="step2-icon">2</span>
+                                <h5 class="font-bold text-sand-900">상업적 권리 증빙</h5>
+                                <p class="text-sm text-sand-800 mt-1">Suno/Udio 유료 영수증 업로드 (법적 안전장치)</p>
+                            </li>
+                            <li class="ml-6">
+                                <span class="absolute flex items-center justify-center w-8 h-8 bg-sand-200 rounded-full -left-4 ring-4 ring-white text-sand-800 text-sm font-bold transition-colors" id="step3-icon">3</span>
+                                <h5 class="font-bold text-sand-900">팬덤 형성 및 차트 노출</h5>
+                                <p class="text-sm text-sand-800 mt-1">내 음악이 메인 탑에 노출되며 가치 창출</p>
+                            </li>
+                        </ul>
+                        <button onclick="advanceArtistStep()" class="mt-6 w-full bg-sand-900 text-white py-3 rounded-lg hover:bg-sand-800 font-semibold transition-colors">
+                            다음 단계 시뮬레이션 🚀
+                        </button>
+                    </div>
+
+                    <!-- Interactive Display -->
+                    <div class="w-full md:w-2/3 bg-sand-900 rounded-xl p-8 text-sand-50 h-full min-h-[300px] flex flex-col justify-center border-l-8 border-gold-500" id="artist-display">
+                        <div class="text-6xl mb-4">🔋</div>
+                        <h5 class="text-2xl font-bold text-gold-500 mb-2">Creator Pro 구독 혜택</h5>
+                        <p class="text-lg font-light">가장 먼저 Creator Pro로 업그레이드하세요. 창작의 한계가 사라집니다. 매일 500 배터리가 제공되며, 당신이 생성한 트랙을 무제한으로 플랫폼에 업로드할 자격이 주어집니다.</p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-lg font-semibold text-gold-600 italic">"권리 증빙 한 번으로 당신은 에이플리의 공식 아티스트가 됩니다."</p>
+                </div>
+            </div>
         </div>
-    </section>
+
+        <!-- STAGE 4: Ecosystem Tab -->
+        <div id="tab-ecosystem" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-sand-100 p-8">
+                <h3 class="text-2xl font-bold text-sand-900 mb-4">에이플리 에코시스템: 가치의 선순환</h3>
+                <p class="text-sand-800 mb-6 leading-relaxed">
+                    에이플리는 단순한 스트리밍이 아닌, 금융권 용어를 배제한 순수한 <strong>'팬덤 에코시스템'</strong>입니다. 
+                    이 차트는 리스너의 기여도(Note)가 상승함에 따라 아티스트의 창작 지원금(Point)이 어떻게 동반 성장하는지 그 선순환 구조를 시각화합니다.
+                </p>
+
+                <div class="flex flex-col md:flex-row gap-6 mb-8">
+                    <div class="flex-1 bg-sand-50 p-6 rounded-xl border border-sand-200 flex items-center gap-4">
+                        <div class="text-4xl">💰</div>
+                        <div>
+                            <h4 class="font-bold text-lg">포인트 (Point)</h4>
+                            <p class="text-sm text-sand-800">아티스트를 향한 순수한 <strong>'창작 지원금'</strong></p>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-sand-50 p-6 rounded-xl border border-sand-200 flex items-center gap-4">
+                        <div class="text-4xl">🌟</div>
+                        <div>
+                            <h4 class="font-bold text-lg">기여도 (Note)</h4>
+                            <p class="text-sm text-sand-800">플랫폼 내 리스너의 <strong>'영향력 및 컬렉터 지수'</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRITICAL: Chart Container strictly styled via CSS class -->
+                <div class="chart-container">
+                    <canvas id="ecosystemChart"></canvas>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button onclick="simulateEcosystemGrowth()" class="bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+                        선순환 성장 시뮬레이션 실행 📈
+                    </button>
+                    <p class="mt-4 text-lg font-semibold text-sand-900 italic">"창작 지원과 기여 보상이 선순환하는 글로벌 팬덤 커뮤니티입니다."</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- STAGE 5: Closing & CTA -->
+    <footer class="bg-sand-900 text-center py-20 px-4 mt-12 border-t-8 border-gold-500">
+        <h2 class="text-3xl font-bold text-white mb-6">당신의 음악적 가치를 증명할 시간입니다</h2>
+        <p class="text-sand-200 mb-10 text-lg">지금 바로 구글 플레이 스토어에서 에이플리를 검색하세요.</p>
+        
+        <div class="inline-flex items-center justify-center bg-white text-sand-900 font-bold py-4 px-8 rounded-xl hover:bg-sand-100 transition-colors cursor-pointer shadow-lg group">
+            <span class="text-2xl mr-3 group-hover:animate-bounce">📱</span>
+            <span class="text-xl">Google Play에서 다운로드 (Mock)</span>
+        </div>
+        
+        <p class="text-sand-800 mt-16 text-sm">© 2026 Aiply. All rights reserved. UGC Brokerage & Fandom Ecosystem.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Tab Navigation Logic ---
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // --- Listener Interaction Logic ---
+        const listenerData = {
+            'muse': {
+                icon: '💬',
+                title: 'AI Muse와 대화하며 음악 탐색',
+                desc: '"오늘 비가 오는데 듣기 좋은 재즈풍의 AI 음악을 추천해줘." AI 챗봇(Muse)이 수많은 생성 음악 중 당신의 기분에 완벽히 맞는 트랙을 실시간으로 찾아줍니다.'
+            },
+            'thanks': {
+                icon: '💖',
+                title: '슈퍼땡스 (Super Thanks) 후원',
+                desc: '마음에 드는 트랙을 발견하셨나요? 아티스트에게 직접 슈퍼땡스를 보내 창작 활동을 응원하세요. 이 후원금은 음원 구매가 아닌 순수한 창작 지지 생태계의 기반이 됩니다.'
+            },
+            'note': {
+                icon: '📝',
+                title: 'Note 수집 및 컬렉터 등극',
+                desc: '후원과 플랫폼 활동을 통해 당신만의 기여도(Note)를 쌓아가세요. Note가 모일수록 플랫폼 내 당신의 영향력이 커지며, 진정한 음악 컬렉터로서의 즐거움을 누릴 수 있습니다.'
+            }
+        };
+
+        function updateListenerView(key, element) {
+            // Update selection styling
+            document.querySelectorAll('.feature-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+
+            // Update content box
+            const box = document.getElementById('listener-detail-box');
+            const data = listenerData[key];
+            
+            box.style.opacity = '0';
+            setTimeout(() => {
+                box.innerHTML = `
+                    <div class="flex items-start gap-6">
+                        <div class="text-6xl hidden sm:block">${data.icon}</div>
+                        <div>
+                            <h5 class="text-xl font-bold text-gold-500 mb-2">${data.title}</h5>
+                            <p class="text-lg font-light">${data.desc}</p>
+                        </div>
+                    </div>
+                `;
+                box.style.opacity = '1';
+                box.style.transition = 'opacity 0.3s ease';
+            }, 150);
+        }
+
+        // --- Artist Interaction Logic (Progress State) ---
+        let currentArtistStep = 1;
+        const artistData = {
+            1: {
+                icon: '🔋',
+                title: 'Creator Pro 구독 혜택',
+                desc: '가장 먼저 Creator Pro로 업그레이드하세요. 창작의 한계가 사라집니다. 매일 500 배터리가 제공되며, 당신이 생성한 트랙을 무제한으로 플랫폼에 업로드할 자격이 주어집니다.'
+            },
+            2: {
+                icon: '📜',
+                title: '상업적 이용 권리 증빙',
+                desc: '플랫폼의 가장 강력한 법적 안전장치입니다. Suno 또는 Udio의 유료 구독(Pro/Premier) 영수증을 업로드하여 해당 AI 음원에 대한 완벽한 상업적 권리를 보유하고 있음을 증명하세요.'
+            },
+            3: {
+                icon: '👑',
+                title: '팬덤 형성 및 차트 상단 노출',
+                desc: '권리 증빙이 완료되면 공식 아티스트로 등록됩니다. 당신의 음악이 메인 차트 상단에 노출되고, 리스너들의 슈퍼땡스 후원을 받으며 강력한 팬덤과 실제 가치를 창출하기 시작합니다.'
+            }
+        };
+
+        function advanceArtistStep() {
+            currentArtistStep++;
+            if(currentArtistStep > 3) currentArtistStep = 1; // loop back for demo
+
+            // Update UI Tracker
+            for(let i=1; i<=3; i++) {
+                const icon = document.getElementById(`step${i}-icon`);
+                if(i <= currentArtistStep) {
+                    icon.classList.remove('bg-sand-200', 'text-sand-800');
+                    icon.classList.add('bg-gold-500', 'text-white');
+                } else {
+                    icon.classList.remove('bg-gold-500', 'text-white');
+                    icon.classList.add('bg-sand-200', 'text-sand-800');
+                }
+            }
+
+            // Update Content Display
+            const display = document.getElementById('artist-display');
+            const data = artistData[currentArtistStep];
+            
+            display.style.opacity = '0';
+            setTimeout(() => {
+                display.innerHTML = `
+                    <div class="text-6xl mb-4">${data.icon}</div>
+                    <h5 class="text-2xl font-bold text-gold-500 mb-2">${data.title}</h5>
+                    <p class="text-lg font-light">${data.desc}</p>
+                `;
+                display.style.opacity = '1';
+                display.style.transition = 'opacity 0.3s ease';
+            }, 150);
+        }
+
+        // --- Ecosystem Chart.js Logic ---
+        let ecosystemChartInstance = null;
+        
+        // Initial low data state
+        const initialPoints = [10, 15, 20, 25, 30, 35];
+        const initialNotes = [5, 8, 12, 18, 22, 28];
+        
+        // Growth data state
+        const growthPoints = [10, 25, 55, 95, 150, 220];
+        const growthNotes = [5, 20, 45, 80, 130, 190];
+        const labels = ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'];
+
+        function initChart() {
+            const ctx = document.getElementById('ecosystemChart').getContext('2d');
+            
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            Chart.defaults.color = '#4A4641';
+
+            ecosystemChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Artist Support (Points)',
+                            data: initialPoints,
+                            borderColor: '#C69C6D',
+                            backgroundColor: 'rgba(198, 156, 109, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.4,
+                            fill: true,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Listener Influence (Notes)',
+                            data: initialNotes,
+                            borderColor: '#2C2A29',
+                            backgroundColor: 'transparent',
+                            borderWidth: 3,
+                            borderDash: [5, 5],
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // CRITICAL for filling container height properly
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            backgroundColor: '#2C2A29',
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 13 },
+                            padding: 12,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) { label += context.parsed.y; }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Points (Volume)' },
+                            suggestedMax: 250
+                        }
+                    }
+                }
+            });
+        }
+
+        function simulateEcosystemGrowth() {
+            if(!ecosystemChartInstance) return;
+            
+            // Animate transition to growth data
+            ecosystemChartInstance.data.datasets[0].data = growthPoints;
+            ecosystemChartInstance.data.datasets[1].data = growthNotes;
+            ecosystemChartInstance.update({
+                duration: 1500,
+                easing: 'easeOutQuart'
+            });
+        }
+
+        // Initialize chart on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            initChart();
+        });
+
+    </script>
 
     <footer>
         <div class="footer-links">
