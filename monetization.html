@@ -128,6 +128,14 @@
             margin-bottom: 30px;
         }
 
+        .intro-box p {
+            margin-bottom: 10px;
+        }
+
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+
         /* 섹션 카드형 레이아웃 */
         .card {
             background-color: var(--card-bg);
@@ -136,12 +144,20 @@
             border-radius: 8px;
             padding: 24px;
             margin-bottom: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .card.alert-card { border-left: 4px solid var(--danger-accent); }
-        .card.safe-card { 
-            border-left: 4px solid var(--safe-accent); 
+        .card.alert-card {
+            border-left: 4px solid var(--danger-accent);
+        }
+
+        .card.safe-card {
+            border-left: 4px solid var(--safe-accent);
             background-color: rgba(76, 175, 80, 0.03);
+        }
+
+        .card:hover {
+            border-color: #444;
         }
 
         .card h2 {
@@ -150,10 +166,32 @@
             margin-bottom: 16px;
         }
 
-        .card.alert-card h2 { color: var(--danger-accent); }
-        .card.safe-card h2 { color: var(--safe-accent); }
+        .card.alert-card h2 {
+            color: var(--danger-accent);
+        }
 
-        .card p, .card li { margin-bottom: 12px; }
+        .card.safe-card h2 {
+            color: var(--safe-accent);
+        }
+
+        .card p {
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .card ul, .card ol {
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .card p:last-child, .card ul:last-child, .card ol:last-child {
+            margin-bottom: 0;
+        }
 
         /* 비율 박스 디자인 */
         .split-box {
@@ -162,6 +200,7 @@
             padding: 15px;
             border-radius: 6px;
             margin: 10px 0 20px 0;
+            font-size: 14.5px;
         }
 
         .split-item {
@@ -172,15 +211,49 @@
             padding-bottom: 12px;
         }
 
-        .split-item:last-child { border-bottom: none; margin-bottom: 0; }
-        .split-icon { font-size: 20px; margin-right: 15px; }
-        .split-title { color: var(--gold-accent); font-weight: 600; display: block; }
-        .split-desc { color: #b0b0b0; font-size: 13px; }
+        .split-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
 
-        /* 강조 스타일 */
-        .highlight { color: #ffffff; font-weight: 600; }
-        .alert-text { color: var(--danger-accent); font-weight: 600; }
-        .safe-text { color: var(--safe-accent); font-weight: 600; }
+        .split-icon {
+            font-size: 20px;
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+
+        .split-content {
+            flex: 1;
+        }
+
+        .split-title {
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .split-desc {
+            color: #b0b0b0;
+            font-size: 13px;
+        }
+
+        /* 텍스트 강조 */
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .alert-text {
+            color: var(--danger-accent);
+            font-weight: 600;
+        }
+
+        .safe-text {
+            color: var(--safe-accent);
+            font-weight: 600;
+        }
 
         /* 푸터 */
         .footer {
@@ -191,11 +264,34 @@
             color: var(--text-muted);
             font-size: 13px;
         }
+
+        .footer a {
+            color: var(--gold-accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 24px; }
+            .header p.subtitle { font-size: 14px; }
+            .card { padding: 20px; }
+            .card h2 { font-size: 17px; }
+            .lang-nav { gap: 8px; padding: 10px 15px;}
+            .lang-nav a { padding: 6px 12px; font-size: 13px; }
+            .split-box { padding: 12px; }
+            .split-title { font-size: 14px; }
+            .split-desc { font-size: 12px; }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
+        
         <div class="header">
             <h1>Aiply Monetization & SmartSplit Policy</h1>
             <p class="subtitle">"A Transparent and Fair Reward Ecosystem"</p>
@@ -210,60 +306,292 @@
 
         <div id="english" class="lang-section">
             <h2 class="lang-title">Creator Monetization Policy (EN)</h2>
+
+            <div class="intro-box">
+                <p><span class="highlight">Welcome! Aiply's Transparent Reward Ecosystem</span></p>
+                <p>Aiply operates a built-in <span class="highlight">'SmartSplit'</span> model to ensure that the creative activities of creators and the passionate contributions of fans receive fair compensation.</p>
+                <p>This policy defines the specific conditions, distribution ratios, application procedures, and metric nullification rules in the event of abuse, for settling (withdrawing) the <span class="highlight">'Contribution'</span> metrics acquired by users through dedication to the platform ecosystem into actual <span class="highlight">'Creator and Activity Support Funds'</span> (hereinafter "Support Funds").</p>
+            </div>
+
+            <div class="card">
+                <h2>Article 1 (Definition of Goods and Metrics)</h2>
+                <p>All settlements within the Aiply platform are strictly based on metrics representing proof of activity within the platform, not external virtual assets (coins) or electronic currency trading.</p>
+                <ol>
+                    <li><span class="highlight">Point:</span> A consumption-only digital good within the platform used by fans (users) to sponsor artists or participate in ecosystem activities. (Points themselves cannot be refunded for cash or withdrawn.)</li>
+                    <li><span class="highlight">Contribution:</span> The <span class="highlight">'final measure of activity and settlement metric'</span> granted by the system to creators and users through others' sponsorship (use of Points) and ecosystem vitalization activities. When this metric reaches a certain standard, it can be calculated into actual 'Support Funds' and requested for withdrawal.</li>
+                    <li><span class="highlight">Note:</span> A metric representing the musical value and fandom contribution of a specific track. Users who hold Notes are recognized as having contributed to the vitalization of that track's ecosystem and become eligible for compensation calculation under SmartSplit.</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2>Article 2 (SmartSplit Distribution Ratio)</h2>
+                <p>When a user engages in activities such as sponsoring a specific track using Points, those Points are immediately converted into <span class="highlight">Contribution</span> metrics for each party according to Aiply's SmartSplit algorithm and automatically distributed in real-time at the following ratios:</p>
+                
+                <div class="split-box">
+                    <div class="split-item">
+                        <div class="split-icon">👩‍🎤</div>
+                        <div class="split-content">
+                            <span class="split-title">Artist (Creator's Contribution): 50%</span>
+                            <span class="split-desc">(Accumulated as 'Direct Creator Support Funds' to encourage the creator's continuous music activities.)</span>
+                        </div>
+                    </div>
+                    <div class="split-item">
+                        <div class="split-icon">🎧</div>
+                        <div class="split-content">
+                            <span class="split-title">Track Note Holders (Fandom's Contribution): 20%</span>
+                            <span class="split-desc">(Accumulated as 'Activity Reward Support Funds' for fans who contributed to the ecosystem growth of the track, distributed proportionally (n/1) to their respective 'Note Contribution Ratio'.)</span>
+                        </div>
+                    </div>
+                    <div class="split-item">
+                        <div class="split-icon">🏢</div>
+                        <div class="split-content">
+                            <span class="split-title">Aiply Platform (Operational Contribution): 30%</span>
+                            <span class="split-desc">(Deducted to cover global payment network fees, AI foundation model maintenance, cloud infrastructure operation, and platform enhancement costs.)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card safe-card">
                 <h2>Article 3 (Support Fund Calculation Standards and Settlement Conditions) 🛡️</h2>
                 <ol>
-                    <li><span class="safe-text">Support Fund Calculation Standard:</span> When settling the ecosystem activity metric, <span class="highlight">Contribution</span>, the Company's internal calculation unit price is <span class="highlight">[1 Contribution = 0.5 KRW]</span>.<br>
-                    <i>(Example: A settlement request for 10,000 Contributions will be calculated as 5,000 KRW in Support Funds.)</i><br>
-                    <span class="alert-text">(Caution: Contributions are internal measures and have no external exchange value.)</span></li>
-                    
-                    <li><span class="highlight">Minimum Settlement Condition:</span> The withdrawal application window will be activated on the <span class="highlight">scheduled application date</span> only when the accumulated metrics reach a <span class="highlight">minimum of 300,000 Contributions</span>. Applications are disabled if the balance is below this threshold.</li>
-                    
-                    <li><span class="highlight">Verification Cycle:</span> Data is verified on a 7-day cycle. Users can apply for withdrawal only during the designated 'Open Window' period.</li>
+                    <li><span class="safe-text">Support Fund Calculation Standard:</span> When settling (converting) the ecosystem activity metric, <span class="highlight">Contribution</span>, into actual cash Support Funds, the Company's internal calculation unit price is <span class="highlight">[1 Contribution = 0.5 KRW]</span>.<br>
+                    <i>(Example: When applying for settlement with 10,000 Contributions, it is calculated as 5,000 KRW in Support Funds. However, this calculation standard is subject to change after prior notice according to global economic indicators and platform operation policies.)</i><br>
+                    <span class="alert-text">(Caution: 'Contribution' is merely an internal reward measure for platform activity. It does not mean electronic money or virtual assets, and cannot be arbitrarily traded between users or transferred externally.)</span></li>
+                    <li><span class="highlight">Minimum Settlement Condition:</span> The Support Fund withdrawal application window will be activated in accordance with the scheduled support fund application date only when the accumulated metrics reach a <span class="highlight">minimum of 300,000 Contributions</span>. Applications are not possible if the balance is below this amount.</li>
+                    <li><span class="highlight">Settlement Verification Cycle and Application Period:</span> Contribution data is reflected and verified in the system fundamentally on a 7-day cycle. Users can apply for withdrawal only during the specific 'Settlement Application Period (Open Window)' designated by the platform. Outside of this period, the application button will be disabled.</li>
                 </ol>
             </div>
+
+            <div class="card">
+                <h2>Article 4 (Application Procedure and Payment Method)</h2>
+                <p>When applying for settlement, users must provide accurate information by choosing one of the following two methods. The user is entirely responsible for any payment delays or transfer failures caused by incorrect information entry.</p>
+                <ul>
+                    <li><span class="highlight">Domestic Bank Transfer (Residents of the Republic of Korea):</span> Must input the bank name, account number (numbers only), account holder's name, and own contact number.</li>
+                    <li><span class="highlight">PayPal (Overseas Residents and Global Users):</span> Must input a verified PayPal-linked email address registered under the user's own name.</li>
+                </ul>
             </div>
+
+            <div class="card">
+                <h2>Article 5 (Identity Verification (KYC) and Tax Processing)</h2>
+                <p>Strict identity verification is conducted during the Support Fund payment process to prevent financial accidents and ensure lawful tax processing.</p>
+                <ol>
+                    <li><span class="highlight">Real Name Verification (KYC):</span> The account holder's name, contact number, and PayPal email stated on the application must <span class="alert-text">match 100%</span> with the Aiply account registration information and the ID (or business registration) information that the Company may request later. Payments will be rejected upon mismatch.</li>
+                    <li><span class="highlight">Withholding of Taxes and Transfer Fees:</span>
+                        <ul style="margin-top: 8px;">
+                            <li><span class="highlight">Domestic Residents:</span> The 'Net Payment Amount' will be deposited after <span class="highlight">withholding (pre-deducting) relevant taxes (e.g., 3.3% business income tax) and bank transfer fees</span> from the total calculated Support Fund amount in accordance with current tax laws.</li>
+                            <li><span class="highlight">Overseas Residents:</span> When remitting via PayPal, cross-border transfer fees and exchange fees charged by the PayPal platform itself may be deducted from the receipt amount, and this is entirely the responsibility of the applicant.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="card alert-card">
+                <h2>Article 6 (Withholding of Payment and Nullification of Metrics in Case of Abuse) 🚨</h2>
+                <p>Aiply strictly prohibits Support Fund farming and ecosystem disruption through unfair methods, and operates the following strong sanction logic:</p>
+                <ol>
+                    <li><span class="highlight">Self-Donation Block:</span> Any attempt by an artist to sponsor their own track, or to intentionally sponsor a track for which they hold Notes in order to misappropriate Contributions, is fundamentally blocked at the transaction stage by system logic. <i>(In-app error: "You cannot sponsor your own content")</i></li>
+                    <li><span class="highlight">Abnormal Transaction Monitoring and Payment Hold:</span> If circumstances of abnormally acquiring Contributions through macros, multiple account (fake account) creation, payment theft (chargebacks), or exploitation of system bugs are detected by the platform's economic monitoring network, the user's settlement application will immediately be processed as <span class="alert-text">'STATUS_REJECTED'</span> and put on hold.</li>
+                    <li><span class="alert-text">Nullification of Metrics and Rollback:</span> All platform data (Contributions, Points, etc.) determined through ex officio investigation to have been acquired through abuse will immediately be subject to a <span class="alert-text">system Roll-back and entirely nullified (reduced to 0)</span>. The violating account may be permanently suspended without prior notice in accordance with the Community Guidelines.</li>
+                </ol>
+            </div>
+        </div>
 
         <div id="japanese" class="lang-section">
             <h2 class="lang-title">収益創出およびスマート精算ポリシー (JP)</h2>
+
+            <div class="intro-box">
+                <p><span class="highlight">ようこそ！Aiplyの透明で公正な報酬エコシステム</span></p>
+                <p>Aiplyは、クリエイターの創作活動とファンの情熱的な貢献が正当な報酬を受けられるよう、システム内蔵型の<span class="highlight">「スマート精算（SmartSplit）」</span>モデルを運営しています。</p>
+                <p>本ポリシーは、ユーザーがプラットフォームエコシステムに献身して獲得した<span class="highlight">「貢献度（Contribution）」</span>指標を、実際の<span class="highlight">「創作および活動補償支援金（以下「支援金」）」</span>として精算（出金）を受けるための具体的な条件、分配比率、申請手続き、およびアビューズ発覚時の指標無効化規則を規定します。</p>
+            </div>
+
+            <div class="card">
+                <h2>第1条（財貨および指標の定義）</h2>
+                <p>Aiplyプラットフォーム内のすべての精算は、外部の暗号資産（コイン）や電子マネー取引ではなく、徹底してプラットフォーム内の活動証明を表す指標に基づいて行われます。</p>
+                <ol>
+                    <li><span class="highlight">ポイント（Point）:</span> ファン（ユーザー）がアーティストを後援したり、エコシステム活動に参加するために使用するプラットフォーム内消費専用デジタル財貨です。（ポイント自体は現金で返金されたり出金されることはありません。）</li>
+                    <li><span class="highlight">貢献度（Contribution）:</span> クリエイターおよびユーザーが他人の後援（ポイント使用）およびエコシステム活性化活動を通じてシステムから付与される<span class="highlight">「最終活動尺度および精算指標」</span>です。この指標が一定の基準に達すると、実際の「支援金」として算定し、出金を申請することができます。</li>
+                    <li><span class="highlight">ノート（Note）:</span> 特定の音源の音楽的価値とファンダム貢献度を表す指標です。ノートを保有するユーザーは、該当音源のエコシステム活性化に貢献したと認められ、スマート精算（SmartSplit）の報酬算定対象となります。</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2>第2条（スマート精算 分配比率）</h2>
+                <p>ユーザーが特定の音源を対象にポイント（Point）を使用して後援などの活動を行った場合、該当ポイントはAiplyのスマート精算アルゴリズムに従い、即時に各主体の<span class="highlight">貢献度（Contribution）</span>に変換され、以下の比率でリアルタイムに自動分配されます。</p>
+                
+                <div class="split-box">
+                    <div class="split-item">
+                        <div class="split-icon">👩‍🎤</div>
+                        <div class="split-content">
+                            <span class="split-title">アーティスト（クリエイター貢献分）: 50%</span>
+                            <span class="split-desc">（クリエイターの持続的な音楽活動を奨励するための「直接創作支援金」名目で累積）</span>
+                        </div>
+                    </div>
+                    <div class="split-item">
+                        <div class="split-icon">🎧</div>
+                        <div class="split-content">
+                            <span class="split-title">音源ノート保有者（ファンダム貢献分）: 20%</span>
+                            <span class="split-desc">（該当音源のエコシステム成長に貢献したファンに対し、各自の「ノート貢献比率」に比例して（n/1）「活動補償支援金」名目で累積）</span>
+                        </div>
+                    </div>
+                    <div class="split-item">
+                        <div class="split-icon">🏢</div>
+                        <div class="split-content">
+                            <span class="split-title">Aiplyプラットフォーム（運営貢献分）: 30%</span>
+                            <span class="split-desc">（グローバル決済網の手数料、AI基盤モデルの維持保守、クラウドインフラ運営およびプラットフォーム高度化費用として控除）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card safe-card">
                 <h2>第3条（支援金の算定基準および精算条件） 🛡️</h2>
                 <ol>
                     <li><span class="safe-text">支援金の算定基準:</span> プラットフォーム内のエコシステム活動指標である<span class="highlight">貢献度（Contribution）</span>を実際の現金支援金として精算する際の会社内部の算定単価は、<span class="highlight">【1 貢献度 = 0.5 ウォン(KRW)】</span>です。<br>
-                    <i>（例：10,000 貢献度を精算申請した場合、5,000 ウォンの支援金として算定されます。）</i><br>
-                    <span class="alert-text">（注意：「貢献度」は内部報酬尺度に過ぎず、ユーザー間で任意に売買したり外部へ転送することはできません。）</span></li>
-                    
-                    <li><span class="highlight">最小精算条件:</span> 蓄積された指標が<span class="highlight">最小 300,000 貢献度</span>以上に達した際、支援金申請日に合わせて出金申請窓口が有効化されます。未達の場合は申請不可となります。</li>
-                    
-                    <li><span class="highlight">精算検証周期:</span> 貢献度データは基本的に7日単位で検証され、指定された特定の「精算申請期間」内にのみ出金を申請することができます。</li>
+                    <i>（例：10,000 貢献度を精算申請した場合、5,000 ウォンの支援金として算定されます。ただし、この算定基準はグローバル経済指標およびプラットフォーム運営方針に従い、事前告知後に変更される場合があります。）</i><br>
+                    <span class="alert-text">（注意：「貢献度」はプラットフォーム活動に対する内部報酬尺度に過ぎず、電子マネーや暗号資産を意味するものではなく、ユーザー間で任意に売買したり外部へ転送することはできません。）</span></li>
+                    <li><span class="highlight">最小精算条件:</span> 蓄積された指標が<span class="highlight">最小 300,000 貢献度</span>以上に達した時点から、支援金出金申請窓口が支援金申請日に合わせて有効化されます。未達の場合は申請不可となります。</li>
+                    <li><span class="highlight">精算検証周期および申請期間:</span> 貢献度データは基本的に7日単位でシステムに反映および検証され、ユーザーはプラットフォームが指定した特定の「精算申請期間（オープンウィンドウ）」内にのみ出金を申請することができます。該当期間外は申請ボタンが無効化されます。</li>
                 </ol>
             </div>
+
+            <div class="card">
+                <h2>第4条（申請手続きおよび支払い方法）</h2>
+                <p>ユーザーは精算申請時、以下の2つの方法のいずれかを選択し、正確な情報を提供する必要があります。情報の誤入力による支払い遅延や送金失敗に対する責任はユーザー本人にあります。</p>
+                <ul>
+                    <li><span class="highlight">国内口座振込（大韓民国居住者）:</span> 入金を受ける銀行名、口座番号（数字のみ）、口座名義人、本人の連絡先の入力が必須です。</li>
+                    <li><span class="highlight">PayPal（海外居住者およびグローバルユーザー）:</span> 本人名義で認証が完了したPayPal連携メールアドレスの入力が必須です。</li>
+                </ul>
             </div>
+
+            <div class="card">
+                <h2>第5条（本人認証（KYC）および税務処理）</h2>
+                <p>金融事故防止および適法な税務処理のため、支援金支給過程で厳格な身元確認が行われます。</p>
+                <ol>
+                    <li><span class="highlight">実名認証（KYC）:</span> 申請書に記載された口座名義人、連絡先、PayPalメールアドレスは、Aiplyアカウント登録情報、および後日会社が要求する場合のある身分証明書（または事業者登録証）情報と<span class="alert-text">必ず100%一致</span>しなければなりません。不一致の場合は支給が却下されます。</li>
+                    <li><span class="highlight">税金および送金手数料の源泉徴収:</span>
+                        <ul style="margin-top: 8px;">
+                            <li><span class="highlight">国内居住者:</span> 現行税法に従い算定された支援金総額から、<span class="highlight">関連税額（例：事業所得税 3.3% 等）および銀行振込手数料を源泉徴収（事前控除）した上で「税引後実支給額」が入金</span>されます。</li>
+                            <li><span class="highlight">海外居住者:</span> PayPal送金時、クロスボーダー（国境間）送金手数料および為替（Exchange）手数料が受領額から差し引かれる場合があり、これは全面的に申請者本人の負担となります。</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="card alert-card">
+                <h2>第6条（アビューズ発覚時の支給保留および指標無効化） 🚨</h2>
+                <p>Aiplyは、不当な方式の支援金ファーミング（Farming）およびエコシステム攪乱を厳格に禁止し、以下の強力な制裁ロジックを運営します。</p>
+                <ol>
+                    <li><span class="highlight">自己後援の根本的遮断（Self-Donation Block）:</span> システムロジックにより、アーティスト本人が自身の音源に自ら後援したり、自身がノートを保有する音源に意図的に後援して貢献度を詐取する行為は、トランザクション段階で根本的に遮断されます。<i>（アプリ内エラー：「自分のコンテンツには後援できません」発生）</i></li>
+                    <li><span class="highlight">異常取引モニタリングおよび支給保留（Hold）:</span> マクロ、複数アカウント（偽アカウント）作成、決済盗用（チャージバック）、システムバグの悪用等を通じて異常に貢献度を獲得した状況が、プラットフォームの経済モニタリング網によって発覚した場合、該当ユーザーの精算申請は即時に<span class="alert-text">「却下（STATUS_REJECTED）」</span>および保留処理されます。</li>
+                    <li><span class="alert-text">指標無効化およびロールバック（Nullification）:</span> 職権調査を通じてアビューズにより獲得されたと判明したすべてのプラットフォームデータ（貢献度、ポイント等）は、即時に<span class="alert-text">システムロールバック処理され、全額0円として消滅（無効化）</span>されます。該当する違反アカウントは、コミュニティガイドラインに従い事前通告なしに永久停止される場合があります。</li>
+                </ol>
+            </div>
+        </div>
 
         <div id="korean" class="lang-section">
             <h2 class="lang-title">수익 창출 및 스마트 정산 정책 (KR)</h2>
+
+            <div class="intro-box">
+                <p><span class="highlight">환영합니다! Aiply의 투명하고 공정한 보상 생태계</span></p>
+                <p>에이플리(Aiply)는 크리에이터의 창작 활동과 팬들의 열정적인 기여가 합당한 보상을 받을 수 있도록 시스템 내장형 <span class="highlight">'스마트 정산(SmartSplit)'</span> 모델을 운영합니다.</p>
+                <p>본 정책은 사용자가 플랫폼 생태계에 헌신하여 획득한 <span class="highlight">'기여도(Contribution)'</span> 지표를, 실제 <span class="highlight">'창작 및 활동 보상 지원금(이하 "지원금")'</span>으로 정산(출금)받기 위한 구체적인 조건, 분배 비율, 신청 절차 및 어뷰징 적발 시의 지표 무효화 규칙을 규정합니다.</p>
+            </div>
+
+            <div class="card">
+                <h2>제1조 (재화 및 지표의 정의)</h2>
+                <p>Aiply 플랫폼 내의 모든 정산은 외부의 가상자산(코인)이나 전자화폐 거래가 아닌, 철저히 플랫폼 내의 활동 증명을 나타내는 지표를 바탕으로 이루어집니다.</p>
+                <ol>
+                    <li><span class="highlight">포인트 (Point):</span> 팬(사용자)이 아티스트를 후원하거나 생태계 활동에 참여하기 위해 사용하는 플랫폼 내 소비 전용 디지털 재화입니다. (포인트 자체는 현금으로 환불되거나 출금되지 않습니다.)</li>
+                    <li><span class="highlight">기여도 (Contribution):</span> 창작자 및 유저가 타인의 후원(포인트 사용) 및 생태계 활성화 활동을 통해 시스템으로부터 부여받는 <span class="highlight">'최종 활동 척도 및 정산 지표'</span>입니다. 이 지표가 일정 기준에 도달하면 실제 '지원금'으로 산정하여 출금을 신청할 수 있습니다.</li>
+                    <li><span class="highlight">노트 (Note):</span> 특정 음원의 음악적 가치와 팬덤 기여도를 나타내는 지표입니다. 노트를 보유한 사용자는 해당 음원 생태계 활성화에 기여한 것으로 인정되어 스마트 정산(SmartSplit)의 보상 산정 대상이 됩니다.</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2>제2조 (스마트 정산(SmartSplit) 분배 비율)</h2>
+                <p>사용자가 특정 음원을 대상으로 포인트(Point)를 사용하여 후원 등의 활동을 할 경우, 해당 포인트는 에이플리의 스마트 정산 알고리즘에 따라 즉시 각 주체의 <span class="highlight">기여도(Contribution)</span>로 변환되어 다음의 비율로 실시간 자동 분배됩니다.</p>
+                
+                <div class="split-box">
+                    <div class="split-item">
+                        <div class="split-icon">👩‍🎤</div>
+                        <div class="split-content">
+                            <span class="split-title">아티스트 (창작자 기여분): 50%</span>
+                            <span class="split-desc">(창작자의 지속적인 음악 활동을 독려하기 위한 '직접 창작 지원금' 명목으로 누적)</span>
+                        </div>
+                    </div>
+                    <div class="split-item">
+                        <div class="split-icon">🎧</div>
+                        <div class="split-content">
+                            <span class="split-title">음원 노트 보유자 (팬덤 기여분): 20%</span>
+                            <span class="split-desc">(해당 음원의 생태계 성장에 기여한 팬들에게, 각자의 '노트 기여 비율'에 비례하여(n/1) '활동 보상 지원금' 명목으로 누적)</span>
+                        </div>
+                    </div>
+                    <div class="split-item">
+                        <div class="split-icon">🏢</div>
+                        <div class="split-content">
+                            <span class="split-title">에이플리 플랫폼 (운영 기여분): 30%</span>
+                            <span class="split-desc">(글로벌 결제망 수수료, AI 파운데이션 모델 유지보수, 클라우드 인프라 운영 및 플랫폼 고도화 비용으로 공제)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card safe-card">
                 <h2>제3조 (지원금 산정 기준 및 정산 조건) 🛡️ [핵심 안전장치]</h2>
                 <ol>
                     <li><span class="safe-text">지원금 산정 기준:</span> 플랫폼 내 생태계 활동 지표인 <span class="highlight">기여도(Contribution)</span>를 실제 현금 지원금으로 정산(Settlement)할 때의 회사 내부 산정 단가는 <span class="highlight">[1 기여도 = 0.5원(KRW)]</span>입니다.<br>
-                    <i>(예: 10,000 기여도를 정산 신청 시 5,000원의 지원금으로 산정. 단, 이 산정 기준은 플랫폼 운영 정책에 따라 사전 고지 후 변경될 수 있습니다.)</i><br>
-                    <span class="alert-text">(주의: '기여도'는 플랫폼 활동에 대한 내부 보상 척도일 뿐이며, 유저 간 임의로 매매하거나 외부로 전송할 수 없습니다.)</span></li>
-                    
-                    <li><span class="highlight">최소 정산 조건:</span> 누적된 지표가 <span class="highlight">최소 300,000 기여도</span> 이상 도달했을 때부터 지원금 출금 신청 창구가 <span class="highlight">지원금 신청일에 맞춰 활성화</span>되며, 미달 시 신청은 불가합니다.</li>
-                    
-                    <li><span class="highlight">정산 검증 주기 및 신청 기간:</span> 기여도 데이터는 기본 7일 단위로 시스템에 반영 및 검증되며, 사용자는 지정된 특정 '정산 신청 기간(오픈 윈도우)' 내에만 출금을 신청할 수 있습니다.</li>
+                    <i>(예: 10,000 기여도를 정산 신청 시 5,000원의 지원금으로 산정. 단, 이 산정 기준은 글로벌 경제 지표 및 플랫폼 운영 정책에 따라 사전 고지 후 변경될 수 있습니다.)</i><br>
+                    <span class="alert-text">(주의: '기여도'는 플랫폼 활동에 대한 내부 보상 척도일 뿐, 전자화폐나 가상자산을 의미하지 않으며 유저 간 임의로 매매하거나 외부로 전송할 수 없습니다.)</span></li>
+                    <li><span class="highlight">최소 정산 조건:</span> 누적된 지표가 <span class="highlight">최소 300,000 기여도</span> 이상 도달했을 때부터 지원금 출금 신청 창구가 지원금 신청일에 맞춰 활성화되며, 미달 시 신청은 불가합니다.</li>
+                    <li><span class="highlight">정산 검증 주기 및 신청 기간:</span> 기여도 데이터는 기본 7일 단위로 시스템에 반영 및 검증되며, 사용자는 플랫폼이 지정한 특정 '정산 신청 기간(오픈 윈도우)' 내에만 출금을 신청할 수 있습니다. 해당 기간 외에는 신청 버튼이 비활성화됩니다.</li>
                 </ol>
             </div>
+
+            <div class="card">
+                <h2>제4조 (지원금 신청 절차 및 지급 방식)</h2>
+                <p>사용자는 정산 신청 시 다음 두 가지 방식 중 하나를 선택하여 정확한 정보를 제공해야 합니다. 정보 오입력으로 인한 지급 지연 및 송금 실패에 대한 책임은 사용자 본인에게 있습니다.</p>
+                <ul>
+                    <li><span class="highlight">국내 계좌 이체 (대한민국 거주자):</span> 입금받을 은행명, 계좌번호(숫자만 입력), 예금주명, 본인 연락처 입력 필수.</li>
+                    <li><span class="highlight">페이팔 (해외 거주자 및 글로벌 사용자):</span> 본인 명의로 인증이 완료된 페이팔 연동 이메일 주소 입력 필수.</li>
+                </ul>
             </div>
+
+            <div class="card">
+                <h2>제5조 (본인 인증(KYC) 및 제세공과금 처리)</h2>
+                <p>금융 사고 방지 및 합법적인 세무 처리를 위해 지원금 지급 과정에서 엄격한 신원 확인이 진행됩니다.</p>
+                <ol>
+                    <li><span class="highlight">실명 인증 (KYC):</span> 신청서에 기재된 예금주명, 연락처, 페이팔 이메일은 Aiply 계정 가입 정보 및 추후 회사가 요구할 수 있는 신분증(또는 사업자등록증) 정보와 <span class="alert-text">반드시 100% 일치</span>해야 합니다. 불일치 시 지급이 반려됩니다.</li>
+                    <li><span class="highlight">세금 및 송금 수수료 원천징수:</span>
+                        <ul style="margin-top: 8px;">
+                            <li><span class="highlight">국내 거주자:</span> 현행 세법에 따라 산정된 지원금 총액에서 <span class="highlight">관련 세액(예: 사업소득세 3.3% 등) 및 은행 이체 수수료를 원천징수(사전 공제)한 후 '세후 실 지급액'이 입금</span>됩니다.</li>
+                            <li><span class="highlight">해외 거주자:</span> 페이팔(PayPal) 송금 시 크로스보더(국경 간) 송금 수수료 및 환전(Exchange) 수수료가 수령액에서 차감될 수 있으며, 이는 전적으로 신청자 본인 부담입니다.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="card alert-card">
+                <h2>제6조 (어뷰징 적발 시 지급 보류 및 지표 무효화) 🚨</h2>
+                <p>에이플리는 부당한 방식의 지원금 파밍(Farming) 및 생태계 교란을 엄격히 금지하며, 다음의 강력한 제재 로직을 운영합니다.</p>
+                <ol>
+                    <li><span class="highlight">자기 후원 원천 차단 (Self-Donation Block):</span> 시스템 로직에 의해 아티스트 본인이 자신의 음원에 스스로 후원하거나, 본인이 노트를 보유한 음원에 의도적으로 후원하여 기여도를 편취하는 행위는 트랜잭션 단계에서 원천 차단됩니다. <i>(앱 내 "자신의 콘텐츠에는 후원할 수 없습니다" 에러 발생)</i></li>
+                    <li><span class="highlight">이상 거래 모니터링 및 지급 보류 (Hold):</span> 매크로, 다중 계정(가짜 계정) 생성, 결제 도용(차지백), 시스템 버그 악용 등을 통해 비정상적으로 기여도를 획득한 정황이 플랫폼의 경제 모니터링망(<code>EconomyTransaction</code>)에 의해 적발될 경우, 해당 사용자의 정산 신청은 즉시 <span class="alert-text">'반려(STATUS_REJECTED)'</span> 및 보류 처리됩니다.</li>
+                    <li><span class="alert-text">지표 무효화 및 롤백 (Nullification):</span> 직권 조사를 통해 어뷰징으로 획득된 것으로 판명된 모든 플랫폼 데이터(기여도, 포인트 등)는 즉각 <span class="alert-text">시스템 롤백(Roll-back) 처리되며 전액 0원으로 소멸(무효화)</span>됩니다. 해당 위반 계정은 커뮤니티 가이드라인에 따라 사전 통보 없이 영구 정지(Suspension)될 수 있습니다.</li>
+                </ol>
+            </div>
+        </div>
 
         <div class="footer">
             <p>&copy; 2026 Aiply. <a href="index.html">Back to Home</a></p>
             <p style="margin-top: 10px;">Contact: <a href="mailto:eyenic@naver.com">eyenic@naver.com</a></p>
         </div>
+
     </div>
 
     <script>
-        // Smooth scroll for navigation
+        // 상단 네비게이션 클릭 시 부드러운 스크롤 애니메이션 및 스티키 헤더 가림 방지
         document.querySelectorAll('.lang-nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -272,7 +600,11 @@
                 const offset = 80; 
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
